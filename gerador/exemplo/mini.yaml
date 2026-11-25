@@ -1,0 +1,94 @@
+# Exemplo mínimo para testar o gerador (Etapa 4)
+base:
+  nome: Mini Filmes
+  autores: Teste do gerador
+  abertura: ["Base de teste com 5 filmes."]
+  arquivo_saida: ../../testes/MINI.bcm
+  prioridade: OU
+  cnf_minimo: 50
+
+variaveis:
+  - nome: gênero preferido
+    tipo: multi
+    valores: [ação, animação, comédia, crime, drama, indiferente]
+    pergunta: Quais gêneros você quer ver?
+    porque: ["O gênero é o principal critério."]
+  - nome: tempo disponível
+    tipo: numerica
+    faixa: [60, 240]
+    pergunta: Quanto tempo você tem (minutos)?
+  - nome: duração aceitável
+    tipo: multi
+    valores: [curta, média, longa]
+  - nome: origem preferida
+    tipo: uni
+    valores: [nacional, internacional, indiferente]
+    pergunta: Prefere filme nacional ou internacional?
+  - nome: com crianças
+    tipo: logica
+    pergunta: Vai assistir com crianças?
+  - nome: classificação permitida
+    tipo: multi
+    valores: [L, "12", "16"]
+  - nome: quer escolher ator
+    tipo: logica
+    pergunta: Quer indicar um ator preferido?
+  - nome: ator preferido
+    tipo: multi
+    valores: [Tom Hanks, Wagner Moura, Selton Mello, Matheus Nachtergaele, Alexandre Rodrigues, Leandro Firmino]
+    pergunta: Quais atores você prefere?
+
+regras:
+  - grupo: faixas de duração
+    itens:
+      - nome: Duração - pouco tempo
+        se: tempo disponível < 100
+        entao: [duração aceitável = curta]
+      - nome: Duração - tempo médio
+        se: tempo disponível >= 100 E tempo disponível < 135
+        entao: [duração aceitável = curta, duração aceitável = média]
+      - nome: Duração - muito tempo
+        se: tempo disponível >= 135
+        entao: [duração aceitável = curta, duração aceitável = média, duração aceitável = longa]
+  - grupo: classificação
+    itens:
+      - nome: Classificação - com crianças
+        se: com crianças = Sim
+        entao: [classificação permitida = L]
+      - nome: Classificação - adultos
+        se: com crianças = Não
+        entao: [classificação permitida = L, classificação permitida = 12, classificação permitida = 16]
+
+objetivos:
+  - var: classificação permitida
+    mostrar: false
+  - var: filme recomendado
+
+itens:
+  arquivo: mini.csv
+  chave: titulo
+  objetivo: filme recomendado
+  colunas_lista: [generos, atores]
+  derivados:
+    - coluna: faixa_duracao
+      de: duracao
+      faixas: [[0, 99, curta], [100, 134, média], [135, 999, longa]]
+  modelos:
+    - nome: perfil completo
+      cnf: 95
+      condicoes:
+        - {var: gênero preferido, coluna: generos, alternativa: indiferente}
+        - {var: origem preferida, coluna: origem, alternativa: indiferente}
+        - {var: duração aceitável, coluna: faixa_duracao}
+        - {var: classificação permitida, coluna: classificacao}
+    - nome: gênero e classificação
+      cnf: 60
+      condicoes:
+        - {var: gênero preferido, coluna: generos}
+        - {var: classificação permitida, coluna: classificacao}
+  evidencias:
+    - nome: ator
+      prefixo: quer escolher ator = Sim
+      var: ator preferido
+      coluna: atores
+      cnf: 70
