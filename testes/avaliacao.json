@@ -83,21 +83,21 @@
   "robustez": {
    "consultas": 2000,
    "falhas_do_motor": 0,
-   "sem_recomendacao": 6,
-   "tamanho_lista_mediana": 64.0,
-   "tamanho_lista_media": 69.4,
-   "perguntas_media": 13.8325,
+   "sem_recomendacao": 62,
+   "tamanho_lista_mediana": 56.0,
+   "tamanho_lista_media": 64.0065,
+   "perguntas_media": 13.771,
    "perguntas_min": 12,
    "perguntas_max": 16,
-   "regras_total": 2364,
+   "regras_total": 2374,
    "regras_nunca_disparadas": 2,
    "exemplos_nunca_disparadas": [
-    "Cidade de Deus - ator: Leandro Firmino",
+    "Quem Quer Ser um Milionário? - ator: Freida Pinto",
     "Mad Max: Estrada da Fúria - ator: Charlize Theron"
    ]
   },
   "alcancabilidade": {
-   "regras_total": 2364,
+   "regras_total": 2374,
    "nunca_disparadas": [
     "gênero compatível: indiferente",
     "gênero compatível: sem resposta",

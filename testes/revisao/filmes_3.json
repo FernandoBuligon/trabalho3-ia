@@ -1,0 +1,234 @@
+{
+  "origem": "simulador Python",
+  "base_sha256": "6b5b77a501dda5f0d5a08440aedb6a49f9f9f6e053084d5f225a21e35af9be65",
+  "respostas": {
+    "há menores assistindo": "Sim",
+    "idade do mais novo": 15,
+    "gênero preferido": [
+      "ficção científica",
+      "ação"
+    ],
+    "clima desejado": [
+      "tenso",
+      "épico"
+    ],
+    "tem limite de tempo": "Sim",
+    "tempo disponível": 170,
+    "origem preferida": "internacional",
+    "época preferida": [
+      "recentes (de 2010 em diante)"
+    ],
+    "tipo de história preferido": "ficção",
+    "companhia": "sozinho(a)",
+    "quer premiados": "Sim",
+    "interesse em franquias": "gosto de sagas e franquias",
+    "quer escolher ator": "Sim",
+    "ator preferido": [
+      "Leonardo DiCaprio"
+    ],
+    "quer escolher diretor": "Sim",
+    "diretor preferido": [
+      "Christopher Nolan"
+    ]
+  },
+  "perguntas": [
+    "há menores assistindo",
+    "idade do mais novo",
+    "gênero preferido",
+    "clima desejado",
+    "tem limite de tempo",
+    "tempo disponível",
+    "origem preferida",
+    "época preferida",
+    "tipo de história preferido",
+    "companhia",
+    "quer premiados",
+    "interesse em franquias",
+    "quer escolher ator",
+    "quer escolher diretor",
+    "ator preferido",
+    "diretor preferido"
+  ],
+  "objetivos": {
+    "perfil do espectador": [
+      [
+        "Caçador(a) de adrenalina",
+        100.0
+      ],
+      [
+        "Sonhador(a) da fantasia e ficção",
+        94.0
+      ]
+    ],
+    "filme recomendado": [
+      [
+        "A Origem",
+        99.87
+      ],
+      [
+        "Interestelar",
+        99.52
+      ],
+      [
+        "Os Vingadores",
+        99.15
+      ],
+      [
+        "Pantera Negra",
+        99.15
+      ],
+      [
+        "Homem-Aranha: Sem Volta para Casa",
+        99.15
+      ],
+      [
+        "Duna: Parte Dois",
+        99.15
+      ],
+      [
+        "Duna",
+        99.13
+      ],
+      [
+        "Top Gun: Maverick",
+        99.1
+      ],
+      [
+        "Um Lugar Silencioso",
+        99.07
+      ],
+      [
+        "Gravidade",
+        98.8
+      ],
+      [
+        "Velozes e Furiosos 7",
+        98.4
+      ],
+      [
+        "Batman: O Cavaleiro das Trevas",
+        96.15
+      ],
+      [
+        "Gladiador",
+        93.51
+      ],
+      [
+        "O Exterminador do Futuro 2",
+        91.54
+      ],
+      [
+        "Matrix",
+        91.54
+      ],
+      [
+        "Avatar",
+        91.54
+      ],
+      [
+        "Jurassic Park",
+        91.35
+      ],
+      [
+        "Star Wars: Uma Nova Esperança",
+        90.39
+      ],
+      [
+        "Alien: O Oitavo Passageiro",
+        90.39
+      ],
+      [
+        "O Império Contra-Ataca",
+        90.39
+      ],
+      [
+        "2001: Uma Odisseia no Espaço",
+        87.98
+      ],
+      [
+        "Os Caçadores da Arca Perdida",
+        87.98
+      ],
+      [
+        "Piratas do Caribe: A Maldição do Pérola Negra",
+        87.98
+      ],
+      [
+        "Eu Sou a Lenda",
+        83.98
+      ],
+      [
+        "Tudo em Todo o Lugar ao Mesmo Tempo",
+        72.35
+      ],
+      [
+        "De Volta para o Futuro",
+        68.58
+      ],
+      [
+        "Homem-Aranha no Aranhaverso",
+        68.58
+      ],
+      [
+        "E.T.: O Extraterrestre",
+        60.73
+      ],
+      [
+        "WALL-E",
+        60.73
+      ],
+      [
+        "Robô Selvagem",
+        60.73
+      ],
+      [
+        "Jumanji: Bem-Vindo à Selva",
+        58.11
+      ],
+      [
+        "O Que É Isso, Companheiro?",
+        42.63
+      ],
+      [
+        "Xingu",
+        42.63
+      ],
+      [
+        "O Segredo dos Seus Olhos",
+        42.63
+      ],
+      [
+        "Whiplash: Em Busca da Perfeição",
+        42.63
+      ],
+      [
+        "Psicose",
+        40.71
+      ],
+      [
+        "Tubarão",
+        40.71
+      ],
+      [
+        "Corra!",
+        40.71
+      ],
+      [
+        "Uma História de Amor e Fúria",
+        23.5
+      ],
+      [
+        "O Rei Leão",
+        23.5
+      ],
+      [
+        "Harry Potter e a Pedra Filosofal",
+        23.5
+      ],
+      [
+        "Harry Potter e as Relíquias da Morte: Parte 2",
+        23.5
+      ]
+    ]
+  }
+}

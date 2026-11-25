@@ -1,0 +1,268 @@
+{
+  "origem": "simulador Python",
+  "base_sha256": "6b5b77a501dda5f0d5a08440aedb6a49f9f9f6e053084d5f225a21e35af9be65",
+  "respostas": {
+    "há menores assistindo": "Não",
+    "gênero preferido": [
+      "comédia"
+    ],
+    "clima desejado": [
+      "divertido"
+    ],
+    "tem limite de tempo": "Não",
+    "origem preferida": "nacional",
+    "época preferida": [
+      "indiferente"
+    ],
+    "tipo de história preferido": "indiferente",
+    "companhia": "com amigos",
+    "quer premiados": "Não",
+    "interesse em franquias": "indiferente",
+    "quer escolher ator": "Não",
+    "quer escolher diretor": "Não"
+  },
+  "perguntas": [
+    "há menores assistindo",
+    "gênero preferido",
+    "clima desejado",
+    "tem limite de tempo",
+    "origem preferida",
+    "época preferida",
+    "tipo de história preferido",
+    "companhia",
+    "quer premiados",
+    "interesse em franquias",
+    "quer escolher ator",
+    "quer escolher diretor"
+  ],
+  "objetivos": {
+    "perfil do espectador": [
+      [
+        "Rei/Rainha da comédia",
+        100.0
+      ],
+      [
+        "Fã do cinema nacional",
+        100.0
+      ]
+    ],
+    "filme recomendado": [
+      [
+        "O Auto da Compadecida",
+        98.5
+      ],
+      [
+        "O Auto da Compadecida 2",
+        98.5
+      ],
+      [
+        "Minha Mãe é uma Peça",
+        98.5
+      ],
+      [
+        "Minha Mãe é uma Peça 3",
+        98.5
+      ],
+      [
+        "Lisbela e o Prisioneiro",
+        98.5
+      ],
+      [
+        "Se Eu Fosse Você",
+        98.5
+      ],
+      [
+        "Ó Paí Ó",
+        98.5
+      ],
+      [
+        "Cine Holliúdy",
+        98.5
+      ],
+      [
+        "Bingo: O Rei das Manhãs",
+        98.5
+      ],
+      [
+        "Dona Flor e Seus Dois Maridos",
+        98.5
+      ],
+      [
+        "Até que a Sorte nos Separe",
+        98.5
+      ],
+      [
+        "Turma da Mônica: Laços",
+        98.4
+      ],
+      [
+        "Tempos Modernos",
+        78.54
+      ],
+      [
+        "Cantando na Chuva",
+        78.54
+      ],
+      [
+        "Clube dos Cinco",
+        78.54
+      ],
+      [
+        "Curtindo a Vida Adoidado",
+        78.54
+      ],
+      [
+        "Esqueceram de Mim",
+        78.54
+      ],
+      [
+        "Pulp Fiction",
+        78.54
+      ],
+      [
+        "Toy Story",
+        78.54
+      ],
+      [
+        "O Fabuloso Destino de Amélie Poulain",
+        78.54
+      ],
+      [
+        "Shrek",
+        78.54
+      ],
+      [
+        "Ratatouille",
+        78.54
+      ],
+      [
+        "Intocáveis",
+        78.54
+      ],
+      [
+        "O Lobo de Wall Street",
+        78.54
+      ],
+      [
+        "Relatos Selvagens",
+        78.54
+      ],
+      [
+        "Divertida Mente",
+        78.54
+      ],
+      [
+        "Tudo em Todo o Lugar ao Mesmo Tempo",
+        78.54
+      ],
+      [
+        "Barbie",
+        78.54
+      ],
+      [
+        "Divertida Mente 2",
+        78.54
+      ],
+      [
+        "Anora",
+        78.54
+      ],
+      [
+        "De Volta para o Futuro",
+        77.11
+      ],
+      [
+        "Procurando Nemo",
+        77.11
+      ],
+      [
+        "Up: Altas Aventuras",
+        77.11
+      ],
+      [
+        "Toy Story 3",
+        77.11
+      ],
+      [
+        "Jumanji: Bem-Vindo à Selva",
+        77.11
+      ],
+      [
+        "Super Mario Bros.: O Filme",
+        77.11
+      ],
+      [
+        "Que Horas Ela Volta?",
+        47.64
+      ],
+      [
+        "O Palhaço",
+        47.64
+      ],
+      [
+        "Pânico",
+        40.71
+      ],
+      [
+        "Os Vingadores",
+        40.71
+      ],
+      [
+        "Homem-Aranha no Aranhaverso",
+        40.71
+      ],
+      [
+        "Homem-Aranha: Sem Volta para Casa",
+        40.71
+      ],
+      [
+        "Star Wars: Uma Nova Esperança",
+        38.8
+      ],
+      [
+        "Os Caçadores da Arca Perdida",
+        38.8
+      ],
+      [
+        "E.T.: O Extraterrestre",
+        38.8
+      ],
+      [
+        "Harry Potter e a Pedra Filosofal",
+        38.8
+      ],
+      [
+        "Piratas do Caribe: A Maldição do Pérola Negra",
+        38.8
+      ],
+      [
+        "Como Treinar o Seu Dragão",
+        38.8
+      ],
+      [
+        "Frozen: Uma Aventura Congelante",
+        38.8
+      ],
+      [
+        "Moana: Um Mar de Aventuras",
+        38.8
+      ],
+      [
+        "Forrest Gump",
+        25.2
+      ],
+      [
+        "A Vida é Bela",
+        25.2
+      ],
+      [
+        "Parasita",
+        25.2
+      ],
+      [
+        "Wicked",
+        23.5
+      ]
+    ]
+  }
+}

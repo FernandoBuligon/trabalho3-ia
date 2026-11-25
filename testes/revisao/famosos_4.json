@@ -1,0 +1,81 @@
+{
+  "origem": "simulador Python",
+  "base_sha256": "782e867562476ff89a88ac1092bc8c85303f4b7025a65741b2f8a1251bf4cc1b",
+  "respostas": {
+    "categoria preferida": [
+      [
+        "atleta",
+        90
+      ]
+    ],
+    "sexo preferido": [
+      [
+        "masculino",
+        80
+      ]
+    ],
+    "faixa etária preferida": [
+      "indiferente"
+    ],
+    "cabelo preferido": [
+      [
+        "careca/raspado",
+        70
+      ]
+    ],
+    "olhos preferidos": [
+      "indiferente"
+    ],
+    "sabe a altura": "Sim",
+    "altura aproximada": null,
+    "origem preferida": [
+      "indiferente"
+    ],
+    "época preferida": [
+      [
+        "anos 90",
+        80
+      ],
+      [
+        "anos 2000",
+        60
+      ]
+    ],
+    "esporte preferido": [
+      [
+        "basquete",
+        90
+      ]
+    ],
+    "traços marcantes": [
+      "nenhum em especial"
+    ],
+    "quer citar uma obra": "Não"
+  },
+  "perguntas": [
+    "categoria preferida",
+    "sexo preferido",
+    "faixa etária preferida",
+    "cabelo preferido",
+    "olhos preferidos",
+    "sabe a altura",
+    "altura aproximada",
+    "origem preferida",
+    "época preferida",
+    "quer citar uma obra",
+    "esporte preferido",
+    "traços marcantes"
+  ],
+  "objetivos": {
+    "famoso recomendado": [
+      [
+        "Michael Jordan",
+        35.64
+      ],
+      [
+        "LeBron James",
+        35.64
+      ]
+    ]
+  }
+}

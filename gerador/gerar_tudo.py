@@ -41,8 +41,11 @@ def main():
     run("Geração: Filmes.bcm", ["build.py", os.path.join(dados, "filmes.yaml")], AQUI)
     run("Auditoria estática", ["auditoria.py", os.path.join(RAIZ, "saida", "Famosos.bcm"),
                                os.path.join(RAIZ, "saida", "Filmes.bcm")], AQUI)
+    run("Regressões das recomendações", ["test_recomendacoes.py"], AQUI)
+    run("Apêndices do relatório", ["gerar_apendices.py"], AQUI)
     if "--avaliar" in sys.argv:
         run("Avaliação quantitativa (simulador)", ["avaliacao.py", "2000"], AQUI)
+        run("Registro da validação atual", ["registrar_validacao.py"], AQUI)
     print("\nTUDO OK. Bases em:", os.path.join(RAIZ, "saida"))
 
 

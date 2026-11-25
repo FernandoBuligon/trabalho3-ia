@@ -1,0 +1,109 @@
+{
+  "origem": "simulador Python",
+  "base_sha256": "6b5b77a501dda5f0d5a08440aedb6a49f9f9f6e053084d5f225a21e35af9be65",
+  "respostas": {
+    "há menores assistindo": "Sim",
+    "idade do mais novo": 8,
+    "gênero preferido": [
+      "animação"
+    ],
+    "clima desejado": [
+      "divertido",
+      "emocionante"
+    ],
+    "tem limite de tempo": "Sim",
+    "tempo disponível": 100,
+    "origem preferida": "indiferente",
+    "época preferida": [
+      "indiferente"
+    ],
+    "tipo de história preferido": "indiferente",
+    "companhia": "com a família",
+    "quer premiados": "Sim",
+    "interesse em franquias": "indiferente",
+    "quer escolher ator": "Não",
+    "quer escolher diretor": "Não"
+  },
+  "perguntas": [
+    "há menores assistindo",
+    "idade do mais novo",
+    "gênero preferido",
+    "clima desejado",
+    "tem limite de tempo",
+    "tempo disponível",
+    "origem preferida",
+    "época preferida",
+    "tipo de história preferido",
+    "companhia",
+    "quer premiados",
+    "interesse em franquias",
+    "quer escolher ator",
+    "quer escolher diretor"
+  ],
+  "objetivos": {
+    "perfil do espectador": [
+      [
+        "Coração mole",
+        100.0
+      ],
+      [
+        "Sessão em família",
+        100.0
+      ]
+    ],
+    "filme recomendado": [
+      [
+        "Procurando Nemo",
+        98.55
+      ],
+      [
+        "Up: Altas Aventuras",
+        98.55
+      ],
+      [
+        "Como Treinar o Seu Dragão",
+        98.55
+      ],
+      [
+        "Divertida Mente",
+        98.55
+      ],
+      [
+        "Divertida Mente 2",
+        98.55
+      ],
+      [
+        "O Menino e o Mundo",
+        98.39
+      ],
+      [
+        "O Rei Leão",
+        98.39
+      ],
+      [
+        "Toy Story",
+        98.39
+      ],
+      [
+        "Shrek",
+        98.39
+      ],
+      [
+        "WALL-E",
+        98.39
+      ],
+      [
+        "Super Mario Bros.: O Filme",
+        97.85
+      ],
+      [
+        "Turma da Mônica: Laços",
+        46.64
+      ],
+      [
+        "Tempos Modernos",
+        40.71
+      ]
+    ]
+  }
+}

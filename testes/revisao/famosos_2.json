@@ -1,0 +1,90 @@
+{
+  "origem": "simulador Python",
+  "base_sha256": "782e867562476ff89a88ac1092bc8c85303f4b7025a65741b2f8a1251bf4cc1b",
+  "respostas": {
+    "categoria preferida": [
+      "personagem fictício"
+    ],
+    "sexo preferido": "masculino",
+    "faixa etária preferida": [
+      "indiferente"
+    ],
+    "cabelo preferido": [
+      "loiro"
+    ],
+    "olhos preferidos": [
+      "azuis"
+    ],
+    "sabe a altura": "Não",
+    "origem preferida": [
+      "estrangeira (qualquer país)"
+    ],
+    "época preferida": [
+      "indiferente"
+    ],
+    "espécie preferida": [
+      "humano"
+    ],
+    "mídia preferida": [
+      "anime/mangá"
+    ],
+    "traços marcantes": [
+      "roupa/fantasia icônica"
+    ],
+    "quer citar uma obra": "Não"
+  },
+  "perguntas": [
+    "categoria preferida",
+    "sexo preferido",
+    "faixa etária preferida",
+    "cabelo preferido",
+    "olhos preferidos",
+    "sabe a altura",
+    "origem preferida",
+    "época preferida",
+    "quer citar uma obra",
+    "mídia preferida",
+    "espécie preferida",
+    "traços marcantes"
+  ],
+  "objetivos": {
+    "famoso recomendado": [
+      [
+        "Naruto",
+        98.27
+      ],
+      [
+        "Darth Vader",
+        93.0
+      ],
+      [
+        "Goku",
+        68.5
+      ],
+      [
+        "Chaves",
+        30.0
+      ],
+      [
+        "Mickey Mouse",
+        30.0
+      ],
+      [
+        "Mario",
+        30.0
+      ],
+      [
+        "Batman",
+        30.0
+      ],
+      [
+        "Homem-Aranha",
+        30.0
+      ],
+      [
+        "Woody",
+        30.0
+      ]
+    ]
+  }
+}

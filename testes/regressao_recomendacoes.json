@@ -1,0 +1,3531 @@
+{
+  "base_sha256": "6b5b77a501dda5f0d5a08440aedb6a49f9f9f6e053084d5f225a21e35af9be65",
+  "consultas": 881,
+  "falhas": 0,
+  "casos": [
+    {
+      "caso": "Cidade de Deus: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Cidade de Deus: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Cidade de Deus: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Cidade de Deus: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Cidade de Deus: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Cidade de Deus: diretor Fernando Meirelles",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Central do Brasil: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Central do Brasil: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Central do Brasil: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Central do Brasil: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Central do Brasil: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Central do Brasil: diretor Walter Salles",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Tropa de Elite: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Tropa de Elite: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Tropa de Elite: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Tropa de Elite: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Tropa de Elite: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Tropa de Elite: diretor José Padilha",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Tropa de Elite 2: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Tropa de Elite 2: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Tropa de Elite 2: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Tropa de Elite 2: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Tropa de Elite 2: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Tropa de Elite 2: diretor José Padilha",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Auto da Compadecida: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Auto da Compadecida: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Auto da Compadecida: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Auto da Compadecida: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Auto da Compadecida: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Auto da Compadecida: diretor Guel Arraes",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Auto da Compadecida 2: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Auto da Compadecida 2: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Auto da Compadecida 2: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Auto da Compadecida 2: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Auto da Compadecida 2: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Auto da Compadecida 2: diretor Guel Arraes",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Auto da Compadecida 2: diretor Flávia Lacerda",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Ainda Estou Aqui: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Ainda Estou Aqui: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Ainda Estou Aqui: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Ainda Estou Aqui: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Ainda Estou Aqui: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Ainda Estou Aqui: diretor Walter Salles",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Bacurau: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Bacurau: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Bacurau: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Bacurau: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Bacurau: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Bacurau: diretor Kleber Mendonça Filho",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Bacurau: diretor Juliano Dornelles",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Agente Secreto: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Agente Secreto: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Agente Secreto: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Agente Secreto: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Agente Secreto: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Agente Secreto: diretor Kleber Mendonça Filho",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Aquarius: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Aquarius: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Aquarius: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Aquarius: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Aquarius: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Aquarius: diretor Kleber Mendonça Filho",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Minha Mãe é uma Peça: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Minha Mãe é uma Peça: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Minha Mãe é uma Peça: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Minha Mãe é uma Peça: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Minha Mãe é uma Peça: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Minha Mãe é uma Peça: diretor André Pellenz",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Minha Mãe é uma Peça 3: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Minha Mãe é uma Peça 3: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Minha Mãe é uma Peça 3: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Minha Mãe é uma Peça 3: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Minha Mãe é uma Peça 3: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Minha Mãe é uma Peça 3: diretor Susana Garcia",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Que Horas Ela Volta?: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Que Horas Ela Volta?: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Que Horas Ela Volta?: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Que Horas Ela Volta?: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Que Horas Ela Volta?: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Que Horas Ela Volta?: diretor Anna Muylaert",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Carandiru: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Carandiru: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Carandiru: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Carandiru: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Carandiru: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Carandiru: diretor Héctor Babenco",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Lisbela e o Prisioneiro: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Lisbela e o Prisioneiro: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Lisbela e o Prisioneiro: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Lisbela e o Prisioneiro: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Lisbela e o Prisioneiro: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Lisbela e o Prisioneiro: diretor Guel Arraes",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Palhaço: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Palhaço: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Palhaço: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Palhaço: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Palhaço: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Palhaço: diretor Selton Mello",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Dois Filhos de Francisco: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Dois Filhos de Francisco: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Dois Filhos de Francisco: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Dois Filhos de Francisco: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Dois Filhos de Francisco: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Dois Filhos de Francisco: diretor Breno Silveira",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Se Eu Fosse Você: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Se Eu Fosse Você: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Se Eu Fosse Você: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Se Eu Fosse Você: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Se Eu Fosse Você: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Se Eu Fosse Você: diretor Daniel Filho",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Pagador de Promessas: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Pagador de Promessas: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Pagador de Promessas: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Pagador de Promessas: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Pagador de Promessas: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Pagador de Promessas: diretor Anselmo Duarte",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Bicho de Sete Cabeças: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Bicho de Sete Cabeças: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Bicho de Sete Cabeças: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Bicho de Sete Cabeças: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Bicho de Sete Cabeças: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Bicho de Sete Cabeças: diretor Laís Bodanzky",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Marighella: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Marighella: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Marighella: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Marighella: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Marighella: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Marighella: diretor Wagner Moura",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Madame Satã: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Madame Satã: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Madame Satã: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Madame Satã: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Madame Satã: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Madame Satã: diretor Karim Aïnouz",
+      "resultado": "OK"
+    },
+    {
+      "caso": "A Vida Invisível: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "A Vida Invisível: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "A Vida Invisível: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "A Vida Invisível: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "A Vida Invisível: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "A Vida Invisível: diretor Karim Aïnouz",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Turma da Mônica: Laços: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Turma da Mônica: Laços: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Turma da Mônica: Laços: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Turma da Mônica: Laços: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Turma da Mônica: Laços: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Turma da Mônica: Laços: diretor Daniel Rezende",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Menino e o Mundo: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Menino e o Mundo: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Menino e o Mundo: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Menino e o Mundo: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Menino e o Mundo: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Menino e o Mundo: diretor Alê Abreu",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Uma História de Amor e Fúria: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Uma História de Amor e Fúria: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Uma História de Amor e Fúria: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Uma História de Amor e Fúria: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Uma História de Amor e Fúria: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Uma História de Amor e Fúria: diretor Luiz Bolognesi",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Ó Paí Ó: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Ó Paí Ó: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Ó Paí Ó: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Ó Paí Ó: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Ó Paí Ó: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Ó Paí Ó: diretor Monique Gardenberg",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Faroeste Caboclo: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Faroeste Caboclo: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Faroeste Caboclo: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Faroeste Caboclo: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Faroeste Caboclo: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Faroeste Caboclo: diretor René Sampaio",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Cine Holliúdy: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Cine Holliúdy: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Cine Holliúdy: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Cine Holliúdy: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Cine Holliúdy: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Cine Holliúdy: diretor Halder Gomes",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Que É Isso, Companheiro?: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Que É Isso, Companheiro?: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Que É Isso, Companheiro?: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Que É Isso, Companheiro?: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Que É Isso, Companheiro?: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Que É Isso, Companheiro?: diretor Bruno Barreto",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Hoje Eu Quero Voltar Sozinho: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Hoje Eu Quero Voltar Sozinho: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Hoje Eu Quero Voltar Sozinho: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Hoje Eu Quero Voltar Sozinho: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Hoje Eu Quero Voltar Sozinho: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Hoje Eu Quero Voltar Sozinho: diretor Daniel Ribeiro",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Meu Nome Não é Johnny: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Meu Nome Não é Johnny: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Meu Nome Não é Johnny: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Meu Nome Não é Johnny: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Meu Nome Não é Johnny: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Meu Nome Não é Johnny: diretor Mauro Lima",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Bingo: O Rei das Manhãs: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Bingo: O Rei das Manhãs: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Bingo: O Rei das Manhãs: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Bingo: O Rei das Manhãs: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Bingo: O Rei das Manhãs: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Bingo: O Rei das Manhãs: diretor Daniel Rezende",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Xingu: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Xingu: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Xingu: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Xingu: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Xingu: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Xingu: diretor Cao Hamburger",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Pixote: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Pixote: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Pixote: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Pixote: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Pixote: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Pixote: diretor Héctor Babenco",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Dona Flor e Seus Dois Maridos: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Dona Flor e Seus Dois Maridos: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Dona Flor e Seus Dois Maridos: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Dona Flor e Seus Dois Maridos: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Dona Flor e Seus Dois Maridos: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Dona Flor e Seus Dois Maridos: diretor Bruno Barreto",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Nosso Lar: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Nosso Lar: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Nosso Lar: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Nosso Lar: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Nosso Lar: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Nosso Lar: diretor Wagner de Assis",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Até que a Sorte nos Separe: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Até que a Sorte nos Separe: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Até que a Sorte nos Separe: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Até que a Sorte nos Separe: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Até que a Sorte nos Separe: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Até que a Sorte nos Separe: diretor Roberto Santucci",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Poderoso Chefão: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Poderoso Chefão: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Poderoso Chefão: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Poderoso Chefão: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Poderoso Chefão: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Poderoso Chefão: diretor Francis Ford Coppola",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Casablanca: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Casablanca: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Casablanca: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Casablanca: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Casablanca: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Casablanca: diretor Michael Curtiz",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Tempos Modernos: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Tempos Modernos: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Tempos Modernos: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Tempos Modernos: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Tempos Modernos: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Tempos Modernos: diretor Charlie Chaplin",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Cantando na Chuva: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Cantando na Chuva: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Cantando na Chuva: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Cantando na Chuva: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Cantando na Chuva: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Cantando na Chuva: diretor Gene Kelly",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Psicose: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Psicose: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Psicose: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Psicose: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Psicose: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Psicose: diretor Alfred Hitchcock",
+      "resultado": "OK"
+    },
+    {
+      "caso": "2001: Uma Odisseia no Espaço: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "2001: Uma Odisseia no Espaço: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "2001: Uma Odisseia no Espaço: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "2001: Uma Odisseia no Espaço: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "2001: Uma Odisseia no Espaço: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "2001: Uma Odisseia no Espaço: diretor Stanley Kubrick",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Exorcista: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Exorcista: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Exorcista: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Exorcista: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Exorcista: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Exorcista: diretor William Friedkin",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Tubarão: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Tubarão: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Tubarão: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Tubarão: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Tubarão: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Tubarão: diretor Steven Spielberg",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Rocky: Um Lutador: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Rocky: Um Lutador: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Rocky: Um Lutador: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Rocky: Um Lutador: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Rocky: Um Lutador: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Rocky: Um Lutador: diretor John G. Avildsen",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Star Wars: Uma Nova Esperança: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Star Wars: Uma Nova Esperança: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Star Wars: Uma Nova Esperança: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Star Wars: Uma Nova Esperança: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Star Wars: Uma Nova Esperança: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Star Wars: Uma Nova Esperança: diretor George Lucas",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Alien: O Oitavo Passageiro: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Alien: O Oitavo Passageiro: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Alien: O Oitavo Passageiro: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Alien: O Oitavo Passageiro: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Alien: O Oitavo Passageiro: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Alien: O Oitavo Passageiro: diretor Ridley Scott",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Império Contra-Ataca: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Império Contra-Ataca: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Império Contra-Ataca: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Império Contra-Ataca: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Império Contra-Ataca: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Império Contra-Ataca: diretor Irvin Kershner",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Iluminado: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Iluminado: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Iluminado: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Iluminado: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Iluminado: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Iluminado: diretor Stanley Kubrick",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Os Caçadores da Arca Perdida: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Os Caçadores da Arca Perdida: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Os Caçadores da Arca Perdida: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Os Caçadores da Arca Perdida: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Os Caçadores da Arca Perdida: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Os Caçadores da Arca Perdida: diretor Steven Spielberg",
+      "resultado": "OK"
+    },
+    {
+      "caso": "E.T.: O Extraterrestre: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "E.T.: O Extraterrestre: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "E.T.: O Extraterrestre: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "E.T.: O Extraterrestre: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "E.T.: O Extraterrestre: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "E.T.: O Extraterrestre: diretor Steven Spielberg",
+      "resultado": "OK"
+    },
+    {
+      "caso": "De Volta para o Futuro: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "De Volta para o Futuro: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "De Volta para o Futuro: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "De Volta para o Futuro: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "De Volta para o Futuro: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "De Volta para o Futuro: diretor Robert Zemeckis",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Clube dos Cinco: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Clube dos Cinco: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Clube dos Cinco: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Clube dos Cinco: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Clube dos Cinco: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Clube dos Cinco: diretor John Hughes",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Curtindo a Vida Adoidado: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Curtindo a Vida Adoidado: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Curtindo a Vida Adoidado: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Curtindo a Vida Adoidado: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Curtindo a Vida Adoidado: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Curtindo a Vida Adoidado: diretor John Hughes",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Esqueceram de Mim: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Esqueceram de Mim: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Esqueceram de Mim: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Esqueceram de Mim: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Esqueceram de Mim: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Esqueceram de Mim: diretor Chris Columbus",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Ghost: Do Outro Lado da Vida: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Ghost: Do Outro Lado da Vida: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Ghost: Do Outro Lado da Vida: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Ghost: Do Outro Lado da Vida: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Ghost: Do Outro Lado da Vida: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Ghost: Do Outro Lado da Vida: diretor Jerry Zucker",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Silêncio dos Inocentes: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Silêncio dos Inocentes: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Silêncio dos Inocentes: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Silêncio dos Inocentes: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Silêncio dos Inocentes: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Silêncio dos Inocentes: diretor Jonathan Demme",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Exterminador do Futuro 2: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Exterminador do Futuro 2: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Exterminador do Futuro 2: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Exterminador do Futuro 2: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Exterminador do Futuro 2: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Exterminador do Futuro 2: diretor James Cameron",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Jurassic Park: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Jurassic Park: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Jurassic Park: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Jurassic Park: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Jurassic Park: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Jurassic Park: diretor Steven Spielberg",
+      "resultado": "OK"
+    },
+    {
+      "caso": "A Lista de Schindler: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "A Lista de Schindler: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "A Lista de Schindler: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "A Lista de Schindler: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "A Lista de Schindler: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "A Lista de Schindler: diretor Steven Spielberg",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Forrest Gump: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Forrest Gump: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Forrest Gump: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Forrest Gump: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Forrest Gump: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Forrest Gump: diretor Robert Zemeckis",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Pulp Fiction: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Pulp Fiction: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Pulp Fiction: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Pulp Fiction: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Pulp Fiction: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Pulp Fiction: diretor Quentin Tarantino",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Um Sonho de Liberdade: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Um Sonho de Liberdade: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Um Sonho de Liberdade: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Um Sonho de Liberdade: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Um Sonho de Liberdade: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Um Sonho de Liberdade: diretor Frank Darabont",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Rei Leão: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Rei Leão: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Rei Leão: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Rei Leão: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Rei Leão: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Rei Leão: diretor Roger Allers",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Rei Leão: diretor Rob Minkoff",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Coração Valente: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Coração Valente: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Coração Valente: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Coração Valente: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Coração Valente: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Coração Valente: diretor Mel Gibson",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Toy Story: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Toy Story: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Toy Story: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Toy Story: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Toy Story: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Toy Story: diretor John Lasseter",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Se7en: Os Sete Crimes Capitais: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Se7en: Os Sete Crimes Capitais: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Se7en: Os Sete Crimes Capitais: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Se7en: Os Sete Crimes Capitais: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Se7en: Os Sete Crimes Capitais: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Se7en: Os Sete Crimes Capitais: diretor David Fincher",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Pânico: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Pânico: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Pânico: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Pânico: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Pânico: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Pânico: diretor Wes Craven",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Titanic: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Titanic: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Titanic: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Titanic: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Titanic: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Titanic: diretor James Cameron",
+      "resultado": "OK"
+    },
+    {
+      "caso": "A Vida é Bela: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "A Vida é Bela: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "A Vida é Bela: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "A Vida é Bela: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "A Vida é Bela: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "A Vida é Bela: diretor Roberto Benigni",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Resgate do Soldado Ryan: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Resgate do Soldado Ryan: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Resgate do Soldado Ryan: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Resgate do Soldado Ryan: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Resgate do Soldado Ryan: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Resgate do Soldado Ryan: diretor Steven Spielberg",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Matrix: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Matrix: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Matrix: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Matrix: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Matrix: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Matrix: diretor Lana Wachowski",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Matrix: diretor Lilly Wachowski",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Clube da Luta: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Clube da Luta: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Clube da Luta: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Clube da Luta: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Clube da Luta: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Clube da Luta: diretor David Fincher",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Gladiador: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Gladiador: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Gladiador: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Gladiador: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Gladiador: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Gladiador: diretor Ridley Scott",
+      "resultado": "OK"
+    },
+    {
+      "caso": "A Viagem de Chihiro: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "A Viagem de Chihiro: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "A Viagem de Chihiro: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "A Viagem de Chihiro: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "A Viagem de Chihiro: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "A Viagem de Chihiro: diretor Hayao Miyazaki",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Fabuloso Destino de Amélie Poulain: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Fabuloso Destino de Amélie Poulain: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Fabuloso Destino de Amélie Poulain: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Fabuloso Destino de Amélie Poulain: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Fabuloso Destino de Amélie Poulain: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Fabuloso Destino de Amélie Poulain: diretor Jean-Pierre Jeunet",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Senhor dos Anéis: A Sociedade do Anel: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Senhor dos Anéis: A Sociedade do Anel: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Senhor dos Anéis: A Sociedade do Anel: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Senhor dos Anéis: A Sociedade do Anel: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Senhor dos Anéis: A Sociedade do Anel: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Senhor dos Anéis: A Sociedade do Anel: diretor Peter Jackson",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Harry Potter e a Pedra Filosofal: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Harry Potter e a Pedra Filosofal: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Harry Potter e a Pedra Filosofal: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Harry Potter e a Pedra Filosofal: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Harry Potter e a Pedra Filosofal: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Harry Potter e a Pedra Filosofal: diretor Chris Columbus",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Shrek: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Shrek: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Shrek: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Shrek: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Shrek: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Shrek: diretor Andrew Adamson",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Senhor dos Anéis: O Retorno do Rei: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Senhor dos Anéis: O Retorno do Rei: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Senhor dos Anéis: O Retorno do Rei: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Senhor dos Anéis: O Retorno do Rei: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Senhor dos Anéis: O Retorno do Rei: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Senhor dos Anéis: O Retorno do Rei: diretor Peter Jackson",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Procurando Nemo: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Procurando Nemo: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Procurando Nemo: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Procurando Nemo: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Procurando Nemo: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Procurando Nemo: diretor Andrew Stanton",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Piratas do Caribe: A Maldição do Pérola Negra: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Piratas do Caribe: A Maldição do Pérola Negra: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Piratas do Caribe: A Maldição do Pérola Negra: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Piratas do Caribe: A Maldição do Pérola Negra: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Piratas do Caribe: A Maldição do Pérola Negra: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Piratas do Caribe: A Maldição do Pérola Negra: diretor Gore Verbinski",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Diário de uma Paixão: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Diário de uma Paixão: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Diário de uma Paixão: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Diário de uma Paixão: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Diário de uma Paixão: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Diário de uma Paixão: diretor Nick Cassavetes",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Labirinto do Fauno: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Labirinto do Fauno: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Labirinto do Fauno: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Labirinto do Fauno: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Labirinto do Fauno: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Labirinto do Fauno: diretor Guillermo del Toro",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Os Infiltrados: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Os Infiltrados: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Os Infiltrados: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Os Infiltrados: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Os Infiltrados: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Os Infiltrados: diretor Martin Scorsese",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Ratatouille: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Ratatouille: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Ratatouille: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Ratatouille: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Ratatouille: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Ratatouille: diretor Brad Bird",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Eu Sou a Lenda: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Eu Sou a Lenda: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Eu Sou a Lenda: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Eu Sou a Lenda: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Eu Sou a Lenda: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Eu Sou a Lenda: diretor Francis Lawrence",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Batman: O Cavaleiro das Trevas: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Batman: O Cavaleiro das Trevas: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Batman: O Cavaleiro das Trevas: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Batman: O Cavaleiro das Trevas: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Batman: O Cavaleiro das Trevas: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Batman: O Cavaleiro das Trevas: diretor Christopher Nolan",
+      "resultado": "OK"
+    },
+    {
+      "caso": "WALL-E: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "WALL-E: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "WALL-E: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "WALL-E: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "WALL-E: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "WALL-E: diretor Andrew Stanton",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Quem Quer Ser um Milionário?: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Quem Quer Ser um Milionário?: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Quem Quer Ser um Milionário?: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Quem Quer Ser um Milionário?: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Quem Quer Ser um Milionário?: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Quem Quer Ser um Milionário?: diretor Danny Boyle",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Up: Altas Aventuras: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Up: Altas Aventuras: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Up: Altas Aventuras: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Up: Altas Aventuras: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Up: Altas Aventuras: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Up: Altas Aventuras: diretor Pete Docter",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Avatar: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Avatar: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Avatar: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Avatar: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Avatar: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Avatar: diretor James Cameron",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Segredo dos Seus Olhos: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Segredo dos Seus Olhos: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Segredo dos Seus Olhos: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Segredo dos Seus Olhos: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Segredo dos Seus Olhos: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Segredo dos Seus Olhos: diretor Juan José Campanella",
+      "resultado": "OK"
+    },
+    {
+      "caso": "A Origem: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "A Origem: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "A Origem: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "A Origem: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "A Origem: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "A Origem: diretor Christopher Nolan",
+      "resultado": "OK"
+    },
+    {
+      "caso": "A Rede Social: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "A Rede Social: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "A Rede Social: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "A Rede Social: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "A Rede Social: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "A Rede Social: diretor David Fincher",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Toy Story 3: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Toy Story 3: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Toy Story 3: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Toy Story 3: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Toy Story 3: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Toy Story 3: diretor Lee Unkrich",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Como Treinar o Seu Dragão: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Como Treinar o Seu Dragão: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Como Treinar o Seu Dragão: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Como Treinar o Seu Dragão: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Como Treinar o Seu Dragão: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Como Treinar o Seu Dragão: diretor Dean DeBlois",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Como Treinar o Seu Dragão: diretor Chris Sanders",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Harry Potter e as Relíquias da Morte: Parte 2: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Harry Potter e as Relíquias da Morte: Parte 2: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Harry Potter e as Relíquias da Morte: Parte 2: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Harry Potter e as Relíquias da Morte: Parte 2: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Harry Potter e as Relíquias da Morte: Parte 2: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Harry Potter e as Relíquias da Morte: Parte 2: diretor David Yates",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Intocáveis: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Intocáveis: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Intocáveis: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Intocáveis: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Intocáveis: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Intocáveis: diretor Olivier Nakache",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Intocáveis: diretor Éric Toledano",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Os Vingadores: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Os Vingadores: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Os Vingadores: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Os Vingadores: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Os Vingadores: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Os Vingadores: diretor Joss Whedon",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Invocação do Mal: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Invocação do Mal: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Invocação do Mal: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Invocação do Mal: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Invocação do Mal: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Invocação do Mal: diretor James Wan",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Frozen: Uma Aventura Congelante: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Frozen: Uma Aventura Congelante: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Frozen: Uma Aventura Congelante: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Frozen: Uma Aventura Congelante: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Frozen: Uma Aventura Congelante: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Frozen: Uma Aventura Congelante: diretor Chris Buck",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Frozen: Uma Aventura Congelante: diretor Jennifer Lee",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Lobo de Wall Street: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Lobo de Wall Street: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Lobo de Wall Street: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Lobo de Wall Street: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Lobo de Wall Street: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Lobo de Wall Street: diretor Martin Scorsese",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Gravidade: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Gravidade: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Gravidade: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Gravidade: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Gravidade: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Gravidade: diretor Alfonso Cuarón",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Interestelar: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Interestelar: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Interestelar: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Interestelar: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Interestelar: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Interestelar: diretor Christopher Nolan",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Whiplash: Em Busca da Perfeição: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Whiplash: Em Busca da Perfeição: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Whiplash: Em Busca da Perfeição: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Whiplash: Em Busca da Perfeição: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Whiplash: Em Busca da Perfeição: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Whiplash: Em Busca da Perfeição: diretor Damien Chazelle",
+      "resultado": "OK"
+    },
+    {
+      "caso": "John Wick: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "John Wick: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "John Wick: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "John Wick: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "John Wick: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "John Wick: diretor Chad Stahelski",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Relatos Selvagens: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Relatos Selvagens: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Relatos Selvagens: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Relatos Selvagens: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Relatos Selvagens: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Relatos Selvagens: diretor Damián Szifron",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Mad Max: Estrada da Fúria: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Mad Max: Estrada da Fúria: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Mad Max: Estrada da Fúria: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Mad Max: Estrada da Fúria: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Mad Max: Estrada da Fúria: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Mad Max: Estrada da Fúria: diretor George Miller",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Divertida Mente: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Divertida Mente: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Divertida Mente: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Divertida Mente: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Divertida Mente: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Divertida Mente: diretor Pete Docter",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Regresso: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Regresso: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Regresso: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Regresso: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Regresso: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Regresso: diretor Alejandro González Iñárritu",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Velozes e Furiosos 7: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Velozes e Furiosos 7: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Velozes e Furiosos 7: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Velozes e Furiosos 7: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Velozes e Furiosos 7: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Velozes e Furiosos 7: diretor James Wan",
+      "resultado": "OK"
+    },
+    {
+      "caso": "La La Land: Cantando Estações: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "La La Land: Cantando Estações: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "La La Land: Cantando Estações: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "La La Land: Cantando Estações: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "La La Land: Cantando Estações: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "La La Land: Cantando Estações: diretor Damien Chazelle",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Moana: Um Mar de Aventuras: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Moana: Um Mar de Aventuras: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Moana: Um Mar de Aventuras: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Moana: Um Mar de Aventuras: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Moana: Um Mar de Aventuras: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Moana: Um Mar de Aventuras: diretor Ron Clements",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Moana: Um Mar de Aventuras: diretor John Musker",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Your Name: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Your Name: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Your Name: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Your Name: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Your Name: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Your Name: diretor Makoto Shinkai",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Corra!: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Corra!: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Corra!: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Corra!: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Corra!: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Corra!: diretor Jordan Peele",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Viva: A Vida é uma Festa: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Viva: A Vida é uma Festa: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Viva: A Vida é uma Festa: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Viva: A Vida é uma Festa: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Viva: A Vida é uma Festa: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Viva: A Vida é uma Festa: diretor Lee Unkrich",
+      "resultado": "OK"
+    },
+    {
+      "caso": "It: A Coisa: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "It: A Coisa: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "It: A Coisa: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "It: A Coisa: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "It: A Coisa: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "It: A Coisa: diretor Andy Muschietti",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Jumanji: Bem-Vindo à Selva: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Jumanji: Bem-Vindo à Selva: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Jumanji: Bem-Vindo à Selva: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Jumanji: Bem-Vindo à Selva: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Jumanji: Bem-Vindo à Selva: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Jumanji: Bem-Vindo à Selva: diretor Jake Kasdan",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Pantera Negra: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Pantera Negra: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Pantera Negra: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Pantera Negra: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Pantera Negra: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Pantera Negra: diretor Ryan Coogler",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Bohemian Rhapsody: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Bohemian Rhapsody: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Bohemian Rhapsody: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Bohemian Rhapsody: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Bohemian Rhapsody: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Bohemian Rhapsody: diretor Bryan Singer",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Roma: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Roma: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Roma: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Roma: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Roma: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Roma: diretor Alfonso Cuarón",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Um Lugar Silencioso: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Um Lugar Silencioso: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Um Lugar Silencioso: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Um Lugar Silencioso: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Um Lugar Silencioso: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Um Lugar Silencioso: diretor John Krasinski",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Hereditário: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Hereditário: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Hereditário: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Hereditário: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Hereditário: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Hereditário: diretor Ari Aster",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Homem-Aranha no Aranhaverso: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Homem-Aranha no Aranhaverso: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Homem-Aranha no Aranhaverso: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Homem-Aranha no Aranhaverso: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Homem-Aranha no Aranhaverso: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Homem-Aranha no Aranhaverso: diretor Bob Persichetti",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Homem-Aranha no Aranhaverso: diretor Peter Ramsey",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Homem-Aranha no Aranhaverso: diretor Rodney Rothman",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Parasita: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Parasita: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Parasita: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Parasita: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Parasita: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Parasita: diretor Bong Joon-ho",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Coringa: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Coringa: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Coringa: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Coringa: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Coringa: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Coringa: diretor Todd Phillips",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Vingadores: Ultimato: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Vingadores: Ultimato: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Vingadores: Ultimato: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Vingadores: Ultimato: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Vingadores: Ultimato: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Vingadores: Ultimato: diretor Anthony e Joe Russo",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Duna: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Duna: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Duna: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Duna: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Duna: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Duna: diretor Denis Villeneuve",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Homem-Aranha: Sem Volta para Casa: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Homem-Aranha: Sem Volta para Casa: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Homem-Aranha: Sem Volta para Casa: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Homem-Aranha: Sem Volta para Casa: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Homem-Aranha: Sem Volta para Casa: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Homem-Aranha: Sem Volta para Casa: diretor Jon Watts",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Top Gun: Maverick: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Top Gun: Maverick: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Top Gun: Maverick: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Top Gun: Maverick: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Top Gun: Maverick: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Top Gun: Maverick: diretor Joseph Kosinski",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Tudo em Todo o Lugar ao Mesmo Tempo: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Tudo em Todo o Lugar ao Mesmo Tempo: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Tudo em Todo o Lugar ao Mesmo Tempo: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Tudo em Todo o Lugar ao Mesmo Tempo: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Tudo em Todo o Lugar ao Mesmo Tempo: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Tudo em Todo o Lugar ao Mesmo Tempo: diretor Daniel Kwan e Daniel Scheinert",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Nada de Novo no Front: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Nada de Novo no Front: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Nada de Novo no Front: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Nada de Novo no Front: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Nada de Novo no Front: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Nada de Novo no Front: diretor Edward Berger",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Oppenheimer: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Oppenheimer: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Oppenheimer: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Oppenheimer: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Oppenheimer: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Oppenheimer: diretor Christopher Nolan",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Barbie: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Barbie: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Barbie: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Barbie: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Barbie: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Barbie: diretor Greta Gerwig",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Super Mario Bros.: O Filme: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Super Mario Bros.: O Filme: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Super Mario Bros.: O Filme: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Super Mario Bros.: O Filme: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Super Mario Bros.: O Filme: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Super Mario Bros.: O Filme: diretor Aaron Horvath",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Menino e a Garça: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Menino e a Garça: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Menino e a Garça: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Menino e a Garça: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Menino e a Garça: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "O Menino e a Garça: diretor Hayao Miyazaki",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Duna: Parte Dois: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Duna: Parte Dois: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Duna: Parte Dois: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Duna: Parte Dois: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Duna: Parte Dois: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Duna: Parte Dois: diretor Denis Villeneuve",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Divertida Mente 2: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Divertida Mente 2: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Divertida Mente 2: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Divertida Mente 2: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Divertida Mente 2: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Divertida Mente 2: diretor Kelsey Mann",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Robô Selvagem: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Robô Selvagem: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Robô Selvagem: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Robô Selvagem: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Robô Selvagem: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Robô Selvagem: diretor Chris Sanders",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Wicked: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Wicked: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Wicked: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Wicked: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Wicked: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Wicked: diretor Jon M. Chu",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Anora: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Anora: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Anora: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Anora: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Anora: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Anora: diretor Sean Baker",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Pecadores: duração -1",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Pecadores: duração +0",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Pecadores: sem limite efetivo Não",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Pecadores: sem limite efetivo None",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Pecadores: sem limite efetivo Sim",
+      "resultado": "OK"
+    },
+    {
+      "caso": "Pecadores: diretor Ryan Coogler",
+      "resultado": "OK"
+    },
+    {
+      "caso": "regressão filmes_2: criança, 100 minutos",
+      "resultado": "OK"
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "ambiente": "simulador Python; não é execução do ExSINTA",
+  "bases": {
+    "Famosos": {
+      "sha256": "782e867562476ff89a88ac1092bc8c85303f4b7025a65741b2f8a1251bf4cc1b",
+      "regras": 827,
+      "regravacao_historica_sha256": "7e7e0e684915005b15925a4cc8c953f1a6508eb4efb85d1584413675d9f74ac2",
+      "regras_regravacao_historica": 820,
+      "semantica_igual_a_regravacao_historica": false
+    },
+    "Filmes": {
+      "sha256": "6b5b77a501dda5f0d5a08440aedb6a49f9f9f6e053084d5f225a21e35af9be65",
+      "regras": 2374,
+      "regravacao_historica_sha256": "520c8c8862812aaf2e972c1e502fccf4bbd587c4950a86b338f0ab7f50902f55",
+      "regras_regravacao_historica": 1476,
+      "semantica_igual_a_regravacao_historica": false
+    }
+  },
+  "casos": {
+    "famosos_1": {
+      "arquivo": "famosos_1.json",
+      "perguntas": 13
+    },
+    "famosos_2": {
+      "arquivo": "famosos_2.json",
+      "perguntas": 12
+    },
+    "famosos_3": {
+      "arquivo": "famosos_3.json",
+      "perguntas": 11
+    },
+    "filmes_1": {
+      "arquivo": "filmes_1.json",
+      "perguntas": 12
+    },
+    "filmes_2": {
+      "arquivo": "filmes_2.json",
+      "perguntas": 14
+    },
+    "filmes_3": {
+      "arquivo": "filmes_3.json",
+      "perguntas": 16
+    },
+    "filmes_4": {
+      "arquivo": "filmes_4.json",
+      "perguntas": 14
+    },
+    "famosos_4": {
+      "arquivo": "famosos_4.json",
+      "perguntas": 12
+    }
+  },
+  "artefatos_sha256": {
+    "testes/avaliacao.json": "6121a66084809af2b935f4a342bbdcec7c6c4f5acb3b395a601e80c78e8327dd",
+    "testes/regressao_recomendacoes.json": "a72cb5fcaf77cd246f41256efbe6b9826b9cff8121c778ac05c7348041e5ea36",
+    "dados/famosos.csv": "fb42d7c3416e2b137e485180d7295e30ce08c6d0f0f738829665f5cfe36121d9",
+    "dados/filmes.csv": "bd5ec453f2aa85549c3df72d8052b9383b4de132c251b6500f1316b0e451deba",
+    "dados/fontes.csv": "d47c737fd9b0fef402601a87cda6b6e53227de16392ed4a8ffd622accd170b31"
+  }
+}

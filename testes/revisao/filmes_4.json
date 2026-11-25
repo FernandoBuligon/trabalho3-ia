@@ -1,0 +1,143 @@
+{
+  "origem": "simulador Python",
+  "base_sha256": "6b5b77a501dda5f0d5a08440aedb6a49f9f9f6e053084d5f225a21e35af9be65",
+  "respostas": {
+    "há menores assistindo": "Sim",
+    "idade do mais novo": null,
+    "gênero preferido": [
+      "aventura",
+      "comédia"
+    ],
+    "clima desejado": [
+      "indiferente"
+    ],
+    "tem limite de tempo": "Sim",
+    "tempo disponível": null,
+    "origem preferida": "indiferente",
+    "época preferida": null,
+    "tipo de história preferido": "indiferente",
+    "companhia": "com a família",
+    "quer premiados": "Não",
+    "interesse em franquias": "gosto de sagas e franquias",
+    "quer escolher ator": "Não",
+    "quer escolher diretor": "Não"
+  },
+  "perguntas": [
+    "há menores assistindo",
+    "idade do mais novo",
+    "gênero preferido",
+    "clima desejado",
+    "tem limite de tempo",
+    "tempo disponível",
+    "origem preferida",
+    "época preferida",
+    "tipo de história preferido",
+    "companhia",
+    "quer premiados",
+    "interesse em franquias",
+    "quer escolher ator",
+    "quer escolher diretor"
+  ],
+  "objetivos": {
+    "perfil do espectador": [
+      [
+        "Sessão em família",
+        100.0
+      ]
+    ],
+    "filme recomendado": [
+      [
+        "Toy Story",
+        96.64
+      ],
+      [
+        "Procurando Nemo",
+        96.64
+      ],
+      [
+        "Toy Story 3",
+        96.64
+      ],
+      [
+        "Super Mario Bros.: O Filme",
+        96.64
+      ],
+      [
+        "Turma da Mônica: Laços",
+        96.53
+      ],
+      [
+        "O Rei Leão",
+        96.19
+      ],
+      [
+        "Shrek",
+        96.19
+      ],
+      [
+        "Como Treinar o Seu Dragão",
+        96.19
+      ],
+      [
+        "Frozen: Uma Aventura Congelante",
+        96.19
+      ],
+      [
+        "Divertida Mente",
+        96.19
+      ],
+      [
+        "Moana: Um Mar de Aventuras",
+        96.19
+      ],
+      [
+        "Divertida Mente 2",
+        96.19
+      ],
+      [
+        "Esqueceram de Mim",
+        96.06
+      ],
+      [
+        "Up: Altas Aventuras",
+        95.8
+      ],
+      [
+        "Ratatouille",
+        95.23
+      ],
+      [
+        "Viva: A Vida é uma Festa",
+        95.23
+      ],
+      [
+        "Robô Selvagem",
+        95.23
+      ],
+      [
+        "Tempos Modernos",
+        95.07
+      ],
+      [
+        "E.T.: O Extraterrestre",
+        95.07
+      ],
+      [
+        "Cantando na Chuva",
+        94.75
+      ],
+      [
+        "O Menino e o Mundo",
+        36.25
+      ],
+      [
+        "A Viagem de Chihiro",
+        36.25
+      ],
+      [
+        "WALL-E",
+        36.25
+      ]
+    ]
+  }
+}
