@@ -1,0 +1,32 @@
+{
+ "variaveis": 33,
+ "valores": 455,
+ "regras": 827,
+ "premissas": 3571,
+ "conclusoes": 900,
+ "perguntas": 22,
+ "objetivos": 9,
+ "regras_por_tipo": {
+  "compatibilidade": 56,
+  "faixa de altura (altura numérica -> faixa)": 5,
+  "estatura (faixa de altura -> estatura, fronteiras difusas)": 8,
+  "modelo: perfil completo": 97,
+  "modelo: cabelo e olhos": 66,
+  "modelo: idade e época": 97,
+  "modelo: origem": 97,
+  "modelo: área (atuação)": 28,
+  "evidência: obra (atuação)": 78,
+  "evidência: traço marcante": 68,
+  "modelo: área (música)": 29,
+  "evidência: obra (música)": 81,
+  "modelo: área (apresentação)": 8,
+  "evidência: obra (programa)": 12,
+  "modelo: área (esporte)": 14,
+  "evidência: obra (esporte)": 36,
+  "modelo: área (mídia)": 23,
+  "evidência: obra (franquia)": 24
+ },
+ "bytes": 413293,
+ "itens": 97,
+ "avisos": []
+}

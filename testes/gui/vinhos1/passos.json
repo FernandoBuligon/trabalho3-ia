@@ -1,0 +1,60 @@
+[
+ {
+  "opcoes": [
+   "carne",
+   "aves",
+   "peixe"
+  ],
+  "marcar": [
+   "carne"
+  ]
+ },
+ {
+  "opcoes": [
+   "Sim",
+   "Não"
+  ],
+  "marcar": [
+   "Não"
+  ]
+ },
+ {
+  "opcoes": [
+   "Sim",
+   "Não"
+  ],
+  "marcar": [
+   "Sim"
+  ]
+ },
+ {
+  "opcoes": [
+   "tomate",
+   "creme",
+   "apimentado",
+   "agridoce",
+   "tártaro"
+  ],
+  "marcar": [
+   "tomate"
+  ]
+ },
+ {
+  "opcoes": [
+   "delicado",
+   "médio",
+   "forte"
+  ],
+  "marcar": [
+   "forte"
+  ]
+ },
+ {
+  "opcoes": [
+   "seco",
+   "médio",
+   "suave"
+  ],
+  "marcar": []
+ }
+]

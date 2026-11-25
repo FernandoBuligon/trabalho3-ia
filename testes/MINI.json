@@ -1,0 +1,19 @@
+{
+ "variaveis": 9,
+ "valores": 27,
+ "regras": 22,
+ "premissas": 68,
+ "conclusoes": 27,
+ "perguntas": 6,
+ "objetivos": 2,
+ "regras_por_tipo": {
+  "faixas de duração": 3,
+  "classificação": 2,
+  "modelo: perfil completo": 5,
+  "modelo: gênero e classificação": 5,
+  "evidência: ator": 7
+ },
+ "bytes": 20712,
+ "itens": 5,
+ "avisos": []
+}

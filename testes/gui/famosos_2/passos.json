@@ -1,0 +1,156 @@
+[
+ {
+  "opcoes": [
+   "ator/atriz",
+   "cantor(a)",
+   "atleta",
+   "personagem fictício",
+   "apresentador(a)/influenciador(a)",
+   "pessoa real (qualquer área)",
+   "indiferente"
+  ],
+  "marcar": [
+   "personagem fictício"
+  ]
+ },
+ {
+  "opcoes": [
+   "masculino",
+   "feminino",
+   "indiferente"
+  ],
+  "marcar": [
+   "masculino"
+  ]
+ },
+ {
+  "opcoes": [
+   "criança/adolescente",
+   "jovem (até 30)",
+   "adulto (31 a 50)",
+   "maduro (51 ou mais)",
+   "indiferente"
+  ],
+  "marcar": [
+   "indiferente"
+  ]
+ },
+ {
+  "opcoes": [
+   "preto",
+   "castanho",
+   "loiro",
+   "ruivo",
+   "grisalho/branco",
+   "careca/raspado",
+   "colorido",
+   "indiferente"
+  ],
+  "marcar": [
+   "loiro"
+  ]
+ },
+ {
+  "opcoes": [
+   "escuros",
+   "azuis",
+   "verdes",
+   "indiferente"
+  ],
+  "marcar": [
+   "azuis"
+  ]
+ },
+ {
+  "opcoes": [
+   "Sim",
+   "Não"
+  ],
+  "marcar": [
+   "Não"
+  ]
+ },
+ {
+  "opcoes": [
+   "brasileira",
+   "norte-americana",
+   "latino-americana/caribenha",
+   "britânica",
+   "outra europeia",
+   "asiática/oceania",
+   "estrangeira (qualquer país)",
+   "indiferente"
+  ],
+  "marcar": [
+   "estrangeira (qualquer país)"
+  ]
+ },
+ {
+  "opcoes": [
+   "até anos 80",
+   "anos 90",
+   "anos 2000",
+   "anos 2010",
+   "anos 2020",
+   "clássica (até os anos 90)",
+   "recente (de 2010 em diante)",
+   "indiferente"
+  ],
+  "marcar": [
+   "indiferente"
+  ]
+ },
+ {
+  "opcoes": [
+   "Sim",
+   "Não"
+  ],
+  "marcar": [
+   "Não"
+  ]
+ },
+ {
+  "opcoes": [
+   "animação",
+   "quadrinhos",
+   "games",
+   "filme",
+   "série de TV",
+   "anime/mangá",
+   "livros/folclore",
+   "indiferente"
+  ],
+  "marcar": [
+   "anime/mangá"
+  ]
+ },
+ {
+  "opcoes": [
+   "humano",
+   "animal",
+   "criatura/monstro",
+   "brinquedo/boneco",
+   "indiferente"
+  ],
+  "marcar": [
+   "humano"
+  ]
+ },
+ {
+  "opcoes": [
+   "barba",
+   "bigode",
+   "tatuagens",
+   "óculos",
+   "cicatriz",
+   "cabelo cacheado/crespo",
+   "chapéu/boné",
+   "roupa/fantasia icônica",
+   "maquiagem marcante",
+   "nenhum em especial"
+  ],
+  "marcar": [
+   "roupa/fantasia icônica"
+  ]
+ }
+]

@@ -1,0 +1,462 @@
+[
+ {
+  "opcoes": [
+   "Sim",
+   "Não"
+  ],
+  "marcar": [
+   "Sim"
+  ]
+ },
+ {
+  "numero": "15"
+ },
+ {
+  "opcoes": [
+   "ação",
+   "aventura",
+   "animação",
+   "comédia",
+   "drama",
+   "crime",
+   "terror",
+   "suspense",
+   "ficção científica",
+   "fantasia",
+   "romance",
+   "musical",
+   "guerra",
+   "biografia",
+   "indiferente"
+  ],
+  "marcar": [
+   "ficção científica",
+   "ação"
+  ]
+ },
+ {
+  "opcoes": [
+   "divertido",
+   "emocionante",
+   "tenso",
+   "assustador",
+   "reflexivo",
+   "romântico",
+   "inspirador",
+   "épico",
+   "indiferente"
+  ],
+  "marcar": [
+   "tenso",
+   "épico"
+  ]
+ },
+ {
+  "opcoes": [
+   "Sim",
+   "Não"
+  ],
+  "marcar": [
+   "Sim"
+  ]
+ },
+ {
+  "numero": "170"
+ },
+ {
+  "opcoes": [
+   "nacional",
+   "internacional",
+   "indiferente"
+  ],
+  "marcar": [
+   "internacional"
+  ]
+ },
+ {
+  "opcoes": [
+   "clássico (até 1979)",
+   "anos 80",
+   "anos 90",
+   "anos 2000",
+   "anos 2010",
+   "anos 2020",
+   "clássicos e antigos (até os anos 90)",
+   "recentes (de 2010 em diante)",
+   "indiferente"
+  ],
+  "marcar": [
+   "recentes (de 2010 em diante)"
+  ]
+ },
+ {
+  "opcoes": [
+   "baseada em fatos reais",
+   "ficção",
+   "indiferente"
+  ],
+  "marcar": [
+   "ficção"
+  ]
+ },
+ {
+  "opcoes": [
+   "sozinho(a)",
+   "em casal",
+   "com amigos",
+   "com a família"
+  ],
+  "marcar": [
+   "sozinho(a)"
+  ]
+ },
+ {
+  "opcoes": [
+   "Sim",
+   "Não"
+  ],
+  "marcar": [
+   "Sim"
+  ]
+ },
+ {
+  "opcoes": [
+   "gosto de sagas e franquias",
+   "prefiro filmes únicos",
+   "indiferente"
+  ],
+  "marcar": [
+   "gosto de sagas e franquias"
+  ]
+ },
+ {
+  "opcoes": [
+   "Sim",
+   "Não"
+  ],
+  "marcar": [
+   "Sim"
+  ]
+ },
+ {
+  "opcoes": [
+   "Sim",
+   "Não"
+  ],
+  "marcar": [
+   "Sim"
+  ]
+ },
+ {
+  "opcoes": [
+   "Al Pacino",
+   "Albert Brooks",
+   "Alexandre Rodrigues",
+   "Alice Braga",
+   "Amy Poehler",
+   "Andrew Garfield",
+   "André Ramiro",
+   "Anne Hathaway",
+   "Anthony Gonzalez",
+   "Anthony Hopkins",
+   "Anthony Perkins",
+   "Anya Taylor-Joy",
+   "Ariana Grande",
+   "Arnold Schwarzenegger",
+   "Audrey Tautou",
+   "Auli'i Cravalho",
+   "Austin Butler",
+   "Bill Skarsgård",
+   "Brad Pitt",
+   "Caio Blat",
+   "Caio Junqueira",
+   "Cameron Diaz",
+   "Camila Pitanga",
+   "Carol Duarte",
+   "Carrie Fisher",
+   "Carrie-Anne Moss",
+   "Chadwick Boseman",
+   "Charlie Chaplin",
+   "Charlize Theron",
+   "Chris Evans",
+   "Chris Pratt",
+   "Christian Bale",
+   "Christopher Lloyd",
+   "Cillian Murphy",
+   "Courteney Cox",
+   "Cynthia Erivo",
+   "Daniel Kaluuya",
+   "Daniel Radcliffe",
+   "Debbie Reynolds",
+   "Demi Moore",
+   "Dev Patel",
+   "Dira Paes",
+   "Drew Barrymore",
+   "Dwayne Johnson",
+   "Débora Falabella",
+   "Eddie Murphy",
+   "Edmilson Filho",
+   "Edward Norton",
+   "Elijah Wood",
+   "Ellen Burstyn",
+   "Ellen DeGeneres",
+   "Emilio Estevez",
+   "Emily Blunt",
+   "Emma Stone",
+   "Emma Watson",
+   "Fabrício Boliveira",
+   "Felix Kammerer",
+   "Fernanda Montenegro",
+   "Fernanda Torres",
+   "Fernando Ramos da Silva",
+   "François Cluzet",
+   "Freida Pinto",
+   "Gene Kelly",
+   "George Clooney",
+   "Ghilherme Lobo",
+   "Giulia Benitte",
+   "Glória Pires",
+   "Harrison Ford",
+   "Heath Ledger",
+   "Henry Thomas",
+   "Humphrey Bogart",
+   "Ian McKellen",
+   "Idina Menzel",
+   "Ingrid Bergman",
+   "Irandhir Santos",
+   "Ivana Baquero",
+   "J.K. Simmons",
+   "Jack Black",
+   "Jack Nicholson",
+   "Jaeden Martell",
+   "Janet Leigh",
+   "Jay Baruchel",
+   "Jeff Goldblum",
+   "Jesse Eisenberg",
+   "Joaquin Phoenix",
+   "Jodie Foster",
+   "John Krasinski",
+   "John Travolta",
+   "Johnny Depp",
+   "Jonah Hill",
+   "Joseph Gordon-Levitt",
+   "José Wilker",
+   "João Miguel",
+   "Julia Stockler",
+   "Kate Winslet",
+   "Ke Huy Quan",
+   "Keanu Reeves",
+   "Keir Dullea",
+   "Keira Knightley",
+   "Kevin Hart",
+   "Kevin Vechiatto",
+   "Kristen Bell",
+   "Laura Dern",
+   "Laurence Fishburne",
+   "Leandro Firmino",
+   "Leandro Hassum",
+   "Leonardo DiCaprio",
+   "Leonardo Villar",
+   "Liam Neeson",
+   "Linda Blair",
+   "Linda Hamilton",
+   "Lupita Nyong'o",
+   "Lázaro Ramos",
+   "Macaulay Culkin",
+   "Margot Robbie",
+   "Mark Hamill",
+   "Marlon Brando",
+   "Matheus Nachtergaele",
+   "Matt Damon",
+   "Matthew Broderick",
+   "Matthew McConaughey",
+   "Maya Hawke",
+   "Mel Gibson",
+   "Michael B. Jordan",
+   "Michael J. Fox",
+   "Michelle Yeoh",
+   "Mike Myers",
+   "Mikey Madison",
+   "Miles Teller",
+   "Molly Ringwald",
+   "Morgan Freeman",
+   "Neve Campbell",
+   "Omar Sy",
+   "Orlando Bloom",
+   "Patrick Swayze",
+   "Patrick Wilson",
+   "Paul Walker",
+   "Paulo Gustavo",
+   "Paulo José",
+   "Pedro Cardoso",
+   "Rachel McAdams",
+   "Ralph Fiennes",
+   "Rami Malek",
+   "Rebecca Ferguson",
+   "Regina Casé",
+   "Renato Prieto",
+   "Ricardo Darín",
+   "Robert Downey Jr.",
+   "Roberto Benigni",
+   "Robin Wright",
+   "Rodrigo Santoro",
+   "Roy Scheider",
+   "Rupert Grint",
+   "Russell Crowe",
+   "Ryan Gosling",
+   "Sam Neill",
+   "Sam Worthington",
+   "Samuel L. Jackson",
+   "Sandra Bullock",
+   "Scarlett Johansson",
+   "Selton Mello",
+   "Seu Jorge",
+   "Shameik Moore",
+   "Sigourney Weaver",
+   "Song Kang-ho",
+   "Sylvester Stallone",
+   "Sônia Braga",
+   "Tim Allen",
+   "Tim Robbins",
+   "Timothée Chalamet",
+   "Tom Cruise",
+   "Tom Hanks",
+   "Tom Hardy",
+   "Tom Holland",
+   "Toni Collette",
+   "Tony Ramos",
+   "Udo Kier",
+   "Uma Thurman",
+   "Vera Farmiga",
+   "Viggo Mortensen",
+   "Vin Diesel",
+   "Vinícius de Oliveira",
+   "Vladimir Brichta",
+   "Wagner Moura",
+   "Whoopi Goldberg",
+   "Will Smith",
+   "Yalitza Aparicio",
+   "Zendaya",
+   "Zoe Saldaña",
+   "Ângelo Antônio",
+   "Ísis Valverde"
+  ],
+  "marcar": [
+   "Leonardo DiCaprio"
+  ]
+ },
+ {
+  "opcoes": [
+   "Aaron Horvath",
+   "Alejandro González Iñárritu",
+   "Alfonso Cuarón",
+   "Alfred Hitchcock",
+   "Alê Abreu",
+   "Andrew Adamson",
+   "Andrew Stanton",
+   "André Pellenz",
+   "Andy Muschietti",
+   "Anna Muylaert",
+   "Anselmo Duarte",
+   "Anthony e Joe Russo",
+   "Ari Aster",
+   "Bob Persichetti",
+   "Bong Joon-ho",
+   "Brad Bird",
+   "Breno Silveira",
+   "Bruno Barreto",
+   "Bryan Singer",
+   "Cao Hamburger",
+   "Chad Stahelski",
+   "Charlie Chaplin",
+   "Chris Buck",
+   "Chris Columbus",
+   "Chris Sanders",
+   "Christopher Nolan",
+   "Damien Chazelle",
+   "Damián Szifron",
+   "Daniel Filho",
+   "Daniel Kwan e Daniel Scheinert",
+   "Daniel Rezende",
+   "Daniel Ribeiro",
+   "Danny Boyle",
+   "David Fincher",
+   "David Yates",
+   "Dean DeBlois",
+   "Denis Villeneuve",
+   "Edward Berger",
+   "Fernando Meirelles",
+   "Francis Ford Coppola",
+   "Francis Lawrence",
+   "Frank Darabont",
+   "Gene Kelly",
+   "George Lucas",
+   "George Miller",
+   "Gore Verbinski",
+   "Greta Gerwig",
+   "Guel Arraes",
+   "Guillermo del Toro",
+   "Halder Gomes",
+   "Hayao Miyazaki",
+   "Héctor Babenco",
+   "Irvin Kershner",
+   "Jake Kasdan",
+   "James Cameron",
+   "James Wan",
+   "Jean-Pierre Jeunet",
+   "Jerry Zucker",
+   "John G. Avildsen",
+   "John Hughes",
+   "John Krasinski",
+   "John Lasseter",
+   "Jon M. Chu",
+   "Jon Watts",
+   "Jonathan Demme",
+   "Jordan Peele",
+   "Joseph Kosinski",
+   "Joss Whedon",
+   "José Padilha",
+   "Juan José Campanella",
+   "Karim Aïnouz",
+   "Kelsey Mann",
+   "Kleber Mendonça Filho",
+   "Lana e Lilly Wachowski",
+   "Laís Bodanzky",
+   "Lee Unkrich",
+   "Luiz Bolognesi",
+   "Makoto Shinkai",
+   "Martin Scorsese",
+   "Mauro Lima",
+   "Mel Gibson",
+   "Michael Curtiz",
+   "Monique Gardenberg",
+   "Nick Cassavetes",
+   "Olivier Nakache e Éric Toledano",
+   "Pete Docter",
+   "Peter Jackson",
+   "Quentin Tarantino",
+   "René Sampaio",
+   "Ridley Scott",
+   "Robert Zemeckis",
+   "Roberto Benigni",
+   "Roberto Santucci",
+   "Roger Allers",
+   "Ron Clements",
+   "Ryan Coogler",
+   "Sean Baker",
+   "Selton Mello",
+   "Stanley Kubrick",
+   "Steven Spielberg",
+   "Susana Garcia",
+   "Todd Phillips",
+   "Wagner de Assis",
+   "Wagner Moura",
+   "Walter Salles",
+   "Wes Craven",
+   "William Friedkin"
+  ],
+  "marcar": [
+   "Christopher Nolan"
+  ]
+ }
+]

@@ -1,0 +1,145 @@
+Base: Mini Filmes (v1.1)
+Autores: Teste do gerador
+Abertura: Base de teste com 5 filmes.
+Opções: prioridade=OU cnf_min=0.50 examinar_tudo=False
+
+VARIÁVEIS (9):
+  [1] gênero preferido (multi): ação; animação; comédia; crime; drama; indiferente
+  [2] tempo disponível (numérica): 60;240
+  [3] duração aceitável (multi): curta; média; longa
+  [4] origem preferida (uni): nacional; internacional; indiferente
+  [5] com crianças (uni): 
+  [6] classificação permitida (multi): L; 12; 16
+  [7] quer escolher ator (uni): 
+  [8] ator preferido (multi): Tom Hanks; Wagner Moura; Selton Mello; Matheus Nachtergaele; Alexandre Rodrigues; Leandro Firmino
+  [9] filme recomendado (multi): Cidade de Deus; Toy Story; Tropa de Elite; O Auto da Compadecida; Forrest Gump
+
+OBJETIVOS: classificação permitida (oculto), filme recomendado
+
+REGRAS (22):
+  Regra 1 [cód 1] Duração - pouco tempo
+    SE    tempo disponível < <100>
+    ENTÃO duração aceitável = curta CNF 100%
+  Regra 2 [cód 2] Duração - tempo médio
+    SE    tempo disponível >= <100>
+    E     tempo disponível < <135>
+    ENTÃO duração aceitável = curta CNF 100%
+    E     duração aceitável = média CNF 100%
+  Regra 3 [cód 3] Duração - muito tempo
+    SE    tempo disponível >= <135>
+    ENTÃO duração aceitável = curta CNF 100%
+    E     duração aceitável = média CNF 100%
+    E     duração aceitável = longa CNF 100%
+  Regra 4 [cód 4] Classificação - com crianças
+    SE    com crianças = Sim
+    ENTÃO classificação permitida = L CNF 100%
+  Regra 5 [cód 5] Classificação - adultos
+    SE    com crianças = Não
+    ENTÃO classificação permitida = L CNF 100%
+    E     classificação permitida = 12 CNF 100%
+    E     classificação permitida = 16 CNF 100%
+  Regra 6 [cód 6] Cidade de Deus - perfil completo
+    SE    gênero preferido = crime
+    OU    gênero preferido = drama
+    OU    gênero preferido = indiferente
+    E     origem preferida = nacional
+    OU    origem preferida = indiferente
+    E     duração aceitável = média
+    E     classificação permitida = 16
+    ENTÃO filme recomendado = Cidade de Deus CNF 95%
+  Regra 7 [cód 7] Cidade de Deus - gênero e classificação
+    SE    gênero preferido = crime
+    OU    gênero preferido = drama
+    E     classificação permitida = 16
+    ENTÃO filme recomendado = Cidade de Deus CNF 60%
+  Regra 8 [cód 8] Cidade de Deus - ator: Alexandre Rodrigues
+    SE    quer escolher ator = Sim
+    E     ator preferido = Alexandre Rodrigues
+    ENTÃO filme recomendado = Cidade de Deus CNF 70%
+  Regra 9 [cód 9] Cidade de Deus - ator: Leandro Firmino
+    SE    quer escolher ator = Sim
+    E     ator preferido = Leandro Firmino
+    ENTÃO filme recomendado = Cidade de Deus CNF 70%
+  Regra 10 [cód 10] Toy Story - perfil completo
+    SE    gênero preferido = animação
+    OU    gênero preferido = comédia
+    OU    gênero preferido = indiferente
+    E     origem preferida = internacional
+    OU    origem preferida = indiferente
+    E     duração aceitável = curta
+    E     classificação permitida = L
+    ENTÃO filme recomendado = Toy Story CNF 95%
+  Regra 11 [cód 11] Toy Story - gênero e classificação
+    SE    gênero preferido = animação
+    OU    gênero preferido = comédia
+    E     classificação permitida = L
+    ENTÃO filme recomendado = Toy Story CNF 60%
+  Regra 12 [cód 12] Toy Story - ator: Tom Hanks
+    SE    quer escolher ator = Sim
+    E     ator preferido = Tom Hanks
+    ENTÃO filme recomendado = Toy Story CNF 70%
+  Regra 13 [cód 13] Tropa de Elite - perfil completo
+    SE    gênero preferido = ação
+    OU    gênero preferido = crime
+    OU    gênero preferido = indiferente
+    E     origem preferida = nacional
+    OU    origem preferida = indiferente
+    E     duração aceitável = média
+    E     classificação permitida = 16
+    ENTÃO filme recomendado = Tropa de Elite CNF 95%
+  Regra 14 [cód 14] Tropa de Elite - gênero e classificação
+    SE    gênero preferido = ação
+    OU    gênero preferido = crime
+    E     classificação permitida = 16
+    ENTÃO filme recomendado = Tropa de Elite CNF 60%
+  Regra 15 [cód 15] Tropa de Elite - ator: Wagner Moura
+    SE    quer escolher ator = Sim
+    E     ator preferido = Wagner Moura
+    ENTÃO filme recomendado = Tropa de Elite CNF 70%
+  Regra 16 [cód 16] O Auto da Compadecida - perfil completo
+    SE    gênero preferido = comédia
+    OU    gênero preferido = indiferente
+    E     origem preferida = nacional
+    OU    origem preferida = indiferente
+    E     duração aceitável = média
+    E     classificação permitida = 12
+    ENTÃO filme recomendado = O Auto da Compadecida CNF 95%
+  Regra 17 [cód 17] O Auto da Compadecida - gênero e classificação
+    SE    gênero preferido = comédia
+    E     classificação permitida = 12
+    ENTÃO filme recomendado = O Auto da Compadecida CNF 60%
+  Regra 18 [cód 18] O Auto da Compadecida - ator: Matheus Nachtergaele
+    SE    quer escolher ator = Sim
+    E     ator preferido = Matheus Nachtergaele
+    ENTÃO filme recomendado = O Auto da Compadecida CNF 70%
+  Regra 19 [cód 19] O Auto da Compadecida - ator: Selton Mello
+    SE    quer escolher ator = Sim
+    E     ator preferido = Selton Mello
+    ENTÃO filme recomendado = O Auto da Compadecida CNF 70%
+  Regra 20 [cód 20] Forrest Gump - perfil completo
+    SE    gênero preferido = drama
+    OU    gênero preferido = comédia
+    OU    gênero preferido = indiferente
+    E     origem preferida = internacional
+    OU    origem preferida = indiferente
+    E     duração aceitável = longa
+    E     classificação permitida = 12
+    ENTÃO filme recomendado = Forrest Gump CNF 95%
+  Regra 21 [cód 21] Forrest Gump - gênero e classificação
+    SE    gênero preferido = drama
+    OU    gênero preferido = comédia
+    E     classificação permitida = 12
+    ENTÃO filme recomendado = Forrest Gump CNF 60%
+  Regra 22 [cód 22] Forrest Gump - ator: Tom Hanks
+    SE    quer escolher ator = Sim
+    E     ator preferido = Tom Hanks
+    ENTÃO filme recomendado = Forrest Gump CNF 70%
+
+PERGUNTAS (6):
+  gênero preferido: Quais gêneros você quer ver?  (CNF na resposta=True)
+      por quê: O gênero é o principal critério.
+  tempo disponível: Quanto tempo você tem (minutos)?  (CNF na resposta=True)
+  origem preferida: Prefere filme nacional ou internacional?  (CNF na resposta=True)
+  com crianças: Vai assistir com crianças?  (CNF na resposta=False)
+  quer escolher ator: Quer indicar um ator preferido?  (CNF na resposta=False)
+  ator preferido: Quais atores você prefere?  (CNF na resposta=True)

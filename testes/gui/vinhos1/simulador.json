@@ -1,0 +1,34 @@
+{
+ "respostas": {
+  "prato principal": "carne",
+  "tem vitela": "Não",
+  "tem molho": "Sim",
+  "molho": "tomate",
+  "sabor": "forte",
+  "suavidade preferida": null
+ },
+ "perguntas": [
+  "prato principal",
+  "tem vitela",
+  "tem molho",
+  "molho",
+  "sabor",
+  "suavidade preferida"
+ ],
+ "objetivos": {
+  "vinho": [
+   [
+    "Cabernet Sauvignon",
+    90.0
+   ],
+   [
+    "Zinfandel",
+    90.0
+   ],
+   [
+    "Burgundy",
+    72.0
+   ]
+  ]
+ }
+}

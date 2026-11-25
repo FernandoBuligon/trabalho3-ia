@@ -1,0 +1,56 @@
+{
+ "respostas": {
+  "categoria preferida": [
+   "cantor(a)"
+  ],
+  "sexo preferido": "feminino",
+  "faixa etária preferida": null,
+  "cabelo preferido": [
+   "ruivo"
+  ],
+  "olhos preferidos": null,
+  "sabe a altura": "Não",
+  "origem preferida": [
+   "brasileira"
+  ],
+  "época preferida": [
+   "clássica (até os anos 90)"
+  ],
+  "gênero musical preferido": [
+   "rock"
+  ],
+  "traços marcantes": [
+   "óculos"
+  ],
+  "quer citar uma obra": "Não"
+ },
+ "perguntas": [
+  "categoria preferida",
+  "sexo preferido",
+  "faixa etária preferida",
+  "cabelo preferido",
+  "olhos preferidos",
+  "sabe a altura",
+  "origem preferida",
+  "época preferida",
+  "quer citar uma obra",
+  "gênero musical preferido",
+  "traços marcantes"
+ ],
+ "objetivos": {
+  "famoso recomendado": [
+   [
+    "Rita Lee",
+    97.79
+   ],
+   [
+    "Ivete Sangalo",
+    30.0
+   ],
+   [
+    "Xuxa",
+    30.0
+   ]
+  ]
+ }
+}

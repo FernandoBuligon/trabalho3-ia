@@ -1,0 +1,147 @@
+[
+ {
+  "opcoes": [
+   "Sim",
+   "Não"
+  ],
+  "marcar": [
+   "Sim"
+  ]
+ },
+ {
+  "numero": ""
+ },
+ {
+  "opcoes": [
+   "ação",
+   "aventura",
+   "animação",
+   "comédia",
+   "drama",
+   "crime",
+   "terror",
+   "suspense",
+   "ficção científica",
+   "fantasia",
+   "romance",
+   "musical",
+   "guerra",
+   "biografia",
+   "indiferente"
+  ],
+  "marcar": [
+   "aventura",
+   "comédia"
+  ]
+ },
+ {
+  "opcoes": [
+   "divertido",
+   "emocionante",
+   "tenso",
+   "assustador",
+   "reflexivo",
+   "romântico",
+   "inspirador",
+   "épico",
+   "indiferente"
+  ],
+  "marcar": [
+   "indiferente"
+  ]
+ },
+ {
+  "opcoes": [
+   "Sim",
+   "Não"
+  ],
+  "marcar": [
+   "Sim"
+  ]
+ },
+ {
+  "numero": ""
+ },
+ {
+  "opcoes": [
+   "nacional",
+   "internacional",
+   "indiferente"
+  ],
+  "marcar": [
+   "indiferente"
+  ]
+ },
+ {
+  "opcoes": [
+   "clássico (até 1979)",
+   "anos 80",
+   "anos 90",
+   "anos 2000",
+   "anos 2010",
+   "anos 2020",
+   "clássicos e antigos (até os anos 90)",
+   "recentes (de 2010 em diante)",
+   "indiferente"
+  ],
+  "marcar": []
+ },
+ {
+  "opcoes": [
+   "baseada em fatos reais",
+   "ficção",
+   "indiferente"
+  ],
+  "marcar": [
+   "indiferente"
+  ]
+ },
+ {
+  "opcoes": [
+   "sozinho(a)",
+   "em casal",
+   "com amigos",
+   "com a família"
+  ],
+  "marcar": [
+   "com a família"
+  ]
+ },
+ {
+  "opcoes": [
+   "Sim",
+   "Não"
+  ],
+  "marcar": [
+   "Não"
+  ]
+ },
+ {
+  "opcoes": [
+   "gosto de sagas e franquias",
+   "prefiro filmes únicos",
+   "indiferente"
+  ],
+  "marcar": [
+   "gosto de sagas e franquias"
+  ]
+ },
+ {
+  "opcoes": [
+   "Sim",
+   "Não"
+  ],
+  "marcar": [
+   "Não"
+  ]
+ },
+ {
+  "opcoes": [
+   "Sim",
+   "Não"
+  ],
+  "marcar": [
+   "Não"
+  ]
+ }
+]

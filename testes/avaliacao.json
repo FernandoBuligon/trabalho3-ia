@@ -1,0 +1,129 @@
+{
+ "famosos": {
+  "autorreconhecimento": {
+   "com obra": {
+    "top1": 1.0,
+    "top3": 1.0,
+    "top5": 1.0,
+    "posicao_media": 1,
+    "empatados_no_topo_media": 1.0103092783505154,
+    "fora_do_top3": []
+   },
+   "sem obra (só aparência e área)": {
+    "top1": 1.0,
+    "top3": 1.0,
+    "top5": 1.0,
+    "posicao_media": 1,
+    "empatados_no_topo_media": 1.1237113402061856,
+    "fora_do_top3": []
+   }
+  },
+  "robustez": {
+   "consultas": 2000,
+   "falhas_do_motor": 0,
+   "sem_recomendacao": 37,
+   "tamanho_lista_mediana": 19.0,
+   "tamanho_lista_media": 23.864,
+   "perguntas_media": 15.637,
+   "perguntas_min": 9,
+   "perguntas_max": 22,
+   "regras_total": 827,
+   "regras_nunca_disparadas": 0,
+   "exemplos_nunca_disparadas": []
+  },
+  "alcancabilidade": {
+   "regras_total": 827,
+   "nunca_disparadas": [
+    "categoria compatível: grupo pessoa real (qualquer área)",
+    "categoria compatível: indiferente",
+    "categoria compatível: sem resposta",
+    "sexo compatível: indiferente",
+    "sexo compatível: sem resposta",
+    "faixa etária compatível: indiferente",
+    "faixa etária compatível: sem resposta",
+    "cabelo compatível: sem resposta",
+    "olhos compatíveis: sem resposta",
+    "origem compatível: grupo estrangeira (qualquer país)",
+    "origem compatível: indiferente",
+    "origem compatível: sem resposta",
+    "época compatível: grupo clássica (até os anos 90)",
+    "época compatível: grupo recente (de 2010 em diante)",
+    "época compatível: indiferente",
+    "época compatível: sem resposta",
+    "espécie compatível: indiferente",
+    "espécie compatível: sem resposta",
+    "faixa de altura: 161 a 170 cm",
+    "faixa de altura: 179 a 186 cm",
+    "estatura compatível: não respondeu",
+    "estatura compatível: altura em branco",
+    "estatura compatível: 161 a 170 cm",
+    "estatura compatível: 179 a 186 cm"
+   ]
+  }
+ },
+ "filmes": {
+  "autorreconhecimento": {
+   "com ator e diretor": {
+    "top1": 1.0,
+    "top3": 1.0,
+    "top5": 1.0,
+    "posicao_media": 1,
+    "empatados_no_topo_media": 1,
+    "fora_do_top3": []
+   },
+   "sem ator e diretor": {
+    "top1": 0.9103448275862069,
+    "top3": 1.0,
+    "top5": 1.0,
+    "posicao_media": 1.110344827586207,
+    "empatados_no_topo_media": 1.1515151515151516,
+    "fora_do_top3": []
+   }
+  },
+  "robustez": {
+   "consultas": 2000,
+   "falhas_do_motor": 0,
+   "sem_recomendacao": 6,
+   "tamanho_lista_mediana": 64.0,
+   "tamanho_lista_media": 69.4,
+   "perguntas_media": 13.8325,
+   "perguntas_min": 12,
+   "perguntas_max": 16,
+   "regras_total": 2364,
+   "regras_nunca_disparadas": 2,
+   "exemplos_nunca_disparadas": [
+    "Cidade de Deus - ator: Leandro Firmino",
+    "Mad Max: Estrada da Fúria - ator: Charlize Theron"
+   ]
+  },
+  "alcancabilidade": {
+   "regras_total": 2364,
+   "nunca_disparadas": [
+    "gênero compatível: indiferente",
+    "gênero compatível: sem resposta",
+    "clima compatível: indiferente",
+    "clima compatível: sem resposta",
+    "origem compatível: indiferente",
+    "origem compatível: sem resposta",
+    "época compatível: grupo clássicos e antigos (até os anos 90)",
+    "época compatível: grupo recentes (de 2010 em diante)",
+    "época compatível: indiferente",
+    "época compatível: sem resposta",
+    "tipo de história compatível: indiferente",
+    "tipo de história compatível: sem resposta",
+    "classificação: não informou se há menores",
+    "classificação: idade não informada",
+    "duração: sem limite de tempo",
+    "duração: não informou se há limite",
+    "duração: tempo não informado",
+    "perfil: nostálgico (grupo)",
+    "perfil: eclético",
+    "perfil: eclético (sem resposta)"
+   ]
+  },
+  "seguranca": {
+   "consultas_com_menores": 1000,
+   "violacoes_de_classificacao": 0
+  }
+ }
+}

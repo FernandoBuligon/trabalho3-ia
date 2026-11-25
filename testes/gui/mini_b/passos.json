@@ -1,0 +1,59 @@
+[
+ {
+  "opcoes": [
+   "Sim",
+   "Não"
+  ],
+  "marcar": [
+   "Não"
+  ]
+ },
+ {
+  "opcoes": [
+   "ação",
+   "animação",
+   "comédia",
+   "crime",
+   "drama",
+   "indiferente"
+  ],
+  "marcar": [
+   "crime"
+  ]
+ },
+ {
+  "opcoes": [
+   "nacional",
+   "internacional",
+   "indiferente"
+  ],
+  "marcar": [
+   "nacional"
+  ]
+ },
+ {
+  "numero": "90"
+ },
+ {
+  "opcoes": [
+   "Sim",
+   "Não"
+  ],
+  "marcar": [
+   "Sim"
+  ]
+ },
+ {
+  "opcoes": [
+   "Tom Hanks",
+   "Wagner Moura",
+   "Selton Mello",
+   "Matheus Nachtergaele",
+   "Alexandre Rodrigues",
+   "Leandro Firmino"
+  ],
+  "marcar": [
+   "Tom Hanks"
+  ]
+ }
+]

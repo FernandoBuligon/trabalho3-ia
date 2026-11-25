@@ -1,0 +1,44 @@
+{
+ "respostas": {
+  "com crianças": "Não",
+  "gênero preferido": [
+   "crime"
+  ],
+  "tempo disponível": 90,
+  "origem preferida": [
+   "nacional"
+  ],
+  "quer escolher ator": "Sim",
+  "ator preferido": [
+   "Tom Hanks"
+  ]
+ },
+ "perguntas": [
+  "com crianças",
+  "gênero preferido",
+  "origem preferida",
+  "tempo disponível",
+  "quer escolher ator",
+  "ator preferido"
+ ],
+ "objetivos": {
+  "filme recomendado": [
+   [
+    "Toy Story",
+    70.0
+   ],
+   [
+    "Forrest Gump",
+    70.0
+   ],
+   [
+    "Cidade de Deus",
+    60.0
+   ],
+   [
+    "Tropa de Elite",
+    60.0
+   ]
+  ]
+ }
+}

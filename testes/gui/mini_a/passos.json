@@ -1,0 +1,46 @@
+[
+ {
+  "opcoes": [
+   "Sim",
+   "Não"
+  ],
+  "marcar": [
+   "Não"
+  ]
+ },
+ {
+  "opcoes": [
+   "ação",
+   "animação",
+   "comédia",
+   "crime",
+   "drama",
+   "indiferente"
+  ],
+  "marcar": [
+   "comédia"
+  ]
+ },
+ {
+  "opcoes": [
+   "Sim",
+   "Não"
+  ],
+  "marcar": [
+   "Não"
+  ]
+ },
+ {
+  "opcoes": [
+   "nacional",
+   "internacional",
+   "indiferente"
+  ],
+  "marcar": [
+   "indiferente"
+  ]
+ },
+ {
+  "numero": "150"
+ }
+]

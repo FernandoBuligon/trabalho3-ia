@@ -1,0 +1,115 @@
+{
+ "respostas": {
+  "categoria preferida": [
+   "ator/atriz"
+  ],
+  "sexo preferido": "masculino",
+  "faixa etária preferida": [
+   "adulto (31 a 50)"
+  ],
+  "cabelo preferido": [
+   "castanho"
+  ],
+  "olhos preferidos": [
+   "escuros"
+  ],
+  "sabe a altura": "Sim",
+  "altura aproximada": 174,
+  "origem preferida": [
+   "brasileira"
+  ],
+  "época preferida": [
+   "anos 2000",
+   "anos 2010"
+  ],
+  "gênero de atuação preferido": [
+   "ação/aventura"
+  ],
+  "traços marcantes": [
+   "nenhum em especial"
+  ],
+  "quer citar uma obra": "Sim",
+  "obra: filme, série ou novela": [
+   "Tropa de Elite"
+  ]
+ },
+ "perguntas": [
+  "categoria preferida",
+  "sexo preferido",
+  "faixa etária preferida",
+  "cabelo preferido",
+  "olhos preferidos",
+  "sabe a altura",
+  "altura aproximada",
+  "origem preferida",
+  "época preferida",
+  "gênero de atuação preferido",
+  "quer citar uma obra",
+  "obra: filme, série ou novela",
+  "traços marcantes"
+ ],
+ "objetivos": {
+  "famoso recomendado": [
+   [
+    "Wagner Moura",
+    99.83
+   ],
+   [
+    "Paulo Gustavo",
+    97.5
+   ],
+   [
+    "Rodrigo Santoro",
+    82.68
+   ],
+   [
+    "Johnny Depp",
+    75.25
+   ],
+   [
+    "Pedro Pascal",
+    75.25
+   ],
+   [
+    "Selton Mello",
+    61.5
+   ],
+   [
+    "Leonardo DiCaprio",
+    55.0
+   ],
+   [
+    "Will Smith",
+    55.0
+   ],
+   [
+    "Dwayne Johnson",
+    55.0
+   ],
+   [
+    "Keanu Reeves",
+    55.0
+   ],
+   [
+    "Jackie Chan",
+    55.0
+   ],
+   [
+    "Lázaro Ramos",
+    54.5
+   ],
+   [
+    "Matheus Nachtergaele",
+    30.0
+   ],
+   [
+    "Tony Ramos",
+    30.0
+   ],
+   [
+    "Seu Jorge",
+    30.0
+   ]
+  ]
+ }
+}
