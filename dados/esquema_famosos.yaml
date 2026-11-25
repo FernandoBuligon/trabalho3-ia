@@ -1,0 +1,60 @@
+# Esquema da base de famosos: colunas do CSV, vocabulário controlado e obrigatoriedade.
+# É a fonte única dos valores. O arquivo famosos.yaml referencia este esquema.
+arquivo: famosos.csv
+chave: nome
+colunas:
+  nome: {obrigatoria: true}
+  categoria:
+    obrigatoria: true
+    lista: true
+    valores: [ator/atriz, cantor(a), atleta, personagem fictício, apresentador(a)/influenciador(a)]
+  sexo:
+    obrigatoria: true
+    valores: [masculino, feminino]
+  especie:
+    obrigatoria: true
+    valores: [humano, animal, criatura/monstro, brinquedo/boneco]
+  origem:
+    obrigatoria: true
+    valores: [brasileira, norte-americana, latino-americana/caribenha, britânica, outra europeia, asiática/oceania]
+  faixa_etaria:
+    obrigatoria: true
+    valores: [criança/adolescente, jovem (até 30), adulto (31 a 50), maduro (51 ou mais)]
+  cabelo:
+    valores: [preto, castanho, loiro, ruivo, grisalho/branco, careca/raspado, colorido]
+  olhos:
+    valores: [escuros, azuis, verdes]
+  estatura:
+    valores: [baixa, média, alta]
+  tracos:
+    lista: true
+    valores: [barba, bigode, tatuagens, óculos, cicatriz, cabelo cacheado/crespo, chapéu/boné, roupa/fantasia icônica, maquiagem marcante]
+  epoca:
+    obrigatoria: true
+    lista: true
+    valores: [até anos 80, anos 90, anos 2000, anos 2010, anos 2020]
+  genero_atuacao:
+    lista: true
+    obrigatoria_se: {categoria: ator/atriz}
+    valores: [ação/aventura, comédia, drama, novela, romance, super-herói, fantasia/ficção científica, suspense/terror]
+  genero_musical:
+    lista: true
+    obrigatoria_se: {categoria: cantor(a)}
+    valores: [sertanejo, funk, pop, rock, MPB, samba/pagode, rap/hip-hop, axé, forró, R&B/soul, eletrônica, reggaeton/latino, romântica]
+  esporte:
+    obrigatoria_se: {categoria: atleta}
+    valores: [futebol, basquete, Fórmula 1, tênis, atletismo, ginástica, skate, surfe, lutas]
+  midia:
+    lista: true
+    obrigatoria_se: {categoria: personagem fictício}
+    valores: [animação, quadrinhos, games, filme, série de TV, anime/mangá, livros/folclore]
+  formato:
+    lista: true
+    obrigatoria_se: {categoria: apresentador(a)/influenciador(a)}
+    valores: [programa de auditório, variedades/culinária, internet/YouTube, humor]
+  # obras: vocabulário livre (os valores das perguntas são extraídos do próprio CSV)
+  obras_atuacao: {lista: true, obrigatoria_se: {categoria: ator/atriz}}
+  obras_musica: {lista: true, obrigatoria_se: {categoria: cantor(a)}}
+  obras_esporte: {lista: true, obrigatoria_se: {categoria: atleta}}
+  franquia: {lista: true, obrigatoria_se: {categoria: personagem fictício}}
+  programas: {lista: true, obrigatoria_se: {categoria: apresentador(a)/influenciador(a)}}

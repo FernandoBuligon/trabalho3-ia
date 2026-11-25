@@ -1,0 +1,490 @@
+# Sistema Especialista 2: recomendação de filmes (nacionais e internacionais)
+# por estilo/clima, duração, gênero, atores, diretor, época, origem, prêmios etc.
+# Gerar:  python ../gerador/build.py filmes.yaml
+
+base:
+  nome: Que Filme Eu Vejo?
+  autores: Trabalho 3 - Fundamentos de Sistemas Inteligentes (UTFPR Santa Helena)
+  abertura:
+    - "Sistema especialista que recomenda filmes nacionais e internacionais de"
+    - "acordo com o seu momento: gênero, clima, tempo disponível, época, origem,"
+    - "prêmios, atores e diretores preferidos e a idade de quem vai assistir."
+    - ""
+    - "Base com 145 filmes (38 brasileiros), de 1936 a 2025."
+    - "Primeiro o sistema mostra o seu PERFIL DE ESPECTADOR e depois a lista de"
+    - "filmes ordenada pelo grau de confiança."
+    - "Dica: quando não tiver preferência, marque 'indiferente' (ou não marque nada)."
+  arquivo_saida: ../saida/Filmes.bcm
+  prioridade: OU
+  cnf_minimo: 50
+
+esquema: esquema_filmes.yaml
+
+variaveis:
+  # ------------------------------------------------ classificação indicativa
+  - nome: há menores assistindo
+    tipo: logica
+    pergunta: Alguém com menos de 18 anos vai assistir?
+    porque:
+      - "A classificação indicativa é um filtro obrigatório: nenhum filme"
+      - "acima da idade do espectador mais novo será recomendado."
+  - nome: idade do mais novo
+    tipo: numerica
+    faixa: [3, 17]
+    pergunta: Qual a idade do espectador mais novo?
+    porque:
+      - "Usada para calcular as classificações indicativas permitidas (L, 10, 12, 14, 16, 18)."
+      - "Se ficar em branco, por segurança só filmes livres (L) serão recomendados."
+  - nome: faixa do mais novo
+    tipo: uni
+    valores: [menos de 10 anos, 10 ou 11 anos, 12 ou 13 anos, 14 ou 15 anos, 16 ou 17 anos]
+  - nome: classificação permitida
+    tipo: multi
+    valores_esquema: classificacao
+
+  # ------------------------------------------------ gosto
+  - nome: gênero preferido
+    tipo: multi
+    valores_esquema: generos
+    indiferente: true
+    compativel: gênero compatível
+    pergunta: Quais gêneros você quer ver?
+    porque: ["Marque quantos quiser. O gênero é um dos critérios principais."]
+
+  - nome: clima desejado
+    tipo: multi
+    valores_esquema: clima
+    indiferente: true
+    compativel: clima compatível
+    pergunta: Que sensação você procura no filme?
+    porque:
+      - "divertido, emocionante (de chorar), tenso (adrenalina), assustador,"
+      - "reflexivo (pra pensar), romântico, inspirador ou épico (grandioso)."
+
+  # ------------------------------------------------ duração
+  - nome: tem limite de tempo
+    tipo: logica
+    pergunta: Você tem um limite de tempo para o filme?
+    porque: ["Se sim, o sistema evita filmes mais longos que o seu tempo."]
+  - nome: tempo disponível
+    tipo: numerica
+    faixa: [60, 300]
+    pergunta: Quanto tempo você tem disponível (em minutos)?
+    porque:
+      - "Convertido em faixas: curta (até 100 min), média (101 a 130),"
+      - "longa (131 a 160) e muito longa (mais de 160), com tolerância."
+      - "Se ficar em branco, considera-se que não há limite."
+  - nome: faixa de tempo
+    tipo: uni
+    valores: [menos de 100 min, 100 a 129 min, 130 a 159 min, 160 a 189 min, 190 min ou mais]
+  - nome: duração aceitável
+    tipo: multi
+    valores: [curta, média, longa, muito longa]
+
+  # ------------------------------------------------ origem, época, fatos
+  - nome: origem preferida
+    tipo: uni
+    valores_esquema: origem
+    indiferente: true
+    compativel: origem compatível
+    pergunta: Prefere filme nacional (brasileiro) ou internacional?
+    porque: ["Filtra o perfil completo e alimenta a regra 'origem e gênero'."]
+  - nome: época preferida
+    tipo: multi
+    valores: [clássico (até 1979), anos 80, anos 90, anos 2000, anos 2010, anos 2020]
+    grupos:
+      "clássicos e antigos (até os anos 90)": [clássico (até 1979), anos 80, anos 90]
+      "recentes (de 2010 em diante)": [anos 2010, anos 2020]
+    indiferente: true
+    compativel: época compatível
+    pergunta: De que época?
+    porque: ["Marque as décadas que quiser, ou um dos grupos."]
+  - nome: tipo de história preferido
+    tipo: uni
+    valores: [baseada em fatos reais, ficção]
+    indiferente: true
+    compativel: tipo de história compatível
+    pergunta: Prefere história baseada em fatos reais ou ficção?
+    porque: ["22 filmes da base são baseados em fatos reais (biografias e eventos históricos)."]
+
+  # ------------------------------------------------ ocasião e perfil
+  - nome: companhia
+    tipo: uni
+    valores: [sozinho(a), em casal, com amigos, com a família]
+    pergunta: Com quem você vai assistir?
+    porque: ["A ocasião sugere gêneros (ex.: casal -> romance, família -> animação)."]
+  - nome: gênero indicado para a ocasião
+    tipo: multi
+    valores_esquema: generos
+  - nome: perfil do espectador
+    tipo: multi
+    valores:
+      - Caçador(a) de adrenalina
+      - Romântico(a) incurável
+      - Destemido(a) do terror
+      - Cinéfilo(a) reflexivo(a)
+      - Rei/Rainha da comédia
+      - Coração mole
+      - Sonhador(a) da fantasia e ficção
+      - Nostálgico(a)
+      - Fã do cinema nacional
+      - Sessão em família
+      - Explorador(a) de histórias reais
+      - Eclético(a)
+
+  # ------------------------------------------------ preferências extras
+  - nome: quer premiados
+    tipo: logica
+    pergunta: Você prefere filmes premiados ou aclamados pela crítica?
+    porque: ["Filmes premiados (Oscar, Cannes, Berlim, Veneza, Globo de Ouro) ganham pontos extras."]
+  - nome: interesse em franquias
+    tipo: uni
+    valores: [gosto de sagas e franquias, prefiro filmes únicos]
+    indiferente: true
+    pergunta: Você gosta de sagas e franquias?
+    porque: ["Sagas (Star Wars, Harry Potter, Marvel...) ou filmes únicos ganham pontos extras."]
+  - nome: quer escolher ator
+    tipo: logica
+    pergunta: Quer indicar atores ou atrizes de que você gosta?
+    porque: ["Se sim, será mostrada a lista de atores presentes na base."]
+  - nome: ator preferido
+    tipo: multi
+    valores_coluna: atores
+    pergunta: Quais atores ou atrizes você gostaria de ver?
+    porque: ["Cada ator escolhido aumenta a confiança dos filmes em que atua."]
+  - nome: quer escolher diretor
+    tipo: logica
+    pergunta: Quer indicar diretores de que você gosta?
+    porque: ["Se sim, será mostrada a lista de diretores presentes na base."]
+  - nome: diretor preferido
+    tipo: multi
+    valores_coluna: diretor
+    pergunta: Quais diretores você prefere?
+    porque: ["Cada diretor escolhido aumenta a confiança dos filmes que dirigiu (CNF 60%)."]
+
+regras:
+  - grupo: faixa etária do espectador mais novo (idade numérica -> faixa)
+    itens:
+      - nome: "faixa do mais novo: menos de 10 anos"
+        se: idade do mais novo < 10
+        entao: [faixa do mais novo = menos de 10 anos]
+      - nome: "faixa do mais novo: 10 ou 11 anos"
+        se: idade do mais novo >= 10 E idade do mais novo < 12
+        entao: [faixa do mais novo = 10 ou 11 anos]
+      - nome: "faixa do mais novo: 12 ou 13 anos"
+        se: idade do mais novo >= 12 E idade do mais novo < 14
+        entao: [faixa do mais novo = 12 ou 13 anos]
+      - nome: "faixa do mais novo: 14 ou 15 anos"
+        se: idade do mais novo >= 14 E idade do mais novo < 16
+        entao: [faixa do mais novo = 14 ou 15 anos]
+      - nome: "faixa do mais novo: 16 ou 17 anos"
+        se: idade do mais novo >= 16
+        entao: [faixa do mais novo = 16 ou 17 anos]
+
+  - grupo: classificação indicativa (faixa -> classificações permitidas)
+    itens:
+      - nome: "classificação: só adultos"
+        se: há menores assistindo = Não
+        entao: [classificação permitida = L, classificação permitida = 10, classificação permitida = 12,
+                classificação permitida = 14, classificação permitida = 16, classificação permitida = 18]
+      - nome: "classificação: não informou se há menores"
+        se: há menores assistindo = DESCONHECIDO
+        entao: [classificação permitida = L, classificação permitida = 10, classificação permitida = 12]
+      - nome: "classificação: idade não informada"
+        se: há menores assistindo = Sim E faixa do mais novo = DESCONHECIDO
+        entao: [classificação permitida = L]
+      - nome: "classificação: menos de 10 anos"
+        se: há menores assistindo = Sim E faixa do mais novo = menos de 10 anos
+        entao: [classificação permitida = L]
+      - nome: "classificação: 10 ou 11 anos"
+        se: há menores assistindo = Sim E faixa do mais novo = 10 ou 11 anos
+        entao: [classificação permitida = L, classificação permitida = 10]
+      - nome: "classificação: 12 ou 13 anos"
+        se: há menores assistindo = Sim E faixa do mais novo = 12 ou 13 anos
+        entao: [classificação permitida = L, classificação permitida = 10, classificação permitida = 12]
+      - nome: "classificação: 14 ou 15 anos"
+        se: há menores assistindo = Sim E faixa do mais novo = 14 ou 15 anos
+        entao: [classificação permitida = L, classificação permitida = 10, classificação permitida = 12, classificação permitida = 14]
+      - nome: "classificação: 16 ou 17 anos"
+        se: há menores assistindo = Sim E faixa do mais novo = 16 ou 17 anos
+        entao: [classificação permitida = L, classificação permitida = 10, classificação permitida = 12, classificação permitida = 14, classificação permitida = 16]
+
+  - grupo: faixa de tempo (tempo numérico -> faixa)
+    itens:
+      - nome: "faixa de tempo: menos de 100 min"
+        se: tempo disponível < 100
+        entao: [faixa de tempo = menos de 100 min]
+      - nome: "faixa de tempo: 100 a 129 min"
+        se: tempo disponível >= 100 E tempo disponível < 130
+        entao: [faixa de tempo = 100 a 129 min]
+      - nome: "faixa de tempo: 130 a 159 min"
+        se: tempo disponível >= 130 E tempo disponível < 160
+        entao: [faixa de tempo = 130 a 159 min]
+      - nome: "faixa de tempo: 160 a 189 min"
+        se: tempo disponível >= 160 E tempo disponível < 190
+        entao: [faixa de tempo = 160 a 189 min]
+      - nome: "faixa de tempo: 190 min ou mais"
+        se: tempo disponível >= 190
+        entao: [faixa de tempo = 190 min ou mais]
+
+  - grupo: duração aceitável (faixa de tempo -> durações, com tolerância)
+    itens:
+      - nome: "duração: sem limite de tempo"
+        se: tem limite de tempo = Não
+        entao: [duração aceitável = curta, duração aceitável = média, duração aceitável = longa,
+                duração aceitável = muito longa]
+      - nome: "duração: não informou se há limite"
+        se: tem limite de tempo = DESCONHECIDO
+        entao: [duração aceitável = curta, duração aceitável = média, duração aceitável = longa,
+                duração aceitável = muito longa]
+      - nome: "duração: tempo não informado"
+        se: tem limite de tempo = Sim E faixa de tempo = DESCONHECIDO
+        entao: [duração aceitável = curta, duração aceitável = média, duração aceitável = longa,
+                duração aceitável = muito longa]
+      - nome: "duração: menos de 100 min"
+        se: tem limite de tempo = Sim E faixa de tempo = menos de 100 min
+        entao: [duração aceitável = curta CNF 80]
+      - nome: "duração: 100 a 129 min"
+        se: tem limite de tempo = Sim E faixa de tempo = 100 a 129 min
+        entao: [duração aceitável = curta, duração aceitável = média CNF 60]
+      - nome: "duração: 130 a 159 min"
+        se: tem limite de tempo = Sim E faixa de tempo = 130 a 159 min
+        entao: [duração aceitável = curta, duração aceitável = média, duração aceitável = longa CNF 60]
+      - nome: "duração: 160 a 189 min"
+        se: tem limite de tempo = Sim E faixa de tempo = 160 a 189 min
+        entao: [duração aceitável = curta, duração aceitável = média, duração aceitável = longa, duração aceitável = muito longa CNF 60]
+      - nome: "duração: 190 min ou mais"
+        se: tem limite de tempo = Sim E faixa de tempo = 190 min ou mais
+        entao: [duração aceitável = curta, duração aceitável = média, duração aceitável = longa, duração aceitável = muito longa]
+
+  - grupo: gêneros indicados para a ocasião
+    itens:
+      - nome: "ocasião: em casal"
+        se: companhia = em casal
+        entao: [gênero indicado para a ocasião = romance, gênero indicado para a ocasião = comédia CNF 80,
+                gênero indicado para a ocasião = drama CNF 70, gênero indicado para a ocasião = musical CNF 70]
+      - nome: "ocasião: com amigos"
+        se: companhia = com amigos
+        entao: [gênero indicado para a ocasião = comédia, gênero indicado para a ocasião = terror CNF 90,
+                gênero indicado para a ocasião = ação CNF 90, gênero indicado para a ocasião = aventura CNF 80,
+                gênero indicado para a ocasião = suspense CNF 70]
+      - nome: "ocasião: com a família"
+        se: companhia = com a família
+        entao: [gênero indicado para a ocasião = animação, gênero indicado para a ocasião = aventura CNF 90,
+                gênero indicado para a ocasião = comédia CNF 90, gênero indicado para a ocasião = fantasia CNF 80,
+                gênero indicado para a ocasião = musical CNF 70]
+      - nome: "ocasião: sozinho(a)"
+        se: companhia = sozinho(a)
+        entao: [gênero indicado para a ocasião = drama, gênero indicado para a ocasião = suspense CNF 90,
+                gênero indicado para a ocasião = ficção científica CNF 80, gênero indicado para a ocasião = crime CNF 80,
+                gênero indicado para a ocasião = biografia CNF 70]
+
+  - grupo: perfil do espectador
+    itens:
+      - nome: "perfil: adrenalina (ação)"
+        se: gênero preferido = ação OU gênero preferido = suspense OU gênero preferido = crime E clima desejado = tenso
+        entao: [perfil do espectador = Caçador(a) de adrenalina]
+      - nome: "perfil: adrenalina (épico)"
+        se: gênero preferido = ação OU gênero preferido = aventura E clima desejado = épico
+        entao: [perfil do espectador = Caçador(a) de adrenalina CNF 70]
+      - nome: "perfil: romântico"
+        se: gênero preferido = romance OU companhia = em casal E clima desejado = romântico
+        entao: [perfil do espectador = Romântico(a) incurável]
+      - nome: "perfil: terror"
+        se: gênero preferido = terror E clima desejado = assustador
+        entao: [perfil do espectador = Destemido(a) do terror]
+      - nome: "perfil: terror (só gênero)"
+        se: gênero preferido = terror
+        entao: [perfil do espectador = Destemido(a) do terror CNF 60]
+      - nome: "perfil: reflexivo"
+        se: gênero preferido = drama OU gênero preferido = biografia OU gênero preferido = guerra E clima desejado = reflexivo
+        entao: [perfil do espectador = Cinéfilo(a) reflexivo(a)]
+      - nome: "perfil: reflexivo e premiado"
+        se: clima desejado = reflexivo E quer premiados = Sim
+        entao: [perfil do espectador = Cinéfilo(a) reflexivo(a) CNF 80]
+      - nome: "perfil: comédia"
+        se: gênero preferido = comédia E clima desejado = divertido
+        entao: [perfil do espectador = Rei/Rainha da comédia]
+      - nome: "perfil: coração mole"
+        se: gênero preferido = drama OU gênero preferido = romance OU gênero preferido = animação E clima desejado = emocionante
+        entao: [perfil do espectador = Coração mole]
+      - nome: "perfil: fantasia e ficção"
+        se: gênero preferido = fantasia OU gênero preferido = ficção científica OU gênero preferido = animação E clima desejado = épico OU clima desejado = emocionante OU clima desejado = divertido E duração aceitável = longa
+        entao: [perfil do espectador = Sonhador(a) da fantasia e ficção CNF 80]
+      - nome: "perfil: fantasia e ficção (gênero)"
+        se: gênero preferido = fantasia OU gênero preferido = ficção científica E clima desejado <> assustador
+        entao: [perfil do espectador = Sonhador(a) da fantasia e ficção CNF 70]
+      - nome: "perfil: nostálgico (grupo)"
+        se: época preferida = clássicos e antigos (até os anos 90)
+        entao: [perfil do espectador = Nostálgico(a)]
+      - nome: "perfil: nostálgico (décadas)"
+        se: época preferida = clássico (até 1979) OU época preferida = anos 80 E época preferida <> anos 2020
+        entao: [perfil do espectador = Nostálgico(a) CNF 80]
+      - nome: "perfil: cinema nacional"
+        se: origem preferida = nacional
+        entao: [perfil do espectador = Fã do cinema nacional]
+      - nome: "perfil: família"
+        se: companhia = com a família E há menores assistindo = Sim
+        entao: [perfil do espectador = Sessão em família]
+      - nome: "perfil: família (animação)"
+        se: gênero preferido = animação E companhia = com a família
+        entao: [perfil do espectador = Sessão em família CNF 80]
+      - nome: "perfil: histórias reais"
+        se: tipo de história preferido = baseada em fatos reais
+        entao: [perfil do espectador = Explorador(a) de histórias reais]
+      - nome: "perfil: biografias"
+        se: gênero preferido = biografia
+        entao: [perfil do espectador = Explorador(a) de histórias reais CNF 80]
+      - nome: "perfil: eclético"
+        se: gênero preferido = indiferente E clima desejado = indiferente
+        entao: [perfil do espectador = Eclético(a)]
+      - nome: "perfil: eclético (sem resposta)"
+        se: gênero preferido = DESCONHECIDO E clima desejado = indiferente
+        entao: [perfil do espectador = Eclético(a) CNF 80]
+
+objetivos:
+  - {var: classificação permitida, mostrar: false}
+  - {var: gênero compatível, mostrar: false}
+  - {var: clima compatível, mostrar: false}
+  - {var: duração aceitável, mostrar: false}
+  - {var: origem compatível, mostrar: false}
+  - {var: época compatível, mostrar: false}
+  - {var: tipo de história compatível, mostrar: false}
+  - {var: perfil do espectador}
+  - {var: filme recomendado}
+
+itens:
+  arquivo: filmes.csv
+  chave: titulo
+  objetivo: filme recomendado
+  colunas_lista: [generos, clima, atores, premios]
+  mapas:
+    fatos_reais: {sim: baseada em fatos reais, não: ficção}
+  derivados:
+    - coluna: epoca
+      de: ano
+      faixas: [[0, 1979, clássico (até 1979)], [1980, 1989, anos 80], [1990, 1999, anos 90],
+               [2000, 2009, anos 2000], [2010, 2019, anos 2010], [2020, 2099, anos 2020]]
+    - coluna: faixa_duracao
+      de: duracao
+      faixas: [[0, 100, curta], [101, 130, média], [131, 160, longa], [161, 999, muito longa]]
+
+  modelos:
+    - nome: perfil completo
+      cnf: 90
+      condicoes:
+        - {var: gênero compatível, coluna: generos}
+        - {var: clima compatível, coluna: clima}
+        - {var: época compatível, coluna: epoca}
+        - {var: origem compatível, coluna: origem}
+        - {var: tipo de história compatível, coluna: fatos_reais}
+        - {se: "tem limite de tempo = Não OU tem limite de tempo = DESCONHECIDO OU tempo disponível >= {duracao} OU faixa de tempo = DESCONHECIDO"}
+        - {var: classificação permitida, coluna: classificacao}
+
+    - nome: gênero e clima
+      cnf: 50
+      condicoes:
+        - {var: gênero preferido, coluna: generos}
+        - {var: clima desejado, coluna: clima}
+        - {se: "tem limite de tempo = Não OU tem limite de tempo = DESCONHECIDO OU tempo disponível >= {duracao} OU faixa de tempo = DESCONHECIDO"}
+        - {var: classificação permitida, coluna: classificacao}
+
+    - nome: gênero e época
+      cnf: 35
+      condicoes:
+        - {var: gênero preferido, coluna: generos}
+        - {var: época preferida, coluna: epoca}
+        - {var: classificação permitida, coluna: classificacao}
+
+    - nome: origem e gênero
+      cnf: 30
+      condicoes:
+        - {var: gênero compatível, coluna: generos}
+        - {var: origem preferida, coluna: origem}
+        - {var: classificação permitida, coluna: classificacao}
+
+    - nome: ideal para a ocasião
+      cnf: 25
+      condicoes:
+        - {var: gênero indicado para a ocasião, coluna: generos}
+        - {var: clima compatível, coluna: clima}
+        - {var: classificação permitida, coluna: classificacao}
+
+    - nome: aclamado pela crítica
+      cnf: 25
+      filtro: {coluna: premios, nao_vazio: true}
+      condicoes:
+        - {se: quer premiados = Sim}
+        - {var: gênero compatível, coluna: generos}
+        - {var: classificação permitida, coluna: classificacao}
+
+    - nome: grande premiado
+      cnf: 20
+      filtro: {coluna: premios, contem_algum: [Oscar de Melhor Filme, Oscar de Melhor Filme Internacional,
+                                                Palma de Ouro (Cannes), Urso de Ouro (Berlim), Leão de Ouro (Veneza)]}
+      condicoes:
+        - {se: quer premiados = Sim}
+        - {var: gênero compatível, coluna: generos}
+        - {var: classificação permitida, coluna: classificacao}
+
+    - nome: saga ou franquia
+      cnf: 20
+      filtro: {coluna: franquia, nao_vazio: true}
+      condicoes:
+        - {se: interesse em franquias = gosto de sagas e franquias}
+        - {var: gênero compatível, coluna: generos}
+        - {var: classificação permitida, coluna: classificacao}
+
+    - nome: obra única
+      cnf: 15
+      filtro: {coluna: franquia, vazio: true}
+      condicoes:
+        - {se: interesse em franquias = prefiro filmes únicos}
+        - {var: gênero compatível, coluna: generos}
+        - {var: classificação permitida, coluna: classificacao}
+
+    - nome: sugestão pelo gênero
+      cnf: 15
+      condicoes:
+        - {var: gênero compatível, coluna: generos}
+        - {se: "tem limite de tempo = Não OU tem limite de tempo = DESCONHECIDO OU tempo disponível >= {duracao} OU faixa de tempo = DESCONHECIDO"}
+        - {var: classificação permitida, coluna: classificacao}
+
+    - nome: sugestão pelo clima
+      cnf: 15
+      condicoes:
+        - {var: clima compatível, coluna: clima}
+        - {se: "tem limite de tempo = Não OU tem limite de tempo = DESCONHECIDO OU tempo disponível >= {duracao} OU faixa de tempo = DESCONHECIDO"}
+        - {var: classificação permitida, coluna: classificacao}
+
+  evidencias:
+    # cada gênero/clima escolhido que o filme tiver soma evidência:
+    # quem coincide em mais escolhas sobe no ranking
+    - nome: gênero em comum
+      condicoes:
+        - {se: "tem limite de tempo = Não OU tem limite de tempo = DESCONHECIDO OU tempo disponível >= {duracao} OU faixa de tempo = DESCONHECIDO"}
+        - {var: classificação permitida, coluna: classificacao}
+      var: gênero preferido
+      coluna: generos
+      cnf: 12
+    - nome: clima em comum
+      condicoes:
+        - {se: "tem limite de tempo = Não OU tem limite de tempo = DESCONHECIDO OU tempo disponível >= {duracao} OU faixa de tempo = DESCONHECIDO"}
+        - {var: classificação permitida, coluna: classificacao}
+      var: clima desejado
+      coluna: clima
+      cnf: 10
+    - nome: ator
+      prefixo: quer escolher ator = Sim
+      condicoes:
+        - {var: classificação permitida, coluna: classificacao}
+      var: ator preferido
+      coluna: atores
+      cnf: 70
+    - nome: diretor
+      prefixo: quer escolher diretor = Sim
+      condicoes:
+        - {var: classificação permitida, coluna: classificacao}
+      var: diretor preferido
+      coluna: diretor
+      cnf: 60

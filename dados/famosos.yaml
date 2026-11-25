@@ -1,0 +1,384 @@
+# Sistema Especialista 1: recomendação de pessoas famosas
+# por características físicas e obras/trabalhos.
+# Gerar:  python ../gerador/build.py famosos.yaml
+
+base:
+  nome: Quem é o Famoso?
+  autores: Trabalho 3 - Fundamentos de Sistemas Inteligentes (UTFPR Santa Helena)
+  abertura:
+    - "Sistema especialista que recomenda pessoas famosas (atores, cantores, atletas,"
+    - "apresentadores e personagens fictícios) a partir das características físicas"
+    - "e dos trabalhos/obras que você descrever."
+    - ""
+    - "Base com 97 celebridades brasileiras e internacionais."
+    - "Dica: quando não tiver preferência, marque 'indiferente' (ou não marque nada)."
+    - "Você pode informar o grau de confiança (%) de cada resposta."
+  arquivo_saida: ../saida/Famosos.bcm
+  prioridade: OU          # (a OU b) E (c OU d): cláusulas avaliadas em forma normal conjuntiva
+  cnf_minimo: 50
+
+esquema: esquema_famosos.yaml
+
+# ----------------------------------------------------------------------------
+# Variáveis (camada 1 = perguntas; camada 2 = "compatível", gerada automaticamente)
+# ----------------------------------------------------------------------------
+variaveis:
+  - nome: categoria preferida
+    tipo: multi
+    valores_esquema: categoria
+    grupos:
+      "pessoa real (qualquer área)": [ator/atriz, cantor(a), atleta, apresentador(a)/influenciador(a)]
+    indiferente: true
+    compativel: categoria compatível
+    pergunta: Que tipo de famoso você procura?
+    porque:
+      - "A categoria (ator, cantor, atleta, personagem...) define quais"
+      - "características de trabalho serão perguntadas depois."
+
+  - nome: sexo preferido
+    tipo: uni
+    valores_esquema: sexo
+    indiferente: true
+    compativel: sexo compatível
+    pergunta: O famoso é homem ou mulher (masculino ou feminino)?
+    porque: ["Reduz bastante o conjunto de candidatos."]
+
+  - nome: faixa etária preferida
+    tipo: multi
+    valores_esquema: faixa_etaria
+    indiferente: true
+    compativel: faixa etária compatível
+    pergunta: Qual a faixa etária (idade atual ou aparente)?
+    porque:
+      - "Para personagens, considere a idade aparente."
+      - "Para quem já faleceu, considere a idade com que ficou conhecido."
+
+  - nome: cabelo preferido
+    tipo: multi
+    valores_esquema: cabelo
+    indiferente: true
+    compativel: cabelo compatível
+    pergunta: Como é o cabelo (cor ou visual mais marcante)?
+    porque: ["Característica física usada no perfil e na regra 'cabelo e olhos'."]
+
+  - nome: olhos preferidos
+    tipo: multi
+    valores_esquema: olhos
+    indiferente: true
+    compativel: olhos compatíveis
+    pergunta: Qual a cor dos olhos?
+    porque: ["Se não souber, marque 'indiferente'."]
+
+  - nome: sabe a altura
+    tipo: logica
+    pergunta: Você sabe (ou quer informar) a altura aproximada?
+    porque: ["Se sim, a altura em centímetros será usada para estimar a estatura."]
+
+  - nome: altura aproximada
+    tipo: numerica
+    faixa: [40, 230]
+    pergunta: Qual a altura aproximada, em centímetros?
+    porque:
+      - "A altura é convertida em estatura (baixa, média ou alta) com"
+      - "fronteiras difusas: 165 cm conta parcialmente como baixa e como média."
+
+  - nome: faixa de altura
+    tipo: uni
+    valores: [até 160 cm, 161 a 170 cm, 171 a 178 cm, 179 a 186 cm, acima de 186 cm]
+
+  - nome: estatura compatível
+    tipo: multi
+    valores_esquema: estatura
+
+  - nome: origem preferida
+    tipo: multi
+    valores_esquema: origem
+    grupos:
+      "estrangeira (qualquer país)": [norte-americana, latino-americana/caribenha, britânica, outra europeia, asiática/oceania]
+    indiferente: true
+    compativel: origem compatível
+    pergunta: De onde é o famoso (para personagens, a origem da obra)?
+    porque: ["Nacionalidade da pessoa ou origem da obra do personagem."]
+
+  - nome: época preferida
+    tipo: multi
+    valores_esquema: epoca
+    grupos:
+      "clássica (até os anos 90)": [até anos 80, anos 90]
+      "recente (de 2010 em diante)": [anos 2010, anos 2020]
+    indiferente: true
+    compativel: época compatível
+    pergunta: Em que época o famoso fez (ou faz) mais sucesso?
+    porque: ["Marque todas as décadas que quiser."]
+
+  - nome: espécie preferida
+    tipo: multi
+    valores_esquema: especie
+    indiferente: true
+    compativel: espécie compatível
+    pergunta: O personagem é humano, animal, criatura ou brinquedo?
+    porque: ["Só é perguntado quando a busca inclui personagens fictícios."]
+
+  - nome: gênero de atuação preferido
+    tipo: multi
+    valores_esquema: genero_atuacao
+    indiferente: true
+    pergunta: Em que tipo de produção o ator/atriz costuma atuar?
+    porque: ["Só é perguntado quando a busca inclui atores e atrizes."]
+
+  - nome: gênero musical preferido
+    tipo: multi
+    valores_esquema: genero_musical
+    indiferente: true
+    pergunta: Qual o estilo musical?
+    porque: ["Só é perguntado quando a busca inclui cantores."]
+
+  - nome: esporte preferido
+    tipo: multi
+    valores_esquema: esporte
+    indiferente: true
+    pergunta: Qual o esporte?
+    porque: ["Só é perguntado quando a busca inclui atletas."]
+
+  - nome: mídia preferida
+    tipo: multi
+    valores_esquema: midia
+    indiferente: true
+    pergunta: Em que mídia o personagem aparece?
+    porque: ["Só é perguntado quando a busca inclui personagens fictícios."]
+
+  - nome: formato preferido
+    tipo: multi
+    valores_esquema: formato
+    indiferente: true
+    pergunta: Que tipo de programa ou conteúdo o apresentador/influenciador faz?
+    porque: ["Só é perguntado quando a busca inclui apresentadores e influenciadores."]
+
+  - nome: traços marcantes
+    tipo: multi
+    valores: [barba, bigode, tatuagens, óculos, cicatriz, cabelo cacheado/crespo, chapéu/boné, roupa/fantasia icônica, maquiagem marcante, nenhum em especial]
+    pergunta: Ele(a) tem algum traço físico marcante?
+    porque: ["Cada traço que coincidir aumenta o grau de confiança da recomendação."]
+
+  - nome: quer citar uma obra
+    tipo: logica
+    pergunta: Você lembra de alguma obra ou trabalho dessa pessoa ou personagem?
+    porque: ["Obras são a evidência mais forte. Se sim, listas de obras serão mostradas."]
+
+  - nome: "obra: filme, série ou novela"
+    tipo: multi
+    valores_coluna: obras_atuacao
+    pergunta: Em qual filme, série ou novela ele(a) atuou?
+    porque: ["Cada obra marcada é uma evidência forte (CNF 85%) a favor de quem atuou nela."]
+  - nome: "obra: música ou álbum"
+    tipo: multi
+    valores_coluna: obras_musica
+    pergunta: Qual música, álbum ou banda você associa a ele(a)?
+    porque: ["Cada música ou álbum marcado é uma evidência forte (CNF 85%)."]
+  - nome: "obra: time ou competição"
+    tipo: multi
+    valores_coluna: obras_esporte
+    pergunta: Qual time, clube ou competição você associa ao atleta?
+    porque: ["Times e competições compartilhados (ex.: Copa do Mundo) somam evidências."]
+  - nome: "obra: franquia ou universo"
+    tipo: multi
+    valores_coluna: franquia
+    pergunta: De qual franquia ou universo é o personagem?
+    porque: ["A franquia identifica o personagem com CNF 85%."]
+  - nome: "obra: programa ou canal"
+    tipo: multi
+    valores_coluna: programas
+    pergunta: Qual programa ou canal você associa a ele(a)?
+    porque: ["O programa identifica o apresentador/influenciador com CNF 85%."]
+
+# ----------------------------------------------------------------------------
+# Regras intermediárias escritas à mão (camada 2)
+# ----------------------------------------------------------------------------
+regras:
+  - grupo: faixa de altura (altura numérica -> faixa)
+    itens:
+      - nome: "faixa de altura: até 160 cm"
+        se: altura aproximada <= 160
+        entao: [faixa de altura = até 160 cm]
+      - nome: "faixa de altura: 161 a 170 cm"
+        se: altura aproximada > 160 E altura aproximada <= 170
+        entao: [faixa de altura = 161 a 170 cm]
+      - nome: "faixa de altura: 171 a 178 cm"
+        se: altura aproximada > 170 E altura aproximada <= 178
+        entao: [faixa de altura = 171 a 178 cm]
+      - nome: "faixa de altura: 179 a 186 cm"
+        se: altura aproximada > 178 E altura aproximada <= 186
+        entao: [faixa de altura = 179 a 186 cm]
+      - nome: "faixa de altura: acima de 186 cm"
+        se: altura aproximada > 186
+        entao: [faixa de altura = acima de 186 cm]
+
+  - grupo: estatura (faixa de altura -> estatura, fronteiras difusas)
+    itens:
+      - nome: "estatura compatível: altura não informada"
+        se: sabe a altura = Não
+        entao: [estatura compatível = baixa, estatura compatível = média, estatura compatível = alta]
+      - nome: "estatura compatível: não respondeu"
+        se: sabe a altura = DESCONHECIDO
+        entao: [estatura compatível = baixa, estatura compatível = média, estatura compatível = alta]
+      - nome: "estatura compatível: altura em branco"
+        se: sabe a altura = Sim E faixa de altura = DESCONHECIDO
+        entao: [estatura compatível = baixa, estatura compatível = média, estatura compatível = alta]
+      - nome: "estatura compatível: até 160 cm"
+        se: sabe a altura = Sim E faixa de altura = até 160 cm
+        entao: [estatura compatível = baixa]
+      - nome: "estatura compatível: 161 a 170 cm"
+        se: sabe a altura = Sim E faixa de altura = 161 a 170 cm
+        entao: [estatura compatível = baixa CNF 80, estatura compatível = média CNF 70]
+      - nome: "estatura compatível: 171 a 178 cm"
+        se: sabe a altura = Sim E faixa de altura = 171 a 178 cm
+        entao: [estatura compatível = média]
+      - nome: "estatura compatível: 179 a 186 cm"
+        se: sabe a altura = Sim E faixa de altura = 179 a 186 cm
+        entao: [estatura compatível = média CNF 70, estatura compatível = alta CNF 80]
+      - nome: "estatura compatível: acima de 186 cm"
+        se: sabe a altura = Sim E faixa de altura = acima de 186 cm
+        entao: [estatura compatível = alta]
+
+# ----------------------------------------------------------------------------
+# Objetivos: os ocultos fixam a ordem das perguntas principais
+# (simulação de encadeamento para frente, conforme o manual do SINTA)
+# ----------------------------------------------------------------------------
+objetivos:
+  - {var: categoria compatível, mostrar: false}
+  - {var: sexo compatível, mostrar: false}
+  - {var: faixa etária compatível, mostrar: false}
+  - {var: cabelo compatível, mostrar: false}
+  - {var: olhos compatíveis, mostrar: false}
+  - {var: estatura compatível, mostrar: false}
+  - {var: origem compatível, mostrar: false}
+  - {var: época compatível, mostrar: false}
+  - {var: famoso recomendado}
+
+# ----------------------------------------------------------------------------
+# Itens (camada 3): modelos e evidências geram as regras de cada famoso
+# ----------------------------------------------------------------------------
+itens:
+  arquivo: famosos.csv
+  chave: nome
+  objetivo: famoso recomendado
+  colunas_lista: [categoria, tracos, epoca, genero_atuacao, genero_musical, midia, formato,
+                  obras_atuacao, obras_musica, obras_esporte, franquia, programas]
+
+  modelos:
+    - nome: perfil completo
+      cnf: 90
+      condicoes:
+        - {var: categoria compatível, coluna: categoria}
+        - {var: sexo compatível, coluna: sexo}
+        - {var: espécie compatível, coluna: especie, apenas_se: {coluna: categoria, contem: personagem fictício}}
+        - {var: faixa etária compatível, coluna: faixa_etaria}
+        - {var: cabelo compatível, coluna: cabelo, se_vazio: pular_condicao}
+        - {var: olhos compatíveis, coluna: olhos, se_vazio: pular_condicao}
+        - {var: estatura compatível, coluna: estatura, se_vazio: pular_condicao}
+        - {var: origem compatível, coluna: origem}
+        - {var: época compatível, coluna: epoca}
+
+    - nome: cabelo e olhos
+      cnf: 45
+      condicoes:
+        - {var: categoria compatível, coluna: categoria}
+        - {var: sexo compatível, coluna: sexo}
+        - {var: cabelo preferido, coluna: cabelo}
+        - {var: olhos preferidos, coluna: olhos}
+
+    - nome: idade e época
+      cnf: 35
+      condicoes:
+        - {var: categoria compatível, coluna: categoria}
+        - {var: sexo compatível, coluna: sexo}
+        - {var: faixa etária preferida, coluna: faixa_etaria}
+        - {var: época preferida, coluna: epoca}
+
+    - nome: origem
+      cnf: 30
+      condicoes:
+        - {var: categoria compatível, coluna: categoria}
+        - {var: sexo compatível, coluna: sexo}
+        - {var: época compatível, coluna: epoca}
+        - {var: origem preferida, coluna: origem}
+
+    - nome: área (atuação)
+      cnf: 55
+      filtro: {coluna: categoria, contem: ator/atriz}
+      condicoes:
+        - {se: categoria compatível = ator/atriz}
+        - {var: sexo compatível, coluna: sexo}
+        - {var: gênero de atuação preferido, coluna: genero_atuacao}
+
+    - nome: área (música)
+      cnf: 55
+      filtro: {coluna: categoria, contem: cantor(a)}
+      condicoes:
+        - {se: categoria compatível = cantor(a)}
+        - {var: sexo compatível, coluna: sexo}
+        - {var: gênero musical preferido, coluna: genero_musical}
+
+    - nome: área (esporte)
+      cnf: 55
+      filtro: {coluna: categoria, contem: atleta}
+      condicoes:
+        - {se: categoria compatível = atleta}
+        - {var: sexo compatível, coluna: sexo}
+        - {var: esporte preferido, coluna: esporte}
+
+    - nome: área (mídia)
+      cnf: 55
+      filtro: {coluna: categoria, contem: personagem fictício}
+      condicoes:
+        - {se: categoria compatível = personagem fictício}
+        - {var: sexo compatível, coluna: sexo}
+        - {var: mídia preferida, coluna: midia}
+
+    - nome: área (apresentação)
+      cnf: 55
+      filtro: {coluna: categoria, contem: apresentador(a)/influenciador(a)}
+      condicoes:
+        - {se: categoria compatível = apresentador(a)/influenciador(a)}
+        - {var: sexo compatível, coluna: sexo}
+        - {var: formato preferido, coluna: formato}
+
+  evidencias:
+    - nome: traço marcante
+      var: traços marcantes
+      coluna: tracos
+      cnf: 30
+      condicoes:
+        - {var: categoria compatível, coluna: categoria}
+        - {var: sexo compatível, coluna: sexo}
+
+    - nome: obra (atuação)
+      rotulo: obra
+      prefixo: quer citar uma obra = Sim E categoria compatível = ator/atriz
+      var: "obra: filme, série ou novela"
+      coluna: obras_atuacao
+      cnf: 85
+    - nome: obra (música)
+      rotulo: obra
+      prefixo: quer citar uma obra = Sim E categoria compatível = cantor(a)
+      var: "obra: música ou álbum"
+      coluna: obras_musica
+      cnf: 85
+    - nome: obra (esporte)
+      rotulo: obra
+      prefixo: quer citar uma obra = Sim E categoria compatível = atleta
+      var: "obra: time ou competição"
+      coluna: obras_esporte
+      cnf: 85
+    - nome: obra (franquia)
+      rotulo: obra
+      prefixo: quer citar uma obra = Sim E categoria compatível = personagem fictício
+      var: "obra: franquia ou universo"
+      coluna: franquia
+      cnf: 85
+    - nome: obra (programa)
+      rotulo: obra
+      prefixo: quer citar uma obra = Sim E categoria compatível = apresentador(a)/influenciador(a)
+      var: "obra: programa ou canal"
+      coluna: programas
+      cnf: 85

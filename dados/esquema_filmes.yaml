@@ -1,0 +1,35 @@
+# Esquema da base de filmes: colunas do CSV, vocabulário controlado e obrigatoriedade.
+# A classificação indicativa é a brasileira (aproximada para filmes antigos).
+arquivo: filmes.csv
+chave: titulo
+colunas:
+  titulo: {obrigatoria: true}
+  ano: {obrigatoria: true, numerico: [1900, 2026]}
+  duracao: {obrigatoria: true, numerico: [60, 240]}
+  pais:
+    obrigatoria: true
+    valores: [Brasil, EUA, Reino Unido, França, Itália, Alemanha, Japão, Coreia do Sul, Argentina, México, Nova Zelândia, Austrália]
+  origem:
+    obrigatoria: true
+    valores: [nacional, internacional]
+  generos:
+    obrigatoria: true
+    lista: true
+    valores: [ação, aventura, animação, comédia, drama, crime, terror, suspense, ficção científica, fantasia, romance, musical, guerra, biografia]
+  clima:
+    obrigatoria: true
+    lista: true
+    valores: [divertido, emocionante, tenso, assustador, reflexivo, romântico, inspirador, épico]
+  classificacao:
+    obrigatoria: true
+    valores: [L, "10", "12", "14", "16", "18"]
+  diretor: {obrigatoria: true}
+  atores: {lista: true}
+  premios:
+    lista: true
+    valores: [Oscar de Melhor Filme, Oscar de Melhor Filme Internacional, Oscar (outras categorias), Indicado ao Oscar,
+              Palma de Ouro (Cannes), Prêmio no Festival de Cannes, Urso de Ouro (Berlim), Leão de Ouro (Veneza), Globo de Ouro]
+  fatos_reais:
+    obrigatoria: true
+    valores: [sim, não]
+  franquia: {}
