@@ -1,0 +1,384 @@
+# Trabalho 3: Sistemas Especialistas no Expert SINTA
+
+**Disciplina:** Fundamentos de Sistemas Inteligentes (UTFPR, Câmpus Santa Helena)
+**Docente:** Thiago Naves
+**Entregáveis principais:** `saida/Famosos.bcm` e `saida/Filmes.bcm` (abrem no Expert SINTA 1.1b)
+
+---
+
+## Sumário
+
+1. [Resumo](#1-resumo)
+2. [O que foi pedido e como foi atendido](#2-o-que-foi-pedido-e-como-foi-atendido)
+3. [A ferramenta: Expert SINTA](#3-a-ferramenta-expert-sinta)
+4. [Abordagem: engenharia do conhecimento orientada a dados](#4-abordagem-engenharia-do-conhecimento-orientada-a-dados)
+5. [Sistema 1: "Quem é o Famoso?"](#5-sistema-1-quem-é-o-famoso)
+6. [Sistema 2: "Que Filme Eu Vejo?"](#6-sistema-2-que-filme-eu-vejo)
+7. [Validação e testes](#7-validação-e-testes)
+8. [Limitações e observações](#8-limitações-e-observações)
+9. [Como usar e como regenerar](#9-como-usar-e-como-regenerar)
+10. [Estrutura dos arquivos](#10-estrutura-dos-arquivos)
+
+Apêndices, gerados automaticamente a partir das bases:
+[apendice_famosos.md](apendice_famosos.md) e [apendice_filmes.md](apendice_filmes.md).
+
+---
+
+## 1. Resumo
+
+Foram construídos **dois sistemas especialistas** no shell **Expert SINTA**:
+
+| | Sistema 1: **Quem é o Famoso?** | Sistema 2: **Que Filme Eu Vejo?** |
+|---|---|---|
+| Recomenda | pessoas famosas (atores, cantores, atletas, apresentadores e personagens fictícios) | filmes nacionais e internacionais |
+| Com base em | características físicas, área de trabalho, época, origem, traços marcantes e **obras** | gênero, clima/sensação, **duração**, idade do espectador, época, origem, fatos reais, prêmios, sagas, **atores** e **diretores** |
+| Base de dados | **97 famosos** (48 brasileiros), 21 atributos | **145 filmes** (38 brasileiros, 1936–2025), 13 atributos + 2 derivados |
+| Regras | **827** | **2.364** |
+| Premissas / conclusões | 3.571 / 900 | 13.057 / 2.471 |
+| Variáveis / perguntas / objetivos | 33 / 22 / 9 | 28 / 16 / 9 |
+
+**Total: 3.191 regras** nos dois sistemas, todas executáveis no Expert SINTA e todas **alcançáveis**, conforme demonstrado na seção 7.
+
+Diferenciais (o enunciado valoriza "novas abordagens de conhecimento, base de dados e algoritmos"):
+
+- **Engenharia reversa do formato `.BCM`** a partir do código-fonte do SINTA e um **gerador** que compila dados (CSV) + configuração (YAML) diretamente em bases do SINTA. As bases são grandes, consistentes e reprodutíveis.
+- **Arquitetura de conhecimento em 3 camadas**, com uma **camada de compatibilidade** gerada automaticamente: trata "indiferente", resposta em branco e agrupamentos como "estrangeira" ou "recentes".
+- **Ranking por acúmulo de evidências** usando a combinação de fatores de confiança do próprio SINTA (`ca + cn − ca·cn`, um *noisy-OR*).
+- **Lógica difusa** em faixas numéricas (altura → estatura; tempo → duração) e **comparações numéricas exatas** por item (`tempo disponível >= 148`).
+- **Simulador fiel** da máquina de inferência do SINTA (port do código Pascal), **validado contra o ExSINTA real**. Com ele foram feitas milhares de consultas de teste.
+- **Testes automatizados na interface real do ExSINTA** (8 consultas completas, idênticas ao simulador).
+
+## 2. O que foi pedido e como foi atendido
+
+| Requisito do enunciado | Como foi atendido |
+|---|---|
+| Dois sistemas especialistas no Expert SINTA | `saida/Famosos.bcm` e `saida/Filmes.bcm`, abertos, executados e regravados no ExSINTA 1.1b (Windows 11) |
+| SE 1: famosos por **características físicas** e **obras** | sexo, faixa etária, cor do cabelo, cor dos olhos, **altura (cm)**, espécie (personagens), traços marcantes; obras em 5 categorias (filmes/séries/novelas, músicas, times/competições, franquias, programas) |
+| Atores, cantores, personagens fictícios e outras celebridades | 26 atores, 27 cantores, 14 atletas, 23 personagens e 7 apresentadores/influenciadores (categoria principal) |
+| SE 2: filmes por **estilo, duração, gênero, atores, ano** e outras informações | clima/estilo, duração exata × tempo disponível, 14 gêneros, 255 regras de ator, ano → época, além de diretor, país/origem, fatos reais, prêmios, sagas, classificação indicativa e ocasião |
+| Filmes nacionais e internacionais | 38 brasileiros e 107 internacionais de 12 países (séries e novelas **não** incluídas, por decisão do grupo) |
+| Base de dados o mais completa possível, com pesquisa | 97 famosos × 21 atributos; 145 filmes × 15 atributos; vocabulário controlado e validador automático (seção 7.1) |
+| Máximo de regras possível | 3.191 regras, geradas sistematicamente (cada item tem de 6 a 20 regras) |
+| Estabelecer todos os objetivos e variáveis | 9 objetivos por base (ordem de perguntas + objetivos visíveis), 61 variáveis, 38 perguntas, todas com texto de **"Por quê?"** |
+| Executar de forma funcional pelo Expert SINTA | 8 consultas completas executadas no ExSINTA real, com resultados idênticos ao esperado (seção 7.3) |
+
+## 3. A ferramenta: Expert SINTA
+
+O Expert SINTA (LIA/UFC) é um *shell* de sistemas especialistas baseado em **regras de produção** e **encadeamento para trás** (*backward chaining*). Conceitos usados no trabalho:
+
+- **Regra:** `SE <premissas ligadas por E/OU> ENTÃO <conclusões> CNF x%`.
+- **Variáveis:** univaloradas, multivaloradas (acumulam vários valores, ideais para "recomendações"), numéricas e lógicas (Sim/Não). O valor especial **DESCONHECIDO** é atribuído quando o usuário não responde ou quando nenhuma regra conclui a variável.
+- **Objetivos:** variáveis que o motor tenta descobrir, na ordem definida. Objetivos com "mostrar resultados" desligado simulam **encadeamento para frente** e servem para fixar a ordem das perguntas (técnica descrita no manual).
+- **Fatores de confiança (CNF):** E → `c1·c2`; OU → `c1 + c2 − c1·c2`; conclusão → `CNF(premissas) × CNF(regra)`; o mesmo valor concluído duas vezes → `ca + cn − ca·cn`. Uma regra é aceita se o CNF das premissas for **≥ 50%**.
+
+## 4. Abordagem: engenharia do conhecimento orientada a dados
+
+### 4.1 Por que gerar as bases em vez de digitá-las
+
+Cadastrar mais de 3.000 regras à mão na interface do SINTA seria lento e muito sujeito a erros, e qualquer correção nos dados exigiria refazer regras uma a uma. Como o código-fonte do SINTA acompanha o material (`sinta/SINTA/sintascr`), fizemos a **engenharia reversa** do formato binário `.BCM` (`EXSYSTEM.PAS`, rotinas `SaveToFile`/`LoadFromFile`) e escrevemos um **compilador de bases**:
+
+```
+dados/famosos.csv  ─┐                         ┌─> saida/Famosos.bcm  (abre no SINTA)
+dados/famosos.yaml ─┼─> gerador/build.py ─────┼─> saida/Famosos.txt  (base legível)
+dados/esquema_*.yaml┘   (DSL + modelos)       └─> saida/Famosos.json (estatísticas)
+```
+
+- **CSV:** a pesquisa sobre cada item (um famoso ou filme por linha).
+- **Esquema (YAML):** o vocabulário controlado de cada atributo (ex.: os 14 gêneros).
+- **Configuração (YAML):** variáveis, perguntas, "por quê", regras intermediárias (numa pequena linguagem `a = x OU a = y E b >= 10`), **modelos de regra** e **evidências**, aplicados a cada item.
+
+O formato está documentado em [`docs/formato_bcm.md`](../docs/formato_bcm.md): strings Pascal de 256 bytes, inteiros de 16 bits e números `real` de 6 bytes (Real48). Um detalhe não óbvio: o conectivo gravado em cada premissa liga-a **à próxima**, e a última recebe "ENTÃO".
+
+### 4.2 Arquitetura em camadas
+
+```mermaid
+flowchart LR
+  subgraph C1["Camada 1: perguntas"]
+    P1[gênero preferido]:::q
+    P2[clima desejado]:::q
+    P3[tempo disponível<br/>numérica]:::q
+    P4[há menores? / idade]:::q
+    P5[ator, diretor, ...]:::q
+  end
+  subgraph C2["Camada 2: conhecimento intermediário"]
+    K1[gênero compatível]
+    K2[faixa de tempo → duração aceitável]
+    K3[faixa do mais novo → classificação permitida]
+    K4[gênero indicado p/ ocasião]
+    K5[perfil do espectador]:::obj
+  end
+  subgraph C3["Camada 3: recomendação"]
+    R[filme recomendado<br/>ranking por CNF]:::obj
+  end
+  P1 --> K1 --> R
+  P2 --> R
+  P3 --> K2 --> R
+  P4 --> K3 --> R
+  P1 & P2 --> K5
+  P5 --> R
+  K4 --> R
+  classDef q fill:#e8f0fe,stroke:#4a6fa5
+  classDef obj fill:#fde8e8,stroke:#a54a4a
+```
+
+**Camada 1: perguntas.** São as variáveis "X preferido". Quase todas são multivaloradas e têm a opção "indiferente".
+
+**Camada 2: conhecimento intermediário**, de dois tipos:
+
+- **Compatibilidade (gerada automaticamente).** Cada pergunta "X preferido" gera uma variável "X compatível":
+  - `SE X preferido = v ENTÃO X compatível = v` (uma regra por valor);
+  - `SE X preferido = indiferente ENTÃO X compatível = todos os valores`;
+  - `SE X preferido = DESCONHECIDO ENTÃO X compatível = todos` (o usuário não marcou nada);
+  - **grupos:** `SE origem preferida = estrangeira (qualquer país) ENTÃO origem compatível = norte-americana, britânica, …`; o mesmo vale para "clássicos (até os anos 90)", "recentes (de 2010 em diante)" e "pessoa real (qualquer área)".
+
+  Assim, as regras dos itens ficam simples e robustas.
+- **Regras escritas à mão:**
+  - **altura (cm) → faixa → estatura difusa**, por exemplo 161–170 cm = 80% "baixa" e 70% "média";
+  - **idade do mais novo → faixa → classificações permitidas**;
+  - **tempo → faixa → durações aceitáveis**;
+  - **companhia → gêneros indicados para a ocasião**, por exemplo casal → romance 100%, comédia 80%;
+  - **20 regras de perfil do espectador**, como "Caçador(a) de adrenalina", "Coração mole" e "Fã do cinema nacional".
+
+**Camada 3: recomendação.** Cada item recebe várias regras, geradas por **modelos** (combinações de atributos com CNFs diferentes) e por **evidências** (uma regra por ator, obra, traço, gênero em comum…).
+
+### 4.3 Ranking por acúmulo de evidências (noisy-OR)
+
+O objetivo é **multivalorado**, então o SINTA avalia todas as regras e, quando duas regras concluem o mesmo item, **combina** os graus de confiança com `ca + cn − ca·cn`. Cada regra funciona como uma evidência independente, e o resultado final é `1 − Π(1 − cᵢ)`.
+
+Exemplo real (Sistema 1, usuário descrevendo o Wagner Moura):
+
+| Regra disparada | CNF da regra | Acumulado |
+|---|---|---|
+| Wagner Moura - perfil completo | 90% | 90,000% |
+| Wagner Moura - cabelo e olhos | 45% | 94,500% |
+| Wagner Moura - idade e época | 35% | 96,425% |
+| Wagner Moura - origem | 30% | 97,497% |
+| Wagner Moura - área (atuação) | 55% | 98,874% |
+| Wagner Moura - obra: Tropa de Elite | 85% | **99,831%** ← valor exibido pelo SINTA |
+
+O SINTA ordena os resultados pelo CNF, o que produz um **ranking**: quem combina com mais evidências fica no topo, e itens parcialmente compatíveis aparecem abaixo com confiança menor.
+
+### 4.4 Regras em forma normal conjuntiva
+
+A opção de precedência dos conectivos do SINTA foi configurada como **OU** (`prioridade = OU`), de modo que `a1 OU a2 E b1 OU b2 E c` é avaliado como `(a1 ∨ a2) ∧ (b1 ∨ b2) ∧ c`. Cada atributo vira uma **cláusula** com as alternativas do item. Por exemplo, um filme de ação **ou** ficção científica, **e** de clima tenso **ou** reflexivo:
+
+![Regra no editor do SINTA](img/filmes/regra_a_origem.png)
+
+### 4.5 Técnicas adicionais
+
+| Técnica | Para quê |
+|---|---|
+| **Objetivos ocultos** na ordem desejada | fixam uma ordem natural para as perguntas principais (encadeamento para frente simulado) |
+| **Perguntas-porteira** (`quer citar uma obra?`, `quer escolher ator?`, `há menores?`) | perguntas condicionais. Graças ao curto-circuito do SINTA, a lista de atores só é exibida se o usuário quiser |
+| **Perguntas dependentes da categoria** | "estilo musical" só aparece se a busca inclui cantores; "espécie" e "mídia", só se inclui personagens |
+| **Número → faixa categórica → conclusão** | trata campos numéricos deixados em branco: a faixa vira DESCONHECIDO e há uma regra de fallback para isso (idade em branco → só filmes livres, por segurança) |
+| **Comparação numérica por item** (`tempo disponível >= {duração}`) | o gerador substitui a duração exata de cada filme na regra |
+| **Filtro de segurança** | toda regra de filme exige `classificação permitida = <classificação do filme>` |
+| **Toda regra termina com premissa simples** | evita uma falha latente do SINTA (estouro de índice quando a última premissa está num grupo OU e o usuário responde com CNF fracionário), encontrada lendo o código do motor |
+
+## 5. Sistema 1: "Quem é o Famoso?"
+
+### 5.1 Base de dados (`dados/famosos.csv`)
+
+97 famosos, pela categoria principal: 27 cantores, 26 atores, 23 personagens fictícios, 14 atletas e 7 apresentadores/influenciadores. Alguns acumulam categorias, como Will Smith (ator e cantor), Xuxa (cantora e apresentadora) e Seu Jorge (cantor e ator). Contando os acúmulos, 28 atuam e 29 cantam.
+
+| Atributo | Valores |
+|---|---|
+| categoria | ator/atriz, cantor(a), atleta, personagem fictício, apresentador(a)/influenciador(a) |
+| sexo | masculino, feminino |
+| espécie | humano, animal, criatura/monstro, brinquedo/boneco |
+| origem | brasileira, norte-americana, latino-americana/caribenha, britânica, outra europeia, asiática/oceania |
+| faixa etária | criança/adolescente, jovem (até 30), adulto (31 a 50), maduro (51 ou mais) |
+| cabelo | preto, castanho, loiro, ruivo, grisalho/branco, careca/raspado, colorido |
+| olhos | escuros, azuis, verdes |
+| estatura | baixa (até 1,65 m), média, alta (acima de 1,80 m) |
+| traços | barba, bigode, tatuagens, óculos, cicatriz, cabelo cacheado/crespo, chapéu/boné, roupa/fantasia icônica, maquiagem marcante |
+| época de sucesso | até anos 80, anos 90, anos 2000, anos 2010, anos 2020 |
+| área | gênero de atuação (8), gênero musical (13), esporte (9), mídia (7), formato (4) |
+| obras (distintas) | filmes/séries/novelas (69), músicas/álbuns/bandas (80), times/competições (29), franquias/universos (19), programas/canais (12) |
+
+Decisões de qualidade dos dados:
+
+- **Não classificamos o tom de pele de pessoas reais.** É um atributo sensível e fácil de errar. O traço físico "não humano" é tratado pelo atributo **espécie**.
+- **Campo incerto fica em branco** (olhos: 70% preenchidos; estatura: 71%). O gerador **pula a condição** para esse item em vez de inventar um dado.
+- Todos os 97 famosos têm **assinatura única** no conjunto de atributos.
+
+### 5.2 Perguntas, na ordem em que aparecem
+
+1. Que tipo de famoso você procura? *(categoria)*
+2. É homem ou mulher?
+3. Qual a faixa etária?
+4. Como é o cabelo?
+5. Qual a cor dos olhos?
+6. Você sabe a altura aproximada? → **Qual a altura em centímetros?** *(numérica, 40–230)*
+7. De onde é o famoso? *(inclui o grupo "estrangeira")*
+8. Em que época fez mais sucesso? *(inclui os grupos "clássica" e "recente")*
+9. Perguntas condicionais: espécie, gênero de atuação, estilo musical, esporte, mídia, formato, traços marcantes, "lembra de alguma obra?" e a lista de obras da categoria.
+
+![Pergunta numérica com barra deslizante](img/famosos/pergunta_07.png)
+
+### 5.3 Regras (827)
+
+| Tipo | Regras | CNF |
+|---|---|---|
+| Compatibilidade (gerada) | 56 | 100% |
+| Altura → faixa → estatura (difusa) | 13 | 70–100% |
+| Modelo **perfil completo** (todos os atributos) | 97 | 90% |
+| Modelo **cabelo e olhos** | 66 | 45% |
+| Modelo **idade e época** | 97 | 35% |
+| Modelo **origem** | 97 | 30% |
+| Modelos **área** (atuação, música, esporte, mídia, apresentação) | 102 | 55% |
+| Evidências **obra** (5 categorias) | 231 | 85% |
+| Evidências **traço marcante** | 68 | 30% |
+
+### 5.4 Exemplo de consulta no ExSINTA
+
+Usuário descrevendo: ator, masculino, adulto, cabelo castanho, olhos escuros, 174 cm, brasileiro, anos 2000 e 2010, ação/aventura, obra "Tropa de Elite".
+
+![Resultado no SINTA](img/famosos/resultado_grande.png)
+
+A aba **Histórico** mostra a explicação do raciocínio (árvore de pesquisa do encadeamento para trás):
+
+![Histórico](img/famosos/aba_historico.png)
+
+## 6. Sistema 2: "Que Filme Eu Vejo?"
+
+### 6.1 Base de dados (`dados/filmes.csv`)
+
+145 filmes: 38 brasileiros e 107 internacionais, de EUA, Reino Unido, França, Itália, Alemanha, Japão, Coreia do Sul, Argentina, México, Nova Zelândia e Austrália. Vão de *Tempos Modernos* (1936) a *O Agente Secreto* e *Pecadores* (2025).
+
+| Atributo | Valores |
+|---|---|
+| ano → **época** (derivada) | clássico (até 1979), anos 80, 90, 2000, 2010, 2020 |
+| duração (min) → **faixa** (derivada) | curta (até 100), média (101–130), longa (131–160), muito longa |
+| gêneros (lista) | ação, aventura, animação, comédia, drama, crime, terror, suspense, ficção científica, fantasia, romance, musical, guerra, biografia |
+| clima (lista) | divertido, emocionante, tenso, assustador, reflexivo, romântico, inspirador, épico |
+| classificação indicativa | L, 10, 12, 14, 16, 18 |
+| país / origem | 12 países / nacional, internacional |
+| diretor, atores | 107 diretores, 191 atores (1 a 4 por filme) |
+| prêmios | Oscar de Melhor Filme, Oscar de Filme Internacional, Oscar (outras), indicado ao Oscar, Palma de Ouro, prêmio em Cannes, Urso de Ouro, Leão de Ouro, Globo de Ouro |
+| fatos reais, franquia | sim/não (22 baseados em fatos reais); 44 franquias (Star Wars, Harry Potter, Marvel, Tropa de Elite…) |
+
+### 6.2 Perguntas
+
+Há menores assistindo? → idade do mais novo *(numérica)*; gêneros; sensação/clima; tem limite de tempo? → tempo disponível *(numérica)*; nacional ou internacional; época *(com grupos)*; fatos reais ou ficção; com quem vai assistir; premiados?; sagas ou filmes únicos?; quer indicar atores? → lista; quer indicar diretores? → lista.
+
+![Pergunta de múltipla escolha com grau de confiança](img/filmes/pergunta_03.png)
+
+### 6.3 Dois objetivos visíveis
+
+1. **Perfil do espectador**, uma inferência intermediária mostrada ao usuário. Exemplo de regra:
+
+   ![Regra de perfil](img/filmes/regra_perfil.png)
+
+2. **Filme recomendado**, a lista ordenada por CNF.
+
+### 6.4 Regras (2.364)
+
+| Tipo | Regras |
+|---|---|
+| Compatibilidade (gerada) | 44 |
+| Idade → faixa → classificação permitida (com fallbacks) | 13 |
+| Tempo → faixa → duração aceitável (com fallbacks) | 13 |
+| Ocasião (companhia → gêneros indicados) | 4 |
+| Perfil do espectador | 20 |
+| Modelos por filme: perfil completo (90%), gênero e clima (50%), gênero e época (35%), origem e gênero (30%), ideal para a ocasião (25%), sugestões pelo gênero e pelo clima (15%) | 1.015 |
+| Prêmios: aclamado (25%), grande premiado (20%); sagas (20%); obra única (15%) | 271 |
+| Evidências: gênero em comum (12%), clima em comum (10%) | 584 |
+| Evidências: ator (70%), diretor (60%) | 400 |
+
+### 6.5 Exemplo de consulta no ExSINTA
+
+Espectador de 15 anos, ficção científica e ação, tenso e épico, 170 minutos, internacional, recentes, ficção, sozinho, premiados, gosta de sagas, ator Leonardo DiCaprio e diretor Christopher Nolan:
+
+| Perfil do espectador | Filmes recomendados |
+|---|---|
+| ![perfil](img/filmes/resultado_0.png) | ![filmes](img/filmes/resultado_grande.png) |
+
+Repare na **classificação indicativa**: com 15 anos, nenhum filme com classificação 16 ou 18 aparece, mesmo os de Nolan ou DiCaprio, como *Oppenheimer* (16) e *O Lobo de Wall Street* (18).
+
+## 7. Validação e testes
+
+Todo o processo foi feito em etapas, e uma etapa só começava depois de a anterior ter sido validada (ver [`PLANO_DE_TRABALHO.md`](../PLANO_DE_TRABALHO.md)).
+
+### 7.1 Dados
+`dados/validar_dados.py` confere o CSV contra o esquema: vocabulário controlado, campos obrigatórios (inclusive condicionais, como "cantor exige estilo musical"), faixas numéricas e duplicatas. Resultado: **VÁLIDO** para as duas bases. Ele encontrou e permitiu corrigir uma lacuna real (obras musicais de Zendaya).
+
+### 7.2 Formato `.BCM`
+- As 4 bases de exemplo do SINTA foram lidas e regravadas **idênticas byte a byte**.
+- As bases geradas foram **abertas no ExSINTA e regravadas por ele** com **semântica idêntica** (`test_formato.py --comparar`).
+- `gerador/auditoria.py`: **0 erros e 0 avisos**. Não há variável que cairia na pergunta genérica "Qual o valor de x?", regra terminando em OU, objetivo inalcançável ou pergunta sem "por quê".
+
+### 7.3 Simulador fiel × ExSINTA real
+`gerador/simulador.py` é um port linha a linha da máquina de inferência do SINTA (`EXSYSTEM.PAS`). Um *driver* de interface (`gerador/gui/`) executa consultas no **ExSINTA real** por mensagens do Windows: abre a base, responde cada pergunta conferindo as opções exibidas e captura os resultados.
+
+| Caso | Perguntas | Destaques | SINTA real × simulador |
+|---|---|---|---|
+| VINHOS (base de exemplo de terceiros) | 6 | — | idêntico |
+| famosos_1 | 13 | altura numérica, obra | idêntico (99,831 / 97,497 / 82,675 …) |
+| famosos_2 | 12 | grupo "estrangeira", espécie, mídia | idêntico |
+| famosos_3 | 11 | respostas **em branco** | idêntico |
+| famosos_4 | 12 | **CNFs fracionários digitados**, altura em branco | idêntico (35,64 / 35,64) |
+| filmes_1 | 12 | comédia nacional | idêntico |
+| filmes_2 | 14 | criança de 8 anos, 100 min | idêntico |
+| filmes_3 | 16 | idade 15, ator, diretor, 2 objetivos visíveis | idêntico (99,873 / 99,519 / 99,154 …) |
+| filmes_4 | 14 | idade e tempo **em branco** (fallbacks) | idêntico |
+
+Capturas em `testes/gui/<caso>/`.
+
+### 7.4 Avaliação quantitativa (`gerador/avaliacao.py`, 2.000 consultas por base)
+
+| Métrica | Famosos | Filmes |
+|---|---|---|
+| **Autorreconhecimento** (um usuário descreve fielmente o item): top-1 / top-3 | **100% / 100%** | **100% / 100%** |
+| Autorreconhecimento **sem** a pista mais forte (obra / ator e diretor) | **100% / 100%** | **91% / 100%** |
+| Consultas aleatórias sem nenhuma falha do motor | 2.000 / 2.000 | 2.000 / 2.000 |
+| Consultas aleatórias sem nenhuma recomendação | 1,9% | 0,3% |
+| Perguntas por consulta (média; mín.–máx.) | 15,6 (9–22) | 13,8 (12–16) |
+| Regras alcançáveis (testes aleatórios + dirigidos) | **827 / 827** | **2.364 / 2.364** |
+| Violações de classificação indicativa (1.000 consultas com menores) | — | **0** |
+
+**A avaliação também guiou melhorias.** Na primeira rodada, os filmes tinham **12,5%** de consultas sem resposta e top-1 de **57%** sem ator/diretor. O diagnóstico mostrou dois problemas:
+
+1. Campos numéricos em branco deixavam a classificação DESCONHECIDA. A correção foram as cadeias número → faixa com fallback.
+2. As faixas de duração penalizavam filmes que cabiam no tempo. A correção foi a comparação exata `tempo >= duração`, junto com evidências por gênero e clima em comum.
+
+O resultado foi **0,3%** de consultas sem resposta e **91%** de top-1.
+
+## 8. Limitações e observações
+
+- **Dados compilados a partir de conhecimento geral.** Atributos factuais (alturas, cor dos olhos, classificações indicativas de filmes antigos, prêmios) foram preenchidos só quando havia segurança, e o resto ficou em branco. Ainda assim, vale conferir pontualmente nas fontes (Wikipedia, IMDb, ClassInd) antes da apresentação.
+- **Respostas com pouca confiança.** Como o E do SINTA multiplica os CNFs, um usuário que responde tudo com 60% pode ficar abaixo do limiar de 50% e não receber recomendação (1,9% das consultas aleatórias de famosos). Isso é um comportamento correto do modelo: o sistema "não tem segurança para recomendar".
+- **Empates.** Itens com evidências idênticas recebem o mesmo CNF. O SINTA mostra todos, com o mesmo valor.
+- **Tempo de abertura.** Com 2.364 regras, o ExSINTA leva cerca de 5 s para abrir a base de filmes e cerca de 8 s para iniciar a consulta. A janela *Sistema › Visualizar* (todas as regras) demora alguns minutos para montar.
+- **Arquivo somente leitura.** O ExSINTA abre bases em modo leitura e escrita. Se o `.bcm` estiver como somente leitura, aparece "File access denied".
+
+## 9. Como usar e como regenerar
+
+**Usar no SINTA:** abrir `ferramenta/ExSINTA.exe` → *Arquivo › Abrir base* → `saida/Famosos.bcm` ou `saida/Filmes.bcm` → *Consulta › Iniciar* (F9). Os resultados têm as abas *Resultados*, *Histórico* (explicação), *Todos os valores* e *O sistema*.
+
+**Regenerar e validar tudo** (Python 3 + PyYAML):
+
+```bash
+cd gerador
+python gerar_tudo.py --avaliar     # valida dados, testa, gera, audita e avalia
+python casos_gui.py                # (opcional) roda os 8 casos no ExSINTA real
+```
+
+**Alterar a base:** edite o CSV (por exemplo, inclua um filme numa nova linha) e rode `python build.py ../dados/filmes.yaml`. As regras do novo item são geradas automaticamente.
+
+## 10. Estrutura dos arquivos
+
+```
+Trabalho 3 - Sistemas Especialistas/
+├── saida/                  ENTREGÁVEIS: Famosos.bcm, Filmes.bcm (+ .txt legível, .json estatísticas)
+├── dados/                  famosos.csv, filmes.csv, esquema_*.yaml, famosos.yaml, filmes.yaml, validar_dados.py
+├── gerador/                bcm.py (formato), kb.py (API), build.py (compilador), simulador.py (motor),
+│                           auditoria.py, avaliacao.py, test_*.py, gerar_tudo.py, gerar_apendices.py,
+│                           gui/ (driver do ExSINTA), casos_gui.py, exemplo/ (base mínima de teste)
+├── relatorio/              Relatorio.md, apêndices, img/
+├── testes/                 avaliacao.json, capturas da interface (gui/), bases regravadas pelo SINTA
+├── docs/                   notas_sinta.md, formato_bcm.md
+├── ferramenta/             ExSINTA.exe (extraído de sinta32.zip)
+└── PLANO_DE_TRABALHO.md    plano e registro de validação de cada etapa
+```
