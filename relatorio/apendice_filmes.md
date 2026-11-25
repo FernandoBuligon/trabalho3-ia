@@ -6,15 +6,15 @@
 
 | Item | Quantidade |
 |---|---|
-| Regras | 2364 |
-| Premissas (caudas) | 13057 |
-| Conclusões (cabeças) | 2471 |
+| Regras | 2374 |
+| Premissas (caudas) | 17551 |
+| Conclusões (cabeças) | 2481 |
 | Variáveis | 28 |
-| Valores | 569 |
+| Valores | 578 |
 | Perguntas | 16 |
 | Objetivos | 9 |
 | Itens na base de dados | 145 |
-| Tamanho do arquivo .BCM | 968 KB |
+| Tamanho do arquivo .BCM | 1025 KB |
 
 ## Regras por tipo
 
@@ -39,7 +39,7 @@
 | evidência: gênero em comum | 325 |
 | evidência: clima em comum | 259 |
 | evidência: ator | 255 |
-| evidência: diretor | 145 |
+| evidência: diretor | 155 |
 | modelo: grande premiado | 27 |
 | modelo: saga ou franquia | 56 |
 
@@ -87,7 +87,7 @@
 | quer escolher ator | lógica (Sim/Não) | pergunta | Sim; Não |
 | ator preferido | multivalorada | pergunta | Al Pacino; Albert Brooks; Alexandre Rodrigues; Alice Braga; Amy Poehler; Andrew Garfield; André Ramiro; Anne Hathaway; … (191 valores) |
 | quer escolher diretor | lógica (Sim/Não) | pergunta | Sim; Não |
-| diretor preferido | multivalorada | pergunta | Aaron Horvath; Alejandro González Iñárritu; Alfonso Cuarón; Alfred Hitchcock; Alê Abreu; Andrew Adamson; Andrew Stanton; André Pellenz; … (107 valores) |
+| diretor preferido | multivalorada | pergunta | Aaron Horvath; Alejandro González Iñárritu; Alfonso Cuarón; Alfred Hitchcock; Alê Abreu; Andrew Adamson; Andrew Stanton; André Pellenz; … (116 valores) |
 | filme recomendado | multivalorada | objetivo | Cidade de Deus; Central do Brasil; Tropa de Elite; Tropa de Elite 2; O Auto da Compadecida; O Auto da Compadecida 2; Ainda Estou Aqui; Bacurau; … (145 valores) |
 
 ## Perguntas e explicações ("Por quê?")
@@ -106,8 +106,7 @@
 - **tem limite de tempo**: "Você tem um limite de tempo para o filme?"
   - *por quê:* Se sim, o sistema evita filmes mais longos que o seu tempo.
 - **tempo disponível**: "Quanto tempo você tem disponível (em minutos)?"
-  - *por quê:* Convertido em faixas: curta (até 100 min), média (101 a 130),
-  - *por quê:* longa (131 a 160) e muito longa (mais de 160), com tolerância.
+  - *por quê:* Todas as recomendações respeitam a duração exata cadastrada do filme.
   - *por quê:* Se ficar em branco, considera-se que não há limite.
 - **origem preferida**: "Prefere filme nacional (brasileiro) ou internacional?"
   - *por quê:* Filtra o perfil completo e alimenta a regra 'origem e gênero'.
@@ -202,7 +201,7 @@ REGRA 38: época compatível: grupo recentes (de 2010 em diante)
 ```
 
 ```
-REGRA 1557: A Origem - perfil completo
+REGRA 1561: A Origem - perfil completo
   SE    gênero compatível = ficção científica
   OU    gênero compatível = ação
   OU    gênero compatível = suspense
@@ -220,7 +219,7 @@ REGRA 1557: A Origem - perfil completo
 ```
 
 ```
-REGRA 1558: A Origem - gênero e clima
+REGRA 1562: A Origem - gênero e clima
   SE    gênero preferido = ficção científica
   OU    gênero preferido = ação
   OU    gênero preferido = suspense
@@ -235,17 +234,21 @@ REGRA 1558: A Origem - gênero e clima
 ```
 
 ```
-REGRA 2072: Parasita - grande premiado
+REGRA 2082: Parasita - grande premiado
   SE    quer premiados = Sim
   E     gênero compatível = suspense
   OU    gênero compatível = drama
   OU    gênero compatível = comédia
+  E     tem limite de tempo = Não
+  OU    tem limite de tempo = DESCONHECIDO
+  OU    tempo disponível >= 132
+  OU    faixa de tempo = DESCONHECIDO
   E     classificação permitida = 16
   ENTÃO filme recomendado = Parasita CNF 20%
 ```
 
 ```
-REGRA 1566: A Origem - gênero em comum: ficção científica
+REGRA 1570: A Origem - gênero em comum: ficção científica
   SE    tem limite de tempo = Não
   OU    tem limite de tempo = DESCONHECIDO
   OU    tempo disponível >= 148
@@ -256,16 +259,24 @@ REGRA 1566: A Origem - gênero em comum: ficção científica
 ```
 
 ```
-REGRA 1571: A Origem - ator: Leonardo DiCaprio
+REGRA 1575: A Origem - ator: Leonardo DiCaprio
   SE    quer escolher ator = Sim
+  E     tem limite de tempo = Não
+  OU    tem limite de tempo = DESCONHECIDO
+  OU    tempo disponível >= 148
+  OU    faixa de tempo = DESCONHECIDO
   E     classificação permitida = 14
   E     ator preferido = Leonardo DiCaprio
   ENTÃO filme recomendado = A Origem CNF 70%
 ```
 
 ```
-REGRA 1573: A Origem - diretor: Christopher Nolan
+REGRA 1577: A Origem - diretor: Christopher Nolan
   SE    quer escolher diretor = Sim
+  E     tem limite de tempo = Não
+  OU    tem limite de tempo = DESCONHECIDO
+  OU    tempo disponível >= 148
+  OU    faixa de tempo = DESCONHECIDO
   E     classificação permitida = 14
   E     diretor preferido = Christopher Nolan
   ENTÃO filme recomendado = A Origem CNF 60%
@@ -275,6 +286,10 @@ REGRA 1573: A Origem - diretor: Christopher Nolan
 REGRA 116: Central do Brasil - origem e gênero
   SE    gênero compatível = drama
   E     origem preferida = nacional
+  E     tem limite de tempo = Não
+  OU    tem limite de tempo = DESCONHECIDO
+  OU    tempo disponível >= 113
+  OU    faixa de tempo = DESCONHECIDO
   E     classificação permitida = 12
   ENTÃO filme recomendado = Central do Brasil CNF 30%
 ```

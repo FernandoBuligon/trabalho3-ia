@@ -2,7 +2,9 @@
 
 **Disciplina:** Fundamentos de Sistemas Inteligentes (UTFPR, Câmpus Santa Helena)
 **Docente:** Thiago Naves
-**Entregáveis principais:** `saida/Famosos.bcm` e `saida/Filmes.bcm` (abrem no Expert SINTA 1.1b)
+**Entregáveis principais:** `saida/Famosos.bcm` e `saida/Filmes.bcm` (formato do Expert SINTA 1.1b)
+
+**Revisão:** 25/11/2026. Estatísticas e testes abaixo referem-se às bases atuais. As capturas do ExSINTA são históricas; a revisão atual foi validada no simulador Python, sem nova execução da interface Windows. Pesquisa e critérios: [FONTES.md](../dados/FONTES.md), com referências por item em [fontes.csv](../dados/fontes.csv).
 
 ---
 
@@ -33,11 +35,11 @@ Foram construídos **dois sistemas especialistas** no shell **Expert SINTA**:
 | Recomenda | pessoas famosas (atores, cantores, atletas, apresentadores e personagens fictícios) | filmes nacionais e internacionais |
 | Com base em | características físicas, área de trabalho, época, origem, traços marcantes e **obras** | gênero, clima/sensação, **duração**, idade do espectador, época, origem, fatos reais, prêmios, sagas, **atores** e **diretores** |
 | Base de dados | **97 famosos** (48 brasileiros), 21 atributos | **145 filmes** (38 brasileiros, 1936–2025), 13 atributos + 2 derivados |
-| Regras | **827** | **2.364** |
-| Premissas / conclusões | 3.571 / 900 | 13.057 / 2.471 |
+| Regras | **827** | **2.374** |
+| Premissas / conclusões | 3.571 / 900 | 17.551 / 2.481 |
 | Variáveis / perguntas / objetivos | 33 / 22 / 9 | 28 / 16 / 9 |
 
-**Total: 3.191 regras** nos dois sistemas, todas executáveis no Expert SINTA e todas **alcançáveis**, conforme demonstrado na seção 7.
+**Total: 3.201 regras** nos dois sistemas, geradas no formato do Expert SINTA e todas **alcançáveis no simulador**, conforme demonstrado na seção 7.
 
 Diferenciais (o enunciado valoriza "novas abordagens de conhecimento, base de dados e algoritmos"):
 
@@ -45,22 +47,22 @@ Diferenciais (o enunciado valoriza "novas abordagens de conhecimento, base de da
 - **Arquitetura de conhecimento em 3 camadas**, com uma **camada de compatibilidade** gerada automaticamente: trata "indiferente", resposta em branco e agrupamentos como "estrangeira" ou "recentes".
 - **Ranking por acúmulo de evidências** usando a combinação de fatores de confiança do próprio SINTA (`ca + cn − ca·cn`, um *noisy-OR*).
 - **Lógica difusa** em faixas numéricas (altura → estatura; tempo → duração) e **comparações numéricas exatas** por item (`tempo disponível >= 148`).
-- **Simulador fiel** da máquina de inferência do SINTA (port do código Pascal), **validado contra o ExSINTA real**. Com ele foram feitas milhares de consultas de teste.
-- **Testes automatizados na interface real do ExSINTA** (8 consultas completas, idênticas ao simulador).
+- **Simulador** da máquina de inferência do SINTA (port do código Pascal), comparado ao ExSINTA real em versões anteriores. A revisão atual foi submetida a milhares de consultas de teste.
+- **Oito consultas históricas na interface real do ExSINTA**, com capturas preservadas; oito consultas atuais do simulador com hashes das bases e 881 testes de regressão de duração e direção.
 
 ## 2. O que foi pedido e como foi atendido
 
 | Requisito do enunciado | Como foi atendido |
 |---|---|
-| Dois sistemas especialistas no Expert SINTA | `saida/Famosos.bcm` e `saida/Filmes.bcm`, abertos, executados e regravados no ExSINTA 1.1b (Windows 11) |
+| Dois sistemas especialistas no Expert SINTA | `saida/Famosos.bcm` e `saida/Filmes.bcm`; execução no ExSINTA documentada em versões anteriores. A regravação arquivada contém 820/1.476 regras, não as bases atuais |
 | SE 1: famosos por **características físicas** e **obras** | sexo, faixa etária, cor do cabelo, cor dos olhos, **altura (cm)**, espécie (personagens), traços marcantes; obras em 5 categorias (filmes/séries/novelas, músicas, times/competições, franquias, programas) |
 | Atores, cantores, personagens fictícios e outras celebridades | 26 atores, 27 cantores, 14 atletas, 23 personagens e 7 apresentadores/influenciadores (categoria principal) |
 | SE 2: filmes por **estilo, duração, gênero, atores, ano** e outras informações | clima/estilo, duração exata × tempo disponível, 14 gêneros, 255 regras de ator, ano → época, além de diretor, país/origem, fatos reais, prêmios, sagas, classificação indicativa e ocasião |
 | Filmes nacionais e internacionais | 38 brasileiros e 107 internacionais de 12 países (séries e novelas **não** incluídas, por decisão do grupo) |
-| Base de dados o mais completa possível, com pesquisa | 97 famosos × 21 atributos; 145 filmes × 15 atributos; vocabulário controlado e validador automático (seção 7.1) |
-| Máximo de regras possível | 3.191 regras, geradas sistematicamente (cada item tem de 6 a 20 regras) |
+| Base de dados o mais completa possível, com pesquisa | 97 famosos × 21 atributos; 145 filmes × 15 atributos; pesquisa documental por amostragem, fontes por item/campo, vocabulário e validação estrutural (seção 7.1) |
+| Máximo de regras possível | 3.201 regras, geradas sistematicamente (5 a 12 regras por famoso e 12 a 20 por filme) |
 | Estabelecer todos os objetivos e variáveis | 9 objetivos por base (ordem de perguntas + objetivos visíveis), 61 variáveis, 38 perguntas, todas com texto de **"Por quê?"** |
-| Executar de forma funcional pelo Expert SINTA | 8 consultas completas executadas no ExSINTA real, com resultados idênticos ao esperado (seção 7.3) |
+| Executar de forma funcional pelo Expert SINTA | 8 consultas históricas no ExSINTA real; evidências e limites da validação atual discriminados na seção 7.3 |
 
 ## 3. A ferramenta: Expert SINTA
 
@@ -83,7 +85,7 @@ dados/famosos.yaml ─┼─> gerador/build.py ─────┼─> saida/Famo
 dados/esquema_*.yaml┘   (DSL + modelos)       └─> saida/Famosos.json (estatísticas)
 ```
 
-- **CSV:** a pesquisa sobre cada item (um famoso ou filme por linha).
+- **CSV:** os atributos de cada item (um famoso ou filme por linha); referências dos campos pesquisados em `dados/fontes.csv`.
 - **Esquema (YAML):** o vocabulário controlado de cada atributo (ex.: os 14 gêneros).
 - **Configuração (YAML):** variáveis, perguntas, "por quê", regras intermediárias (numa pequena linguagem `a = x OU a = y E b >= 10`), **modelos de regra** e **evidências**, aplicados a cada item.
 
@@ -172,7 +174,7 @@ A opção de precedência dos conectivos do SINTA foi configurada como **OU** (`
 | **Perguntas-porteira** (`quer citar uma obra?`, `quer escolher ator?`, `há menores?`) | perguntas condicionais. Graças ao curto-circuito do SINTA, a lista de atores só é exibida se o usuário quiser |
 | **Perguntas dependentes da categoria** | "estilo musical" só aparece se a busca inclui cantores; "espécie" e "mídia", só se inclui personagens |
 | **Número → faixa categórica → conclusão** | trata campos numéricos deixados em branco: a faixa vira DESCONHECIDO e há uma regra de fallback para isso (idade em branco → só filmes livres, por segurança) |
-| **Comparação numérica por item** (`tempo disponível >= {duração}`) | o gerador substitui a duração exata de cada filme na regra |
+| **Comparação numérica por item** (`tempo disponível >= {duração}`) | todas as regras que recomendam filmes verificam o limite, inclusive ator, diretor, prêmios e ocasião |
 | **Filtro de segurança** | toda regra de filme exige `classificação permitida = <classificação do filme>` |
 | **Toda regra termina com premissa simples** | evita uma falha latente do SINTA (estouro de índice quando a última premissa está num grupo OU e o usuário responde com CNF fracionário), encontrada lendo o código do motor |
 
@@ -200,7 +202,7 @@ A opção de precedência dos conectivos do SINTA foi configurada como **OU** (`
 Decisões de qualidade dos dados:
 
 - **Não classificamos o tom de pele de pessoas reais.** É um atributo sensível e fácil de errar. O traço físico "não humano" é tratado pelo atributo **espécie**.
-- **Campo incerto fica em branco** (olhos: 70% preenchidos; estatura: 71%). O gerador **pula a condição** para esse item em vez de inventar um dado.
+- **Campos ausentes ficam em branco** (olhos: 70% preenchidos; estatura: 71%). O gerador **pula a condição** para esse item. Os campos físicos são descritores aproximados; sua existência não implica conferência documental individual (ver critérios em FONTES.md).
 - Todos os 97 famosos têm **assinatura única** no conjunto de atributos.
 
 ### 5.2 Perguntas, na ordem em que aparecem
@@ -255,7 +257,7 @@ A aba **Histórico** mostra a explicação do raciocínio (árvore de pesquisa d
 | clima (lista) | divertido, emocionante, tenso, assustador, reflexivo, romântico, inspirador, épico |
 | classificação indicativa | L, 10, 12, 14, 16, 18 |
 | país / origem | 12 países / nacional, internacional |
-| diretor, atores | 107 diretores, 191 atores (1 a 4 por filme) |
+| diretor, atores | 116 diretores, 191 atores (1 a 4 por filme) |
 | prêmios | Oscar de Melhor Filme, Oscar de Filme Internacional, Oscar (outras), indicado ao Oscar, Palma de Ouro, prêmio em Cannes, Urso de Ouro, Leão de Ouro, Globo de Ouro |
 | fatos reais, franquia | sim/não (22 baseados em fatos reais); 44 franquias (Star Wars, Harry Potter, Marvel, Tropa de Elite…) |
 
@@ -273,7 +275,7 @@ Há menores assistindo? → idade do mais novo *(numérica)*; gêneros; sensaç�
 
 2. **Filme recomendado**, a lista ordenada por CNF.
 
-### 6.4 Regras (2.364)
+### 6.4 Regras (2.374)
 
 | Tipo | Regras |
 |---|---|
@@ -285,9 +287,9 @@ Há menores assistindo? → idade do mais novo *(numérica)*; gêneros; sensaç�
 | Modelos por filme: perfil completo (90%), gênero e clima (50%), gênero e época (35%), origem e gênero (30%), ideal para a ocasião (25%), sugestões pelo gênero e pelo clima (15%) | 1.015 |
 | Prêmios: aclamado (25%), grande premiado (20%); sagas (20%); obra única (15%) | 271 |
 | Evidências: gênero em comum (12%), clima em comum (10%) | 584 |
-| Evidências: ator (70%), diretor (60%) | 400 |
+| Evidências: ator (70%), diretor (60%) | 410 |
 
-### 6.5 Exemplo de consulta no ExSINTA
+### 6.5 Exemplo de consulta e captura histórica no ExSINTA
 
 Espectador de 15 anos, ficção científica e ação, tenso e épico, 170 minutos, internacional, recentes, ficção, sozinho, premiados, gosta de sagas, ator Leonardo DiCaprio e diretor Christopher Nolan:
 
@@ -299,18 +301,18 @@ Repare na **classificação indicativa**: com 15 anos, nenhum filme com classifi
 
 ## 7. Validação e testes
 
-Todo o processo foi feito em etapas, e uma etapa só começava depois de a anterior ter sido validada (ver [`PLANO_DE_TRABALHO.md`](../PLANO_DE_TRABALHO.md)).
+O desenvolvimento original e a revisão de entrega estão registrados em [`PLANO_DE_TRABALHO.md`](../PLANO_DE_TRABALHO.md). A revisão corrigiu o limite de duração, complementou diretores e registrou as fontes consultadas.
 
 ### 7.1 Dados
-`dados/validar_dados.py` confere o CSV contra o esquema: vocabulário controlado, campos obrigatórios (inclusive condicionais, como "cantor exige estilo musical"), faixas numéricas e duplicatas. Resultado: **VÁLIDO** para as duas bases. Ele encontrou e permitiu corrigir uma lacuna real (obras musicais de Zendaya).
+`dados/validar_dados.py` confere o CSV contra o esquema: vocabulário controlado, campos obrigatórios (inclusive condicionais, como "cantor exige estilo musical"), faixas numéricas e duplicatas. Resultado: **VÁLIDO** para as duas bases. Ele encontrou e permitiu corrigir uma lacuna real (obras musicais de Zendaya). A veracidade dos dados não é aferida por esse validador. A pesquisa documental da revisão está em [FONTES.md](../dados/FONTES.md) e [fontes.csv](../dados/fontes.csv): 26 registros de consulta, com os campos efetivamente conferidos. É uma amostragem, não uma verificação integral de todos os atributos.
 
 ### 7.2 Formato `.BCM`
 - As 4 bases de exemplo do SINTA foram lidas e regravadas **idênticas byte a byte**.
-- As bases geradas foram **abertas no ExSINTA e regravadas por ele** com **semântica idêntica** (`test_formato.py --comparar`).
+- As bases regravadas pelo ExSINTA em `testes/sinta_regravado/` pertencem a uma versão anterior (820 regras de famosos e 1.476 de filmes). **Não são semanticamente idênticas às bases finais.** A comparação histórica não é usada como prova da revisão atual. O manifesto registra os hashes e as diferenças; uma nova prova no Windows pode ser executada conforme o README dessa pasta.
 - `gerador/auditoria.py`: **0 erros e 0 avisos**. Não há variável que cairia na pergunta genérica "Qual o valor de x?", regra terminando em OU, objetivo inalcançável ou pergunta sem "por quê".
 
-### 7.3 Simulador fiel × ExSINTA real
-`gerador/simulador.py` é um port linha a linha da máquina de inferência do SINTA (`EXSYSTEM.PAS`). Um *driver* de interface (`gerador/gui/`) executa consultas no **ExSINTA real** por mensagens do Windows: abre a base, responde cada pergunta conferindo as opções exibidas e captura os resultados.
+### 7.3 Evidência histórica do ExSINTA e validação atual
+`gerador/simulador.py` implementa a máquina de inferência do SINTA com base em `EXSYSTEM.PAS`. O driver em `gerador/gui/` executa consultas no Windows, confere as opções das perguntas e captura os resultados. A comparação dos resultados nas imagens é visual. A tabela seguinte registra a validação **anterior à revisão**; não constitui nova execução das bases corrigidas.
 
 | Caso | Perguntas | Destaques | SINTA real × simulador |
 |---|---|---|---|
@@ -324,7 +326,9 @@ Todo o processo foi feito em etapas, e uma etapa só começava depois de a anter
 | filmes_3 | 16 | idade 15, ator, diretor, 2 objetivos visíveis | idêntico (99,873 / 99,519 / 99,154 …) |
 | filmes_4 | 14 | idade e tempo **em branco** (fallbacks) | idêntico |
 
-Capturas em `testes/gui/<caso>/`.
+Capturas históricas em `testes/gui/<caso>/`. Todas as figuras deste relatório ilustram essa execução anterior. Na revisão atual, as oito consultas foram executadas apenas no simulador: resultados em `testes/revisao/`, identificados pelo hash SHA-256 da base. Não há Windows, Wine ou PowerShell no ambiente desta revisão, portanto não se afirma uma nova validação nativa.
+
+**Regressão corrigida:** o caso `filmes_2`, com 100 minutos, antes incluía dez filmes acima do limite. Na base atual, esses dez títulos são excluídos, incluindo *A Viagem de Chihiro* (125 minutos). O teste automatizado `test_recomendacoes.py` faz **881 consultas**: para cada um dos 145 filmes, verifica exclusão um minuto abaixo da duração, inclusão no limite exato, três situações sem limite efetivo e recomendações por cada diretor. Todas passaram. Evidência em `testes/regressao_recomendacoes.json`.
 
 ### 7.4 Avaliação quantitativa (`gerador/avaliacao.py`, 2.000 consultas por base)
 
@@ -333,9 +337,9 @@ Capturas em `testes/gui/<caso>/`.
 | **Autorreconhecimento** (um usuário descreve fielmente o item): top-1 / top-3 | **100% / 100%** | **100% / 100%** |
 | Autorreconhecimento **sem** a pista mais forte (obra / ator e diretor) | **100% / 100%** | **91% / 100%** |
 | Consultas aleatórias sem nenhuma falha do motor | 2.000 / 2.000 | 2.000 / 2.000 |
-| Consultas aleatórias sem nenhuma recomendação | 1,9% | 0,3% |
+| Consultas aleatórias sem nenhuma recomendação | 1,85% (37/2.000) | 3,1% (62/2.000) |
 | Perguntas por consulta (média; mín.–máx.) | 15,6 (9–22) | 13,8 (12–16) |
-| Regras alcançáveis (testes aleatórios + dirigidos) | **827 / 827** | **2.364 / 2.364** |
+| Regras alcançáveis (testes aleatórios + dirigidos) | **827 / 827** | **2.374 / 2.374** |
 | Violações de classificação indicativa (1.000 consultas com menores) | — | **0** |
 
 **A avaliação também guiou melhorias.** Na primeira rodada, os filmes tinham **12,5%** de consultas sem resposta e top-1 de **57%** sem ator/diretor. O diagnóstico mostrou dois problemas:
@@ -343,14 +347,16 @@ Capturas em `testes/gui/<caso>/`.
 1. Campos numéricos em branco deixavam a classificação DESCONHECIDA. A correção foram as cadeias número → faixa com fallback.
 2. As faixas de duração penalizavam filmes que cabiam no tempo. A correção foi a comparação exata `tempo >= duração`, junto com evidências por gênero e clima em comum.
 
-O resultado foi **0,3%** de consultas sem resposta e **91%** de top-1.
+A versão intermediária chegou a **0,3%** de consultas sem resposta e **91%** de top-1, mas ainda recomendava filmes acima do tempo em algumas regras. Após aplicar o limite a todas as recomendações, a revisão atual teve **3,1%** de consultas sem resposta e manteve **91%** de top-1. A restrição pode legitimamente deixar uma consulta sem opções; não se relaxa o tempo para reduzir essa taxa.
 
 ## 8. Limitações e observações
 
-- **Dados compilados a partir de conhecimento geral.** Atributos factuais (alturas, cor dos olhos, classificações indicativas de filmes antigos, prêmios) foram preenchidos só quando havia segurança, e o resto ficou em branco. Ainda assim, vale conferir pontualmente nas fontes (Wikipedia, IMDb, ClassInd) antes da apresentação.
+- **Alcance da pesquisa.** Dados originais compilados de conhecimento geral, com revisão documental por amostragem e correções rastreáveis em `dados/fontes.csv`. Clima e descritores físicos são categorias de modelagem; idade tem referência em 25/11/2026 (ou no falecimento). A ausência de erro estrutural não certifica todos os fatos.
+- **Classificação indicativa.** O filtro respeita a faixa cadastrada. As 1.000 consultas verificam essa propriedade, não a exatidão de todos os registros perante a classificação oficial brasileira.
+- **Duração.** O limite é obrigatório quando informado, inclusive nas recomendações por ator/diretor. Aplica-se à versão cadastrada; outras edições podem ter duração diferente.
 - **Respostas com pouca confiança.** Como o E do SINTA multiplica os CNFs, um usuário que responde tudo com 60% pode ficar abaixo do limiar de 50% e não receber recomendação (1,9% das consultas aleatórias de famosos). Isso é um comportamento correto do modelo: o sistema "não tem segurança para recomendar".
 - **Empates.** Itens com evidências idênticas recebem o mesmo CNF. O SINTA mostra todos, com o mesmo valor.
-- **Tempo de abertura.** Com 2.364 regras, o ExSINTA leva cerca de 5 s para abrir a base de filmes e cerca de 8 s para iniciar a consulta. A janela *Sistema › Visualizar* (todas as regras) demora alguns minutos para montar.
+- **Tempo de abertura.** Na versão histórica de 2.364 regras foram registrados cerca de 5 s para abrir a base e 8 s para iniciar a consulta. Esses tempos não foram medidos novamente na revisão de 2.374 regras.
 - **Arquivo somente leitura.** O ExSINTA abre bases em modo leitura e escrita. Se o `.bcm` estiver como somente leitura, aparece "File access denied".
 
 ## 9. Como usar e como regenerar
@@ -362,7 +368,7 @@ O resultado foi **0,3%** de consultas sem resposta e **91%** de top-1.
 ```bash
 cd gerador
 python gerar_tudo.py --avaliar     # valida dados, testa, gera, audita e avalia
-python casos_gui.py                # (opcional) roda os 8 casos no ExSINTA real
+python casos_gui.py                # Windows: repete os 8 casos no ExSINTA real
 ```
 
 **Alterar a base:** edite o CSV (por exemplo, inclua um filme numa nova linha) e rode `python build.py ../dados/filmes.yaml`. As regras do novo item são geradas automaticamente.
@@ -382,3 +388,7 @@ Trabalho 3 - Sistemas Especialistas/
 ├── ferramenta/             ExSINTA.exe (extraído de sinta32.zip)
 └── PLANO_DE_TRABALHO.md    plano e registro de validação de cada etapa
 ```
+
+## 11. Pesquisa e rastreabilidade
+
+A metodologia e as referências por item/campo estão em [dados/FONTES.md](../dados/FONTES.md) e [dados/fontes.csv](../dados/fontes.csv). Foram consultados, entre outros, Disney/D23, DreamWorks, Sony Pictures, Festival de Cannes, IFFR, CNC, Memória Globo, Nintendo, COB e FIG. Os registros identificam exatamente o que cada fonte sustenta e as correções realizadas. O [manifesto de validação](../testes/revisao/manifesto.json) identifica as bases e os resultados usados nesta revisão.

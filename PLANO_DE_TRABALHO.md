@@ -130,8 +130,31 @@ Trabalho 3 - Sistemas Especialistas/
 | 9 | concluída | `gerador/avaliacao.py` (resultados em `testes/avaliacao.json`). **Primeira rodada:** filmes com 12,5% de consultas sem resposta e top-1 de 57% sem ator/diretor. **Correções:** (1) cadeias número → faixa categórica com fallback DESCONHECIDO (idade/tempo/altura em branco); (2) comparação exata `tempo disponível >= duração do filme`; (3) evidências por gênero e clima em comum; (4) sugestões alternativas de baixo CNF. **Final:** famosos com autorreconhecimento top-1 de **100%** (com e sem obra); filmes top-1 de **100%** com ator/diretor e **91%** sem (top-3 100%); consultas sem resposta 0,3% nos filmes e 1,9% nos famosos (respostas de CNF baixo, abaixo do limiar de 50%); **0 falhas do motor** em 4.000 consultas; **100% das regras alcançáveis**; **0 violações de classificação indicativa** em 1.000 consultas com menores. Revalidação no **ExSINTA real** com as bases finais: 8 casos idênticos ao simulador (incluindo idade/tempo em branco e CNFs fracionários). Pipeline único: `gerador/gerar_tudo.py`. |
 | 10 | concluída | `relatorio/Relatorio.md` (cerca de 3.800 palavras: requisitos × atendimento, abordagem, 2 sistemas, validação e limitações), com 10 figuras capturadas do ExSINTA real (perguntas, regras no editor, resultados e aba Histórico) em `relatorio/img/`. Apêndices gerados automaticamente das bases (`apendice_famosos.md` e `apendice_filmes.md`, com variáveis, perguntas, "por quê", objetivos e exemplos de regras). `README.md` na raiz. Verificações: todos os números do relatório foram conferidos contra dados, bases e simulador (4 corrigidos no rascunho); todos os links e imagens existem; os `.bcm` entregues são idênticos a uma regeneração do zero e não estão como somente leitura. |
 
-**Trabalho concluído.** Todas as etapas (0 a 10) foram fechadas e validadas.
+**Registro histórico do desenvolvimento original.** As afirmações de conclusão acima devem ser lidas com a revisão de entrega abaixo, que corrige as limitações encontradas na auditoria.
 
 ## 10. Prompt sugerido para iniciar
 
 > "Execute o PLANO_DE_TRABALHO.md a partir da Etapa 0. Pare ao final da Etapa 3 (round-trip do VINHOS.BCM) e me mostre o resultado antes de gerar as bases."
+
+## 12. Revisão de entrega — 25/11/2026
+
+- Corrigido o limite de duração em **todas** as regras que recomendam filmes,
+  inclusive ator, diretor, ocasião e prêmios. Campo em branco continua sem limite.
+- Pesquisa documentada em `dados/FONTES.md` e `dados/fontes.csv` (26 registros,
+  por amostragem; não se afirma verificação factual integral dos 242 itens).
+- Corrigidas durações de O Auto da Compadecida 2 e O Agente Secreto; complementadas
+  codireções e separados diretores que antes eram uma opção conjunta.
+- Bases finais: **827 regras de famosos e 2.374 de filmes; total 3.201**.
+- **881 consultas de regressão aprovadas**, incluindo os limites exatos dos 145
+  filmes, respostas em branco/sem limite e cada diretor individualmente.
+- Avaliação refeita: **4.000 consultas sem falha**, todas as regras alcançadas
+  pelo conjunto aleatório + dirigido; **1.000 consultas com menores sem violação
+  da classificação cadastrada**. Filmes sem resposta: **3,1%** (limite agora rígido).
+- Relatório, apêndices e instruções atualizados; hashes e oito consultas atuais
+  do simulador em `testes/revisao/`.
+- Evidências do Windows preservadas e identificadas como históricas. Os arquivos
+  regravados pelo ExSINTA têm 820/1.476 regras; não são cópias das bases finais.
+  **Não houve nova execução nativa**: este ambiente Linux não dispõe de Windows,
+  Wine ou PowerShell. Instruções para repetir a prova estão em
+  `testes/sinta_regravado/README.md` e `testes/gui/README.md`.
+- Identificação dos integrantes: solicitada ao usuário; não foram inventados nomes.
