@@ -98,7 +98,7 @@ def perfil_filme(r, com_pessoas=True):
     if com_pessoas:
         if r["atores"]:
             resp["ator preferido"] = L(r["atores"])[:1]
-        resp["diretor preferido"] = [r["diretor"]]
+        resp["diretor preferido"] = L(r["diretor"])
     return resp
 
 

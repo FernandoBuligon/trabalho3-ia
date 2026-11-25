@@ -23,7 +23,7 @@ colunas:
   classificacao:
     obrigatoria: true
     valores: [L, "10", "12", "14", "16", "18"]
-  diretor: {obrigatoria: true}
+  diretor: {obrigatoria: true, lista: true}
   atores: {lista: true}
   premios:
     lista: true

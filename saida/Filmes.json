@@ -1,9 +1,9 @@
 {
  "variaveis": 28,
- "valores": 569,
- "regras": 2364,
- "premissas": 13057,
- "conclusoes": 2471,
+ "valores": 578,
+ "regras": 2374,
+ "premissas": 17551,
+ "conclusoes": 2481,
  "perguntas": 16,
  "objetivos": 9,
  "regras_por_tipo": {
@@ -26,11 +26,11 @@
   "evidência: gênero em comum": 325,
   "evidência: clima em comum": 259,
   "evidência: ator": 255,
-  "evidência: diretor": 145,
+  "evidência: diretor": 155,
   "modelo: grande premiado": 27,
   "modelo: saga ou franquia": 56
  },
- "bytes": 990923,
+ "bytes": 1049673,
  "itens": 145,
  "avisos": []
 }

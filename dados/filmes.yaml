@@ -71,8 +71,7 @@ variaveis:
     faixa: [60, 300]
     pergunta: Quanto tempo você tem disponível (em minutos)?
     porque:
-      - "Convertido em faixas: curta (até 100 min), média (101 a 130),"
-      - "longa (131 a 160) e muito longa (mais de 160), com tolerância."
+      - "Todas as recomendações respeitam a duração exata cadastrada do filme."
       - "Se ficar em branco, considera-se que não há limite."
   - nome: faixa de tempo
     tipo: uni
@@ -357,7 +356,7 @@ itens:
   arquivo: filmes.csv
   chave: titulo
   objetivo: filme recomendado
-  colunas_lista: [generos, clima, atores, premios]
+  colunas_lista: [generos, clima, atores, premios, diretor]
   mapas:
     fatos_reais: {sim: baseada em fatos reais, não: ficção}
   derivados:
@@ -394,6 +393,7 @@ itens:
       condicoes:
         - {var: gênero preferido, coluna: generos}
         - {var: época preferida, coluna: epoca}
+        - {se: "tem limite de tempo = Não OU tem limite de tempo = DESCONHECIDO OU tempo disponível >= {duracao} OU faixa de tempo = DESCONHECIDO"}
         - {var: classificação permitida, coluna: classificacao}
 
     - nome: origem e gênero
@@ -401,6 +401,7 @@ itens:
       condicoes:
         - {var: gênero compatível, coluna: generos}
         - {var: origem preferida, coluna: origem}
+        - {se: "tem limite de tempo = Não OU tem limite de tempo = DESCONHECIDO OU tempo disponível >= {duracao} OU faixa de tempo = DESCONHECIDO"}
         - {var: classificação permitida, coluna: classificacao}
 
     - nome: ideal para a ocasião
@@ -408,6 +409,7 @@ itens:
       condicoes:
         - {var: gênero indicado para a ocasião, coluna: generos}
         - {var: clima compatível, coluna: clima}
+        - {se: "tem limite de tempo = Não OU tem limite de tempo = DESCONHECIDO OU tempo disponível >= {duracao} OU faixa de tempo = DESCONHECIDO"}
         - {var: classificação permitida, coluna: classificacao}
 
     - nome: aclamado pela crítica
@@ -416,6 +418,7 @@ itens:
       condicoes:
         - {se: quer premiados = Sim}
         - {var: gênero compatível, coluna: generos}
+        - {se: "tem limite de tempo = Não OU tem limite de tempo = DESCONHECIDO OU tempo disponível >= {duracao} OU faixa de tempo = DESCONHECIDO"}
         - {var: classificação permitida, coluna: classificacao}
 
     - nome: grande premiado
@@ -425,6 +428,7 @@ itens:
       condicoes:
         - {se: quer premiados = Sim}
         - {var: gênero compatível, coluna: generos}
+        - {se: "tem limite de tempo = Não OU tem limite de tempo = DESCONHECIDO OU tempo disponível >= {duracao} OU faixa de tempo = DESCONHECIDO"}
         - {var: classificação permitida, coluna: classificacao}
 
     - nome: saga ou franquia
@@ -433,6 +437,7 @@ itens:
       condicoes:
         - {se: interesse em franquias = gosto de sagas e franquias}
         - {var: gênero compatível, coluna: generos}
+        - {se: "tem limite de tempo = Não OU tem limite de tempo = DESCONHECIDO OU tempo disponível >= {duracao} OU faixa de tempo = DESCONHECIDO"}
         - {var: classificação permitida, coluna: classificacao}
 
     - nome: obra única
@@ -441,6 +446,7 @@ itens:
       condicoes:
         - {se: interesse em franquias = prefiro filmes únicos}
         - {var: gênero compatível, coluna: generos}
+        - {se: "tem limite de tempo = Não OU tem limite de tempo = DESCONHECIDO OU tempo disponível >= {duracao} OU faixa de tempo = DESCONHECIDO"}
         - {var: classificação permitida, coluna: classificacao}
 
     - nome: sugestão pelo gênero
@@ -477,6 +483,7 @@ itens:
     - nome: ator
       prefixo: quer escolher ator = Sim
       condicoes:
+        - {se: "tem limite de tempo = Não OU tem limite de tempo = DESCONHECIDO OU tempo disponível >= {duracao} OU faixa de tempo = DESCONHECIDO"}
         - {var: classificação permitida, coluna: classificacao}
       var: ator preferido
       coluna: atores
@@ -484,6 +491,7 @@ itens:
     - nome: diretor
       prefixo: quer escolher diretor = Sim
       condicoes:
+        - {se: "tem limite de tempo = Não OU tem limite de tempo = DESCONHECIDO OU tempo disponível >= {duracao} OU faixa de tempo = DESCONHECIDO"}
         - {var: classificação permitida, coluna: classificacao}
       var: diretor preferido
       coluna: diretor
