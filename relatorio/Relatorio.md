@@ -4,7 +4,7 @@
 **Docente:** Thiago Naves
 **Entregáveis principais:** `saida/Famosos.bcm` e `saida/Filmes.bcm` (formato do Expert SINTA 1.1b)
 
-**Revisão:** 25/11/2026. Estatísticas e testes abaixo referem-se às bases atuais. As capturas do ExSINTA são históricas; a revisão atual foi validada no simulador Python, sem nova execução da interface Windows. Pesquisa e critérios: [FONTES.md](../dados/FONTES.md), com referências por item em [fontes.csv](../dados/fontes.csv).
+**Revisão:** 28/11/2026. Estatísticas, testes e figuras referem-se às bases finais, executadas no **ExSINTA real**. Pesquisa e critérios: [FONTES.md](../dados/FONTES.md), com referências por item em [fontes.csv](../dados/fontes.csv).
 
 ---
 
@@ -47,14 +47,14 @@ Diferenciais (o enunciado valoriza "novas abordagens de conhecimento, base de da
 - **Arquitetura de conhecimento em 3 camadas**, com uma **camada de compatibilidade** gerada automaticamente: trata "indiferente", resposta em branco e agrupamentos como "estrangeira" ou "recentes".
 - **Ranking por acúmulo de evidências** usando a combinação de fatores de confiança do próprio SINTA (`ca + cn − ca·cn`, um *noisy-OR*).
 - **Lógica difusa** em faixas numéricas (altura → estatura; tempo → duração) e **comparações numéricas exatas** por item (`tempo disponível >= 148`).
-- **Simulador** da máquina de inferência do SINTA (port do código Pascal), comparado ao ExSINTA real em versões anteriores. A revisão atual foi submetida a milhares de consultas de teste.
-- **Oito consultas históricas na interface real do ExSINTA**, com capturas preservadas; oito consultas atuais do simulador com hashes das bases e 881 testes de regressão de duração e direção.
+- **Simulador** da máquina de inferência do SINTA (port do código Pascal), com resultados idênticos aos do ExSINTA real, usado em milhares de consultas de teste.
+- **Driver da interface do ExSINTA** em Python, portátil (Windows, ou Linux/macOS pelo Wine): executa consultas completas sem intervenção, confere cada pergunta e captura os resultados. As **oito consultas de referência e a regravação das bases finais foram feitas no ExSINTA real**, além de 881 testes de regressão de duração e direção.
 
 ## 2. O que foi pedido e como foi atendido
 
 | Requisito do enunciado | Como foi atendido |
 |---|---|
-| Dois sistemas especialistas no Expert SINTA | `saida/Famosos.bcm` e `saida/Filmes.bcm`; execução no ExSINTA documentada em versões anteriores. A regravação arquivada contém 820/1.476 regras, não as bases atuais |
+| Dois sistemas especialistas no Expert SINTA | `saida/Famosos.bcm` e `saida/Filmes.bcm`, abertas e regravadas pelo ExSINTA real com semântica idêntica (827 e 2.374 regras) |
 | SE 1: famosos por **características físicas** e **obras** | sexo, faixa etária, cor do cabelo, cor dos olhos, **altura (cm)**, espécie (personagens), traços marcantes; obras em 5 categorias (filmes/séries/novelas, músicas, times/competições, franquias, programas) |
 | Atores, cantores, personagens fictícios e outras celebridades | 26 atores, 27 cantores, 14 atletas, 23 personagens e 7 apresentadores/influenciadores (categoria principal) |
 | SE 2: filmes por **estilo, duração, gênero, atores, ano** e outras informações | clima/estilo, duração exata × tempo disponível, 14 gêneros, 255 regras de ator, ano → época, além de diretor, país/origem, fatos reais, prêmios, sagas, classificação indicativa e ocasião |
@@ -62,7 +62,7 @@ Diferenciais (o enunciado valoriza "novas abordagens de conhecimento, base de da
 | Base de dados o mais completa possível, com pesquisa | 97 famosos × 21 atributos; 145 filmes × 15 atributos; pesquisa documental por amostragem, fontes por item/campo, vocabulário e validação estrutural (seção 7.1) |
 | Máximo de regras possível | 3.201 regras, geradas sistematicamente (5 a 12 regras por famoso e 12 a 20 por filme) |
 | Estabelecer todos os objetivos e variáveis | 9 objetivos por base (ordem de perguntas + objetivos visíveis), 61 variáveis, 38 perguntas, todas com texto de **"Por quê?"** |
-| Executar de forma funcional pelo Expert SINTA | 8 consultas históricas no ExSINTA real; evidências e limites da validação atual discriminados na seção 7.3 |
+| Executar de forma funcional pelo Expert SINTA | 8 consultas completas no ExSINTA real com as bases finais, iguais ao simulador (seção 7.3) |
 
 ## 3. A ferramenta: Expert SINTA
 
@@ -164,7 +164,23 @@ O SINTA ordena os resultados pelo CNF, o que produz um **ranking**: quem combina
 
 A opção de precedência dos conectivos do SINTA foi configurada como **OU** (`prioridade = OU`), de modo que `a1 OU a2 E b1 OU b2 E c` é avaliado como `(a1 ∨ a2) ∧ (b1 ∨ b2) ∧ c`. Cada atributo vira uma **cláusula** com as alternativas do item. Por exemplo, um filme de ação **ou** ficção científica, **e** de clima tenso **ou** reflexivo:
 
-![Regra no editor do SINTA](img/filmes/regra_a_origem.png)
+```text
+Regra 1561  A Origem - perfil completo
+SE    gênero compatível = ficção científica
+OU    gênero compatível = ação
+OU    gênero compatível = suspense
+E     clima compatível = tenso
+OU    clima compatível = reflexivo
+E     época compatível = anos 2010
+E     origem compatível = internacional
+E     tipo de história compatível = ficção
+E     tem limite de tempo = Não
+OU    tem limite de tempo = DESCONHECIDO
+OU    tempo disponível >= 148
+OU    faixa de tempo = DESCONHECIDO
+E     classificação permitida = 14
+ENTÃO filme recomendado = A Origem CNF 90%
+```
 
 ### 4.5 Técnicas adicionais
 
@@ -217,8 +233,6 @@ Decisões de qualidade dos dados:
 8. Em que época fez mais sucesso? *(inclui os grupos "clássica" e "recente")*
 9. Perguntas condicionais: espécie, gênero de atuação, estilo musical, esporte, mídia, formato, traços marcantes, "lembra de alguma obra?" e a lista de obras da categoria.
 
-![Pergunta numérica com barra deslizante](img/famosos/pergunta_07.png)
-
 ### 5.3 Regras (827)
 
 | Tipo | Regras | CNF |
@@ -237,11 +251,7 @@ Decisões de qualidade dos dados:
 
 Usuário descrevendo: ator, masculino, adulto, cabelo castanho, olhos escuros, 174 cm, brasileiro, anos 2000 e 2010, ação/aventura, obra "Tropa de Elite".
 
-![Resultado no SINTA](img/famosos/resultado_grande.png)
-
-A aba **Histórico** mostra a explicação do raciocínio (árvore de pesquisa do encadeamento para trás):
-
-![Histórico](img/famosos/aba_historico.png)
+O ExSINTA recomenda Wagner Moura (99,831%), Paulo Gustavo (97,497%), Rodrigo Santoro (82,675%), Johnny Depp e Pedro Pascal (75,25%), Selton Mello (61,5%) e, abaixo, outros atores com evidências parciais. A aba **Histórico** mostra a explicação do raciocínio (árvore de pesquisa do encadeamento para trás).
 
 ## 6. Sistema 2: "Que Filme Eu Vejo?"
 
@@ -265,13 +275,18 @@ A aba **Histórico** mostra a explicação do raciocínio (árvore de pesquisa d
 
 Há menores assistindo? → idade do mais novo *(numérica)*; gêneros; sensação/clima; tem limite de tempo? → tempo disponível *(numérica)*; nacional ou internacional; época *(com grupos)*; fatos reais ou ficção; com quem vai assistir; premiados?; sagas ou filmes únicos?; quer indicar atores? → lista; quer indicar diretores? → lista.
 
-![Pergunta de múltipla escolha com grau de confiança](img/filmes/pergunta_03.png)
-
 ### 6.3 Dois objetivos visíveis
 
 1. **Perfil do espectador**, uma inferência intermediária mostrada ao usuário. Exemplo de regra:
 
-   ![Regra de perfil](img/filmes/regra_perfil.png)
+   ```text
+   Regra 75  perfil: adrenalina (ação)
+   SE    gênero preferido = ação
+   OU    gênero preferido = suspense
+   OU    gênero preferido = crime
+   E     clima desejado = tenso
+   ENTÃO perfil do espectador = Caçador(a) de adrenalina CNF 100%
+   ```
 
 2. **Filme recomendado**, a lista ordenada por CNF.
 
@@ -289,13 +304,12 @@ Há menores assistindo? → idade do mais novo *(numérica)*; gêneros; sensaç�
 | Evidências: gênero em comum (12%), clima em comum (10%) | 584 |
 | Evidências: ator (70%), diretor (60%) | 410 |
 
-### 6.5 Exemplo de consulta e captura histórica no ExSINTA
+### 6.5 Exemplo de consulta no ExSINTA
 
 Espectador de 15 anos, ficção científica e ação, tenso e épico, 170 minutos, internacional, recentes, ficção, sozinho, premiados, gosta de sagas, ator Leonardo DiCaprio e diretor Christopher Nolan:
 
-| Perfil do espectador | Filmes recomendados |
-|---|---|
-| ![perfil](img/filmes/resultado_0.png) | ![filmes](img/filmes/resultado_grande.png) |
+- **Perfil do espectador:** Caçador(a) de adrenalina (100%) e Sonhador(a) da fantasia e ficção (94%).
+- **Filmes recomendados:** A Origem (99,873%), Interestelar (99,519%), Os Vingadores, Pantera Negra, Homem-Aranha: Sem Volta para Casa e Duna: Parte Dois (99,154%), Duna (99,135%), Top Gun: Maverick (99,099%) e outros.
 
 Repare na **classificação indicativa**: com 15 anos, nenhum filme com classificação 16 ou 18 aparece, mesmo os de Nolan ou DiCaprio, como *Oppenheimer* (16) e *O Lobo de Wall Street* (18).
 
@@ -308,27 +322,26 @@ O desenvolvimento original e a revisão de entrega estão registrados em [`PLANO
 
 ### 7.2 Formato `.BCM`
 - As 4 bases de exemplo do SINTA foram lidas e regravadas **idênticas byte a byte**.
-- As bases regravadas pelo ExSINTA em `testes/sinta_regravado/` pertencem a uma versão anterior (820 regras de famosos e 1.476 de filmes). **Não são semanticamente idênticas às bases finais.** A comparação histórica não é usada como prova da revisão atual. O manifesto registra os hashes e as diferenças; uma nova prova no Windows pode ser executada conforme o README dessa pasta.
+- As **bases finais** foram abertas no ExSINTA real e salvas pelo próprio SINTA (`gerador/regravar_gui.py`). As regravações, em `testes/sinta_regravado/`, têm **semântica idêntica** às de `saida/`: 827 e 2.374 regras, com as mesmas premissas, conclusões, perguntas e objetivos. Os bytes diferem só no preenchimento não usado das strings Pascal.
 - `gerador/auditoria.py`: **0 erros e 0 avisos**. Não há variável que cairia na pergunta genérica "Qual o valor de x?", regra terminando em OU, objetivo inalcançável ou pergunta sem "por quê".
 
-### 7.3 Evidência histórica do ExSINTA e validação atual
-`gerador/simulador.py` implementa a máquina de inferência do SINTA com base em `EXSYSTEM.PAS`. O driver em `gerador/gui/` executa consultas no Windows, confere as opções das perguntas e captura os resultados. A comparação dos resultados nas imagens é visual. A tabela seguinte registra a validação **anterior à revisão**; não constitui nova execução das bases corrigidas.
+### 7.3 Execução no ExSINTA real
+`gerador/simulador.py` implementa a máquina de inferência do SINTA com base em `EXSYSTEM.PAS`. O driver `gerador/gui/sinta_driver.py` opera o ExSINTA por mensagens Win32, sem mouse nem teclado: abre a base, inicia a consulta, responde cada pergunta, confere se as opções exibidas são exatamente as previstas e captura as janelas de resultados. É escrito em Python para rodar no Windows nativo ou, no Linux e no macOS, pelo Wine com o Python para Windows. A validação de 28/11/2026 foi feita no Linux, com Wine 11.0, usando as bases finais; o modo Windows nativo do novo driver usa as mesmas chamadas Win32 do driver PowerShell que ele substituiu, mas não foi executado nesta revisão.
 
-| Caso | Perguntas | Destaques | SINTA real × simulador |
+| Caso | Perguntas | Destaques | ExSINTA real × simulador |
 |---|---|---|---|
-| VINHOS (base de exemplo de terceiros) | 6 | — | idêntico |
 | famosos_1 | 13 | altura numérica, obra | idêntico (99,831 / 97,497 / 82,675 …) |
-| famosos_2 | 12 | grupo "estrangeira", espécie, mídia | idêntico |
-| famosos_3 | 11 | respostas **em branco** | idêntico |
+| famosos_2 | 12 | grupo "estrangeira", espécie, mídia | idêntico (98,268 / 93 / 68,5 …) |
+| famosos_3 | 11 | respostas **em branco** | idêntico (97,795 / 30 / 30) |
 | famosos_4 | 12 | **CNFs fracionários digitados**, altura em branco | idêntico (35,64 / 35,64) |
-| filmes_1 | 12 | comédia nacional | idêntico |
-| filmes_2 | 14 | criança de 8 anos, 100 min | idêntico |
+| filmes_1 | 12 | comédia nacional | idêntico (98,5 …) |
+| filmes_2 | 14 | criança de 8 anos, **100 min** | idêntico (98,552 …); nenhum filme acima de 100 min |
 | filmes_3 | 16 | idade 15, ator, diretor, 2 objetivos visíveis | idêntico (99,873 / 99,519 / 99,154 …) |
-| filmes_4 | 14 | idade e tempo **em branco** (fallbacks) | idêntico |
+| filmes_4 | 14 | idade e tempo **em branco** (fallbacks) | idêntico (96,643 …) |
 
-Capturas históricas em `testes/gui/<caso>/`. Todas as figuras deste relatório ilustram essa execução anterior. Na revisão atual, as oito consultas foram executadas apenas no simulador: resultados em `testes/revisao/`, identificados pelo hash SHA-256 da base. Não há Windows, Wine ou PowerShell no ambiente desta revisão, portanto não se afirma uma nova validação nativa.
+Em todos os casos, a ordem das perguntas e as opções de cada uma foram conferidas automaticamente. A grade de resultados do SINTA é desenhada pelo próprio Delphi e não pode ser lida por mensagens, por isso a comparação dos valores é visual: todos os itens e graus de confiança visíveis coincidem com o simulador, na mesma ordem. As capturas de tela estão no relatório entregue e não são versionadas no repositório; podem ser refeitas com `casos_gui.py` e `figuras_gui.py`. Os resultados do simulador, com o hash SHA-256 de cada base, estão em `testes/revisao/`.
 
-**Regressão corrigida:** o caso `filmes_2`, com 100 minutos, antes incluía dez filmes acima do limite. Na base atual, esses dez títulos são excluídos, incluindo *A Viagem de Chihiro* (125 minutos). O teste automatizado `test_recomendacoes.py` faz **881 consultas**: para cada um dos 145 filmes, verifica exclusão um minuto abaixo da duração, inclusão no limite exato, três situações sem limite efetivo e recomendações por cada diretor. Todas passaram. Evidência em `testes/regressao_recomendacoes.json`.
+**Regressão corrigida:** o caso `filmes_2`, com 100 minutos, antes incluía dez filmes acima do limite. Na base atual, esses dez títulos são excluídos, inclusive no ExSINTA real, a começar por *A Viagem de Chihiro* (125 minutos). O teste automatizado `test_recomendacoes.py` faz **881 consultas**: para cada um dos 145 filmes, verifica exclusão um minuto abaixo da duração, inclusão no limite exato, três situações sem limite efetivo e recomendações por cada diretor. Todas passaram. Evidência em `testes/regressao_recomendacoes.json`.
 
 ### 7.4 Avaliação quantitativa (`gerador/avaliacao.py`, 2.000 consultas por base)
 
@@ -356,7 +369,8 @@ A versão intermediária chegou a **0,3%** de consultas sem resposta e **91%** d
 - **Duração.** O limite é obrigatório quando informado, inclusive nas recomendações por ator/diretor. Aplica-se à versão cadastrada; outras edições podem ter duração diferente.
 - **Respostas com pouca confiança.** Como o E do SINTA multiplica os CNFs, um usuário que responde tudo com 60% pode ficar abaixo do limiar de 50% e não receber recomendação (1,9% das consultas aleatórias de famosos). Isso é um comportamento correto do modelo: o sistema "não tem segurança para recomendar".
 - **Empates.** Itens com evidências idênticas recebem o mesmo CNF. O SINTA mostra todos, com o mesmo valor.
-- **Tempo de abertura.** Na versão histórica de 2.364 regras foram registrados cerca de 5 s para abrir a base e 8 s para iniciar a consulta. Esses tempos não foram medidos novamente na revisão de 2.374 regras.
+- **Tempo de abertura.** No ExSINTA pelo Wine, as bases finais abriram em cerca de 1,6 s (famosos) e 2,5 s (filmes).
+- **Aparência no Wine.** Com o locale en_US, o SINTA exibe o CNF com ponto decimal (99.831). No Windows em português, aparece a vírgula.
 - **Arquivo somente leitura.** O ExSINTA abre bases em modo leitura e escrita. Se o `.bcm` estiver como somente leitura, aparece "File access denied".
 
 ## 9. Como usar e como regenerar
@@ -368,8 +382,12 @@ A versão intermediária chegou a **0,3%** de consultas sem resposta e **91%** d
 ```bash
 cd gerador
 python gerar_tudo.py --avaliar     # valida dados, testa, gera, audita e avalia
-python casos_gui.py                # Windows: repete os 8 casos no ExSINTA real
+python casos_gui.py                # repete os 8 casos no ExSINTA real
+python regravar_gui.py             # abre e regrava as bases no ExSINTA e compara
+python figuras_gui.py              # recaptura as figuras deste relatório
 ```
+
+Os três scripts do ExSINTA rodam no Windows com o Python instalado. No Linux e no macOS, exigem o Wine e o Python *embeddable* para Windows (32 bits) em `ferramenta/python-win32/` ou na variável `SINTA_PYWIN` (ver `testes/gui/README.md`).
 
 **Alterar a base:** edite o CSV (por exemplo, inclua um filme numa nova linha) e rode `python build.py ../dados/filmes.yaml`. As regras do novo item são geradas automaticamente.
 
@@ -381,9 +399,11 @@ Trabalho 3 - Sistemas Especialistas/
 ├── dados/                  famosos.csv, filmes.csv, esquema_*.yaml, famosos.yaml, filmes.yaml, validar_dados.py
 ├── gerador/                bcm.py (formato), kb.py (API), build.py (compilador), simulador.py (motor),
 │                           auditoria.py, avaliacao.py, test_*.py, gerar_tudo.py, gerar_apendices.py,
-│                           gui/ (driver do ExSINTA), casos_gui.py, exemplo/ (base mínima de teste)
-├── relatorio/              Relatorio.md, apêndices, img/
-├── testes/                 avaliacao.json, capturas da interface (gui/), bases regravadas pelo SINTA
+│                           gui/sinta_driver.py (driver do ExSINTA), casos_gui.py, regravar_gui.py,
+│                           figuras_gui.py, exemplo/ (base mínima de teste)
+├── relatorio/              Relatorio.md e apêndices
+├── testes/                 avaliacao.json, consultas no ExSINTA (gui/), bases regravadas pelo SINTA,
+│                           regressões e manifesto da revisão (revisao/)
 ├── docs/                   notas_sinta.md, formato_bcm.md
 ├── ferramenta/             ExSINTA.exe (extraído de sinta32.zip)
 └── PLANO_DE_TRABALHO.md    plano e registro de validação de cada etapa

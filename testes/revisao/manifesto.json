@@ -1,19 +1,19 @@
 {
-  "ambiente": "simulador Python; não é execução do ExSINTA",
+  "ambiente": "consultas JSON: simulador Python; regravação e capturas: ExSINTA 1.1b real (testes/sinta_regravado/ e testes/gui/)",
   "bases": {
     "Famosos": {
       "sha256": "782e867562476ff89a88ac1092bc8c85303f4b7025a65741b2f8a1251bf4cc1b",
       "regras": 827,
-      "regravacao_historica_sha256": "7e7e0e684915005b15925a4cc8c953f1a6508eb4efb85d1584413675d9f74ac2",
-      "regras_regravacao_historica": 820,
-      "semantica_igual_a_regravacao_historica": false
+      "regravacao_exsinta_sha256": "6bbdad8632be53c0bdd88a3b2aaaca2f7ee1880e6c673649c30f982c2a56b89a",
+      "regras_regravacao_exsinta": 827,
+      "semantica_igual_a_regravacao_exsinta": true
     },
     "Filmes": {
       "sha256": "6b5b77a501dda5f0d5a08440aedb6a49f9f9f6e053084d5f225a21e35af9be65",
       "regras": 2374,
-      "regravacao_historica_sha256": "520c8c8862812aaf2e972c1e502fccf4bbd587c4950a86b338f0ab7f50902f55",
-      "regras_regravacao_historica": 1476,
-      "semantica_igual_a_regravacao_historica": false
+      "regravacao_exsinta_sha256": "739442072fd3c0d3be6a1d4b03031288b911af3366145c2e5b87d8834e4e5824",
+      "regras_regravacao_exsinta": 2374,
+      "semantica_igual_a_regravacao_exsinta": true
     }
   },
   "casos": {

@@ -1,26 +1,30 @@
-# Evidências históricas de regravação
+# Bases regravadas pelo Expert SINTA
 
-Estes arquivos foram produzidos no Expert SINTA em uma etapa anterior:
+Prova de compatibilidade do formato: cada base final de `saida/` foi aberta no
+**ExSINTA 1.1b real** e salva pelo próprio SINTA (*Arquivo › Salvar base*).
+Executado em 28/11/2026, no Linux pelo Wine 11.0.
 
-| Arquivo | Regras | Variáveis |
-|---|---:|---:|
-| FAMOSOS_SINTA.BCM | 820 | 32 |
-| FILMES_SINTA.BCM | 1.476 | 26 |
+| Arquivo | Origem | Regras | Comparação com `saida/` |
+|---|---|---:|---|
+| `FAMOSOS_SINTA.BCM` | `saida/Famosos.bcm` regravada pelo ExSINTA | 827 | semântica idêntica |
+| `FILMES_SINTA.BCM` | `saida/Filmes.bcm` regravada pelo ExSINTA | 2.374 | semântica idêntica |
 
-**Não são cópias regravadas dos entregáveis atuais.** Não devem ser comparados
-às bases finais como se fossem semanticamente idênticos. Foram preservados
-como registro histórico; não foram substituídos por arquivos do gerador.
+"Semântica idêntica" significa mesmas variáveis, valores, regras, premissas,
+conclusões, perguntas, objetivos e opções. Os bytes diferem só no preenchimento
+não usado das strings Pascal de tamanho fixo, que o Delphi grava com o conteúdo
+que estava na memória.
 
-O manifesto em [../revisao/manifesto.json](../revisao/manifesto.json) identifica
-os hashes e a diferença em relação às bases atuais.
+Usar as bases de `saida/` para a entrega. Os hashes estão em
+[../revisao/manifesto.json](../revisao/manifesto.json).
 
-Para repetir a prova no Windows, abrir cada arquivo de `saida/` no ExSINTA,
-salvar uma cópia em uma nova pasta e executar:
+## Repetir
 
-```text
-python gerador/test_formato.py --comparar saida/Famosos.bcm CAMINHO/FAMOSOS_SINTA.BCM
-python gerador/test_formato.py --comparar saida/Filmes.bcm CAMINHO/FILMES_SINTA.BCM
+```bash
+cd gerador
+python regravar_gui.py
+# ou, para comparar uma regravação feita à mão:
+python test_formato.py --comparar ../saida/Filmes.bcm CAMINHO/FILMES_SINTA.BCM
 ```
 
-Usar as cópias de `saida/` para entrega. O resultado esperado da comparação
-com uma nova regravação é `SEMÂNTICA IDÊNTICA`.
+Os requisitos (Windows, ou Wine + Python embeddable) estão em
+[../gui/README.md](../gui/README.md).

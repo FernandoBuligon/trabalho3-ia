@@ -2,12 +2,18 @@
 Executa a MESMA consulta no simulador e no ExSINTA real (via interface, sem foco)
 e mostra a previsão do simulador ao lado das capturas da janela de resultados.
 
+Portátil: o driver (gui/sinta_driver.py) precisa de um Python *para Windows*.
+  - Windows: usa o próprio Python que executa este script;
+  - Linux/macOS: usa o Wine com o Python "embeddable" para Windows (win32),
+    indicado por SINTA_PYWIN ou, por padrão, ferramenta/python-win32/python.exe.
+
 Uso (programático):
     from gui_check import checar
     checar("../saida/Filmes.bcm", {"var": [...], ...}, "nome_caso")
 """
 import json
 import os
+import shutil
 import subprocess
 import sys
 
@@ -16,8 +22,45 @@ import simulador
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 RAIZ = os.path.dirname(AQUI)
-OUT = os.path.join(RAIZ, "testes", "gui")
-PS = r"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"
+OUT = os.environ.get("SINTA_GUI_SAIDA") or os.path.join(RAIZ, "testes", "gui")
+FERRAMENTA = os.path.join(RAIZ, "ferramenta")
+DRIVER = os.path.join(AQUI, "gui", "sinta_driver.py")
+
+
+def caminho_win(p: str) -> str:
+    """Caminho como o processo Windows o enxerga (no Wine, a unidade Z: é a raiz)."""
+    p = os.path.abspath(p)
+    if os.name == "nt":
+        return p
+    if shutil.which("winepath"):
+        r = subprocess.run(["winepath", "-w", p], capture_output=True, text=True)
+        if r.returncode == 0 and r.stdout.strip():
+            return r.stdout.strip()
+    return "Z:" + p.replace("/", "\\")
+
+
+def driver(*args: str) -> subprocess.CompletedProcess:
+    """Executa um comando do driver no Windows nativo ou pelo Wine."""
+    if os.name == "nt":
+        cmd = [sys.executable, DRIVER]
+    else:
+        py = os.environ.get("SINTA_PYWIN") or os.path.join(FERRAMENTA, "python-win32", "python.exe")
+        if not os.path.exists(py):
+            sys.exit(f"Python para Windows não encontrado em {py} (defina SINTA_PYWIN).")
+        if not shutil.which("wine"):
+            sys.exit("Wine não encontrado: necessário para operar o ExSINTA fora do Windows.")
+        cmd = ["wine", py, caminho_win(DRIVER)]
+    env = dict(os.environ, WINEDEBUG=os.environ.get("WINEDEBUG", "-all"))
+    # saída em arquivo, não em pipe: o ExSINTA continua aberto depois do driver
+    log = os.path.join(OUT, ".driver.log")
+    os.makedirs(OUT, exist_ok=True)
+    with open(log, "w+", encoding="utf-8", errors="replace") as f:
+        p = subprocess.run(cmd + list(args), stdout=f, stderr=subprocess.STDOUT,
+                           stdin=subprocess.DEVNULL, env=env)
+        f.seek(0)
+        saida = f.read()
+    os.remove(log)
+    return subprocess.CompletedProcess(cmd, p.returncode, saida, "")
 
 
 def passos(base: bcm.Base, respostas, perguntas):
@@ -43,7 +86,8 @@ def passos(base: bcm.Base, respostas, perguntas):
     return steps
 
 
-def checar(arquivo_base: str, respostas: dict, caso: str, abrir: bool = True):
+def checar(arquivo_base: str, respostas: dict, caso: str, abrir: bool = True,
+           fotos: bool = False, manter_ultimo: bool = False):
     sys.stdout.reconfigure(encoding="utf-8")
     base = bcm.read_bcm(open(arquivo_base, "rb").read())
     res = simulador.simular(base, respostas)
@@ -58,20 +102,17 @@ def checar(arquivo_base: str, respostas: dict, caso: str, abrir: bool = True):
               open(os.path.join(outdir, "simulador.json"), "w", encoding="utf-8"),
               ensure_ascii=False, indent=1)
     if abrir:
-        subprocess.run([PS, "-NoProfile", "-ExecutionPolicy", "Bypass", "-File",
-                        os.path.join(AQUI, "gui", "abrir_base.ps1"), "-Base",
-                        os.path.abspath(arquivo_base)], check=True)
-    p = subprocess.run([PS, "-NoProfile", "-ExecutionPolicy", "Bypass", "-File",
-                        os.path.join(AQUI, "gui", "consulta.ps1"), "-Steps", steps_file,
-                        "-Titulo", base.name.text, "-OutDir", outdir,
-                        "-NResultados", str(sum(t.show_results for t in base.targets))],
-                       capture_output=True, text=True, encoding="utf-8", errors="replace")
+        a = driver("abrir", "--ferramenta", caminho_win(FERRAMENTA), "--base", caminho_win(arquivo_base))
+        if a.returncode != 0:
+            sys.exit(a.stdout[-2000:])
+    extra = (["--fotos"] if fotos else []) + (["--manter-ultimo"] if manter_ultimo else [])
+    p = driver("consulta", "--passos", caminho_win(steps_file), "--titulo", base.name.text,
+               "--saida", caminho_win(outdir),
+               "--nresultados", str(sum(t.show_results for t in base.targets)), *extra)
     print(f"=== caso {caso}")
     print("perguntas previstas:", res.perguntas)
     print("--- GUI:")
     print(p.stdout.strip())
-    if p.stderr.strip():
-        print("STDERR:", p.stderr.strip()[:2000])
     print("--- simulador:")
     for alvo, vals in res.objetivos.items():
         print(f"  {alvo}:")

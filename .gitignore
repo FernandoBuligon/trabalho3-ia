@@ -1,3 +1,7 @@
 __pycache__/
 *.pyc
 ~$*
+ferramenta/python-win32/
+testes/gui/.driver.log
+# capturas de tela do ExSINTA: ficam no relatório entregue
+*.png

@@ -1,8 +1,10 @@
 # Validação da revisão de entrega
 
 As consultas JSON desta pasta foram executadas pelo **simulador Python**.
-Não são resultados extraídos de uma nova execução da interface do ExSINTA.
-O manifesto relaciona hashes SHA-256 das bases e dos artefatos de avaliação.
+As mesmas oito consultas foram repetidas no **ExSINTA real** em 28/11/2026,
+com resultados iguais (registros em `../gui/`), e as bases finais foram
+regravadas pelo próprio SINTA com semântica idêntica (`../sinta_regravado/`).
+O manifesto relaciona hashes SHA-256 das bases, das regravações e dos artefatos.
 
 Resultados da revisão de 25/11/2026:
 
@@ -17,8 +19,8 @@ Resultados da revisão de 25/11/2026:
 - Bases conferidas contra compilação do zero: idênticas byte a byte.
 
 O caso `filmes_2.json` demonstra a correção do limite de 100 minutos:
-A Viagem de Chihiro e os outros nove filmes acima do limite não aparecem mais.
-As capturas antigas que mostram o problema permanecem em `../gui/` como histórico.
+A Viagem de Chihiro e os outros nove filmes acima do limite não aparecem mais,
+nem no simulador nem no ExSINTA real (`../gui/filmes_2/`).
 
 Reproduzir toda a validação e atualizar o manifesto:
 

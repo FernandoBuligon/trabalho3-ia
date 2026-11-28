@@ -154,7 +154,29 @@ Trabalho 3 - Sistemas Especialistas/
   do simulador em `testes/revisao/`.
 - Evidências do Windows preservadas e identificadas como históricas. Os arquivos
   regravados pelo ExSINTA têm 820/1.476 regras; não são cópias das bases finais.
-  **Não houve nova execução nativa**: este ambiente Linux não dispõe de Windows,
-  Wine ou PowerShell. Instruções para repetir a prova estão em
-  `testes/sinta_regravado/README.md` e `testes/gui/README.md`.
+  Na época não houve nova execução nativa; ela foi feita em 28/11/2026 (seção 13).
 - Identificação dos integrantes: solicitada ao usuário; não foram inventados nomes.
+
+## 13. Validação no ExSINTA real — 28/11/2026
+
+- O driver da interface foi reescrito em Python (`gerador/gui/sinta_driver.py`,
+  só biblioteca padrão e `ctypes`), substituindo os scripts PowerShell. Roda
+  num Python para Windows: o nativo, no Windows, ou o *embeddable* pelo Wine,
+  no Linux/macOS. `gui_check.py` escolhe o executor automaticamente.
+- Ajustes necessários no Wine: os menus de outro processo não podem ser lidos,
+  então o driver usa os IDs de comando do ExSINTA 1.1b, obtidos do recurso
+  TFRMMAIN do executável e confirmados ao vivo; `PrintWindow` não renderiza
+  janelas Delphi entre processos, então a captura copia a área interna da
+  janela; a janela de perguntas é reaproveitada, então o driver espera a
+  pergunta realmente mudar (handles, textos e marcações) antes de seguir.
+- **Regravação:** `saida/Famosos.bcm` (827 regras) e `saida/Filmes.bcm`
+  (2.374 regras) abertas e salvas pelo ExSINTA, com **semântica idêntica**
+  (`gerador/regravar_gui.py`, resultado em `testes/sinta_regravado/`).
+- **Consultas:** os oito casos de `casos_gui.py` rodaram no ExSINTA com as
+  bases finais. Perguntas e opções conferidas automaticamente; valores e
+  ordem dos resultados iguais ao simulador (conferência visual). `filmes_2`
+  confirma o limite de 100 minutos no SINTA real.
+- Figuras do relatório recapturadas das bases finais (`gerador/figuras_gui.py`).
+  As capturas de tela ficam no relatório entregue e não são versionadas no repositório.
+- Ambiente: Linux, Wine 11.0, Python 3.12.10 embeddable (win32). O modo
+  Windows nativo do novo driver não foi executado nesta revisão.
