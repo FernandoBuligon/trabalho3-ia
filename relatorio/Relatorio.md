@@ -405,7 +405,7 @@ Trabalho 3 - Sistemas Especialistas/
 ├── testes/                 avaliacao.json, consultas no ExSINTA (gui/), bases regravadas pelo SINTA,
 │                           regressões e manifesto da revisão (revisao/)
 ├── docs/                   notas_sinta.md, formato_bcm.md
-├── ferramenta/             ExSINTA.exe (extraído de sinta32.zip)
+├── ferramenta/             ExSINTA.exe e ajuda (distribuição original do SINTA)
 └── PLANO_DE_TRABALHO.md    plano e registro de validação de cada etapa
 ```
 

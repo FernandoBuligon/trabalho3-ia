@@ -25,6 +25,8 @@ def main():
     for nome in ("Famosos", "Filmes"):
         orig = os.path.join(RAIZ, "saida", f"{nome}.bcm")
         copia = os.path.join(DEST, f"{nome.upper()}_SINTA.BCM")
+        if os.path.exists(copia):
+            os.chmod(copia, 0o644)  # uma cópia somente leitura impediria a sobrescrita
         shutil.copyfile(orig, copia)
         os.chmod(copia, 0o644)
         for args in (("abrir", "--ferramenta", caminho_win(FERRAMENTA), "--base", caminho_win(copia)),

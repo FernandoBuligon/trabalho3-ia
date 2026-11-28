@@ -38,14 +38,16 @@ def main():
         dados = {"origem": "simulador Python", "base_sha256": sha(base),
                  "respostas": respostas, "perguntas": resultado.perguntas,
                  "objetivos": resultado.objetivos}
-        (destino / f"{nome}.json").write_text(json.dumps(dados, ensure_ascii=False, indent=2) + "\n")
+        (destino / f"{nome}.json").write_text(json.dumps(dados, ensure_ascii=False, indent=2) + "\n",
+                                                   encoding="utf-8")
         registro["casos"][nome] = {"arquivo": f"{nome}.json", "perguntas": len(resultado.perguntas)}
     registro["artefatos_sha256"] = {
         str(p.relative_to(RAIZ)): sha(p)
         for p in [RAIZ / "testes/avaliacao.json", RAIZ / "testes/regressao_recomendacoes.json",
                   RAIZ / "dados/famosos.csv", RAIZ / "dados/filmes.csv", RAIZ / "dados/fontes.csv"]
     }
-    (destino / "manifesto.json").write_text(json.dumps(registro, ensure_ascii=False, indent=2) + "\n")
+    (destino / "manifesto.json").write_text(json.dumps(registro, ensure_ascii=False, indent=2) + "\n",
+                                                 encoding="utf-8")
     print("Manifesto e 8 consultas do simulador gravados em testes/revisao/.")
 
 

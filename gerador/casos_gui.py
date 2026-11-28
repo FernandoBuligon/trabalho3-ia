@@ -8,7 +8,7 @@ comparadas com o simulador. As capturas ficam em testes/gui/<caso>/.
 import os
 import sys
 
-from gui_check import checar
+from gui_check import FalhaGUI, checar
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 FAM = os.path.join(AQUI, "..", "saida", "Famosos.bcm")
@@ -82,6 +82,12 @@ CASOS = {
 if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8")
     nomes = sys.argv[1:] or list(CASOS)
+    falhas = []
     for n in nomes:
         base, resp = CASOS[n]
-        checar(base, resp, n)
+        try:
+            checar(base, resp, n)
+        except FalhaGUI as e:
+            falhas.append(str(e))
+    print("\nRESULTADO:", "todos os casos OK" if not falhas else "\n  " + "\n  ".join(falhas))
+    sys.exit(1 if falhas else 0)

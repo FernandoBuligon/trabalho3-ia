@@ -137,10 +137,17 @@ class KB:
         self.rules.append(_Rule(nome, prem, conn, concl))
 
     def _norm(self, var, val):
-        """Valores de variáveis não numéricas são sempre texto ("12", não 12)."""
+        """Valores de variáveis não numéricas são sempre texto ("12", não 12);
+        os de variáveis numéricas são convertidos para número."""
         v = self.vars.get(var)
         if v is not None and not v.numeric and isinstance(val, (int, float)):
             return _num_text(val)
+        if v is not None and v.numeric and isinstance(val, str) and val != DESCONHECIDO:
+            try:                                  # "148", "1,5" -> número
+                f = float(val.replace(",", "."))
+                return int(f) if f.is_integer() else f
+            except ValueError:
+                return val                        # _check_value acusa o erro
         return val
 
     def _check_premise(self, rule, var, op, val):

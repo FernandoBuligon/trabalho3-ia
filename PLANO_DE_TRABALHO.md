@@ -23,8 +23,8 @@ Entrega pelo Moodle e apresentação em sala.
 ## 2. Material disponível na pasta
 
 - `Trabalho 3 - Sistemas Especialistas.pdf`: o enunciado.
-- `Manual - Expert SINTA.pdf` e `sinta/SINTA/manual.pdf`: o manual do shell.
-- `sinta/SINTA/sinta32.zip`: contém `ExSINTA.exe` (versão 32 bits de 1998) e a base de exemplo `SECAJU.BCM`.
+- `Manual - Expert SINTA.pdf`: o manual do shell.
+- `ferramenta/`: `ExSINTA.exe` (versão 32 bits de 1998), ajuda e a base de exemplo `SECAJU.BCM`, extraídos do pacote original `sinta32.zip`.
 - `sinta/SINTA/sintascr/LIBRARY/EXSYSTEM.PAS`: **código-fonte Delphi do motor**, incluindo `SaveToFile`/`LoadFromFile`, que definem o formato binário `.BCM`.
 - Bases de exemplo para engenharia reversa e testes: `VINHOS.BCM` e `SECAJU.BCM`.
 

@@ -72,7 +72,7 @@ g32.DeleteDC.argtypes = [W.HDC]
 g32.BitBlt.argtypes = [W.HDC, ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_int,
                        W.HDC, ctypes.c_int, ctypes.c_int, W.DWORD]
 
-BM_CLICK, WM_SETTEXT, WM_COMMAND = 0x00F5, 0x000C, 0x0111
+BM_CLICK, BM_GETCHECK, WM_SETTEXT, WM_COMMAND = 0x00F5, 0x00F0, 0x000C, 0x0111
 
 
 def texto(h):
@@ -138,12 +138,19 @@ def opcoes_visiveis(w):
     return [texto(h) for h in filhos(w) if classe(h) == "TVarOption" and visivel(h)]
 
 
-def clicar_opcao(w, t):
+def marcar_opcoes(w, desejadas):
+    """Deixa marcadas exatamente as opções desejadas. BM_CLICK alterna o estado,
+    então só clica onde o estado atual (BM_GETCHECK) difere do desejado."""
+    faltando = set(desejadas)
     for h in filhos(w):
-        if classe(h) == "TVarOption" and visivel(h) and texto(h) == t:
-            u32.SendMessageW(h, BM_CLICK, 0, 0)  # síncrono: alterna antes do OK
-            return
-    raise RuntimeError(f"opção '{t}' não encontrada")
+        if classe(h) == "TVarOption" and visivel(h):
+            t = texto(h)
+            quer = t in faltando
+            faltando.discard(t)
+            if bool(u32.SendMessageW(h, BM_GETCHECK, 0, 0)) != quer:
+                u32.SendMessageW(h, BM_CLICK, 0, 0)  # síncrono: alterna antes do OK
+    if faltando:
+        raise RuntimeError(f"opções não encontradas: {sorted(faltando)}")
 
 
 def set_texto(h, t):
@@ -165,7 +172,15 @@ def cnf_da_opcao(w, t, cnf):
     raise RuntimeError(f"campo de CNF da opção '{t}' não encontrado")
 
 
+def separador_decimal():
+    b = ctypes.create_unicode_buffer(8)
+    k32.GetLocaleInfoW(0x0400, 0x000E, b, 8)  # LOCALE_USER_DEFAULT, LOCALE_SDECIMAL
+    return b.value or ","
+
+
 def campo_numerico(w, t):
+    # o Delphi lê o número com o separador decimal do sistema (vírgula em pt-BR)
+    t = str(t).replace(",", ".").replace(".", separador_decimal())
     for h in filhos(w):
         if classe(h) == "TEdit" and visivel(h):
             set_texto(h, t)
@@ -177,7 +192,7 @@ def impressao(w):
     """Identifica a pergunta exibida. A janela é reaproveitada entre perguntas e
     os handles das opções podem ser reutilizados, por isso entram também o texto
     e o estado de marcação (BM_GETCHECK)."""
-    return tuple((h, classe(h), texto(h), u32.SendMessageW(h, 0x00F0, 0, 0))
+    return tuple((h, classe(h), texto(h), u32.SendMessageW(h, BM_GETCHECK, 0, 0))
                  for h in filhos(w) if classe(h) in ("TVarOption", "TEdit") and visivel(h))
 
 
@@ -449,6 +464,20 @@ def consulta(passos_arq, titulo, saida, nres=1, fotos=False, manter_ultimo=False
     def eh_result(w):
         return texto(w) == "Resultados"
 
+    # "Fim da consulta" é o único ShowMessage do SINTA e usa o título do aplicativo;
+    # avisos e erros (MessageDlg) têm título próprio ("Error", "Warning"...).
+    def eh_fim(w):
+        return classe(w) == "TMessageForm" and texto(w) == "Expert SINTA"
+
+    def eh_dialogo_erro(w):
+        return classe(w) == "TMessageForm" and texto(w) != "Expert SINTA"
+
+    def tratar_dialogo(w):
+        f = os.path.join(saida, f"dialogo_{len(log)}.png")
+        captura(w, f)
+        log.append(f"ERRO: diálogo inesperado do SINTA '{texto(w)}' -> {os.path.basename(f)}")
+        clicar_botao(w, "*OK*")
+
     def eh_perg(w):
         return texto(w) == titulo and pergunta_pronta(w)
 
@@ -477,8 +506,11 @@ def consulta(passos_arq, titulo, saida, nres=1, fotos=False, manter_ultimo=False
             # após o último resultado o SINTA abre o aviso modal "Fim da consulta"
             # e a janela de resultados continua visível atrás dele até o OK
             for w in topos():
-                if classe(w) == "TMessageForm":
+                if eh_fim(w):
                     clicar_botao(w, "OK")
+                    return True
+                if eh_dialogo_erro(w):
+                    tratar_dialogo(w)
                     return True
             return False
 
@@ -513,7 +545,11 @@ def consulta(passos_arq, titulo, saida, nres=1, fotos=False, manter_ultimo=False
     for s in passos:
         n += 1
         while True:
-            q = esperar(lambda w: nova_perg(w) or eh_result(w), 120000)
+            q = esperar(lambda w: nova_perg(w) or eh_result(w) or eh_dialogo_erro(w), 120000)
+            if q and eh_dialogo_erro(q):
+                tratar_dialogo(q)
+                q = None
+                break
             if q and eh_result(q):
                 log.append(f"(resultado intermediário antes da P{n})")
                 salvar_result(q)
@@ -531,9 +567,9 @@ def consulta(passos_arq, titulo, saida, nres=1, fotos=False, manter_ultimo=False
             if sorted(vis) != sorted(s["opcoes"]):
                 log.append(f"ERRO P{n}: opções exibidas {vis} esperadas {s['opcoes']}")
                 break
+            marcar_opcoes(q, [m.split("@@")[0] for m in s["marcar"]])
             for m in s["marcar"]:
                 partes = m.split("@@")
-                clicar_opcao(q, partes[0])
                 if len(partes) > 1:
                     time.sleep(0.15)
                     cnf_da_opcao(q, partes[0], partes[1])
@@ -551,7 +587,10 @@ def consulta(passos_arq, titulo, saida, nres=1, fotos=False, manter_ultimo=False
         time.sleep(0.3)
     t1 = time.time()
     while estado["n"] < nres:
-        r = esperar(lambda w: eh_result(w) or nova_perg(w), 120000)
+        r = esperar(lambda w: eh_result(w) or nova_perg(w) or eh_dialogo_erro(w), 120000)
+        if r and eh_dialogo_erro(r):
+            tratar_dialogo(r)
+            break
         if not r:
             log.append(f"ERRO: janela de resultados {estado['n']} não apareceu")
             break
@@ -565,8 +604,12 @@ def consulta(passos_arq, titulo, saida, nres=1, fotos=False, manter_ultimo=False
     if extra:
         log.append("AVISO: ainda há pergunta aberta (não prevista)")
         captura(extra, os.path.join(saida, "pergunta_extra.png"))
+    if estado["n"] < nres:
+        log.append(f"ERRO: {estado['n']} de {nres} janelas de resultado capturadas")
     log.append(f"TOTAL perguntas respondidas: {n}; janelas de resultado: {estado['n']}")
     print("\n".join(log))
+    if any(l.startswith(("ERRO", "AVISO")) for l in log):
+        sys.exit(1)
 
 
 def main():

@@ -5,7 +5,7 @@ import sys
 import bcm
 import build
 import simulador
-from kb import KBError
+from kb import KB, KBError
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 falhas = 0
@@ -22,7 +22,7 @@ def main():
     print("1) DSL")
     check("premissas e conectivos",
           build.parse_cond("a = x OU a = y E b >= 10") ==
-          [("a", "=", "x"), "OU", ("a", "=", "y"), "E", ("b", ">=", 10)])
+          [("a", "=", "x"), "OU", ("a", "=", "y"), "E", ("b", ">=", "10")])
     check("conclusão com CNF", build.parse_concl("filme = Toy Story CNF 80") == ("filme", "Toy Story", 80.0))
     check("conclusão sem CNF", build.parse_concl("x = y") == ("x", "y", 100.0))
     check("operador <>", build.parse_cond("a <> b") == [("a", "<>", "b")])
@@ -31,6 +31,17 @@ def main():
         check("premissa inválida rejeitada", False)
     except KBError:
         check("premissa inválida rejeitada", True)
+
+    # o texto vira número só em variáveis numéricas; categorias ficam como estão
+    k = KB("t")
+    k.var("classe", ["010", "2.0"])
+    k.var("n", numeric=True)
+    k.var("r", ["sim"])
+    k.rule("r1", build.parse_cond("classe = 010 E n >= 1,5"), [build.parse_concl("r = sim")])
+    k.rule("r2", build.parse_cond("classe = 2.0 E n >= 148"), [build.parse_concl("r = sim")])
+    check("categoria numérica mantida como texto",
+          [p[2] for p in k.rules[0].premises] == ["010", 1.5]
+          and [p[2] for p in k.rules[1].premises] == ["2.0", 148], str([r.premises for r in k.rules]))
 
     print("2) Geração da base de exemplo")
     out = build.main(os.path.join(AQUI, "exemplo", "mini.yaml"))
@@ -95,6 +106,34 @@ def main():
     except KBError as e:
         check("valor inexistente no CSV é rejeitado", "faroeste" in str(e), f"({e})")
     shutil.rmtree(tmp)
+
+    def montar(csv_troca=None, modelo_extra=None):
+        tmp = tempfile.mkdtemp()
+        csv_txt = open(os.path.join(AQUI, "exemplo", "mini.csv"), encoding="utf-8").read()
+        if csv_troca:
+            csv_txt = csv_txt.replace(*csv_troca)
+        open(os.path.join(tmp, "mini.csv"), "w", encoding="utf-8").write(csv_txt)
+        c = yaml.safe_load(open(os.path.join(AQUI, "exemplo", "mini.yaml"), encoding="utf-8"))
+        c["base"]["arquivo_saida"] = "x.bcm"
+        if modelo_extra:
+            c["itens"]["modelos"].append(modelo_extra)
+        yaml.safe_dump(c, open(os.path.join(tmp, "c.yaml"), "w", encoding="utf-8"), allow_unicode=True)
+        try:
+            b = build.Builder(os.path.join(tmp, "c.yaml"))
+            b.build()
+            return b, None
+        except KBError as e:
+            return None, e
+        finally:
+            shutil.rmtree(tmp)
+
+    b, e = montar(("Cidade de Deus,2002,130,", "Cidade de Deus,2002,\"99,5\","))
+    faixa = {it["titulo"]: it["faixa_duracao"] for it in b.items} if b else {}
+    check("duração com vírgula decimal entre duas faixas", faixa.get("Cidade de Deus") == "curta", f"({e or faixa})")
+    b, e = montar(("Cidade de Deus,2002,130,", "Cidade de Deus,2002,cento,"))
+    check("duração não numérica acusa o item", e is not None and "Cidade de Deus" in str(e), f"({e})")
+    _, e = montar(modelo_extra={"nome": "lista", "cnf": 50, "condicoes": [{"se": "ator preferido = {atores}"}]})
+    check("coluna de lista em {coluna} é rejeitada", e is not None and "coluna de lista" in str(e), f"({e})")
 
     print()
     print("RESULTADO:", "TUDO OK" if falhas == 0 else f"{falhas} FALHA(S)")

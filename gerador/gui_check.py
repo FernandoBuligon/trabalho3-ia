@@ -27,6 +27,10 @@ FERRAMENTA = os.path.join(RAIZ, "ferramenta")
 DRIVER = os.path.join(AQUI, "gui", "sinta_driver.py")
 
 
+class FalhaGUI(Exception):
+    """A consulta no ExSINTA divergiu do previsto ou não terminou."""
+
+
 def caminho_win(p: str) -> str:
     """Caminho como o processo Windows o enxerga (no Wine, a unidade Z: é a raiz)."""
     p = os.path.abspath(p)
@@ -109,13 +113,21 @@ def checar(arquivo_base: str, respostas: dict, caso: str, abrir: bool = True,
     p = driver("consulta", "--passos", caminho_win(steps_file), "--titulo", base.name.text,
                "--saida", caminho_win(outdir),
                "--nresultados", str(sum(t.show_results for t in base.targets)), *extra)
-    print(f"=== caso {caso}")
+    nres = sum(t.show_results for t in base.targets)
+    faltam = [f"resultado_{i}.png" for i in range(nres)
+              if not os.path.exists(os.path.join(outdir, f"resultado_{i}.png"))]
+    ok = p.returncode == 0 and not faltam
+    print(f"=== caso {caso}: {'OK' if ok else 'FALHOU'}")
     print("perguntas previstas:", res.perguntas)
     print("--- GUI:")
     print(p.stdout.strip())
+    if faltam:
+        print("capturas ausentes:", faltam)
     print("--- simulador:")
     for alvo, vals in res.objetivos.items():
         print(f"  {alvo}:")
         for v, c in vals[:15]:
             print(f"    {c:6.2f}  {v}")
+    if not ok:
+        raise FalhaGUI(f"caso {caso}: o ExSINTA não seguiu o previsto (ver o log acima)")
     return res, outdir

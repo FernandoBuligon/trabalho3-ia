@@ -26,8 +26,6 @@ locale en_US do Wine.
 ExSINTA real: *A Viagem de Chihiro* (125 minutos) e os demais filmes acima do
 limite não aparecem.
 
-`vinhos1`, `mini_a` e `mini_b` são registros anteriores, feitos no Windows com a
-base de exemplo VINHOS e com a base mínima de teste do gerador.
 
 ## Repetir
 

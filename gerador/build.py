@@ -57,7 +57,7 @@ def parse_premise(p: str):
         if k >= 0:
             var = p[:k].strip()
             val = p[k + len(op) + 2:].strip()
-            return (var, op, _num_or_str(val))
+            return (var, op, val)    # texto; o kb converte se a variável for numérica
     raise KBError(f"premissa inválida: {p!r}")
 
 
@@ -67,15 +67,7 @@ def parse_concl(text: str):
     if not m:
         raise KBError(f"conclusão inválida: {text!r}")
     var, val, cnf = m.group(1).strip(), m.group(2).strip(), m.group(3)
-    return (var, _num_or_str(val), float(cnf) if cnf else 100.0)
-
-
-def _num_or_str(v: str):
-    try:
-        f = float(str(v).replace(",", "."))
-        return int(f) if f.is_integer() else f
-    except ValueError:
-        return v
+    return (var, val, float(cnf) if cnf else 100.0)
 
 
 # ============================================================================
@@ -103,14 +95,19 @@ def load_items(cfg_items: dict, base_dir: str) -> List[Dict[str, object]]:
             if raw in ("", None):
                 it[d["coluna"]] = ""
                 continue
-            x = float(raw)
+            chave = it[cfg_items["chave"]]
+            try:
+                x = float(str(raw).replace(",", "."))
+            except ValueError:
+                raise KBError(f"{chave}: {d['de']}={raw!r} não é numérico")
+            # faixas semiabertas pelo limite inferior: um valor entre duas faixas
+            # (ex.: 100,5 com 0–100 e 101–130) fica na de baixo
+            faixas = sorted(d["faixas"], key=lambda f: f[0])
             val = None
-            for lo, hi, nome in d["faixas"]:
-                if lo <= x <= hi:
-                    val = nome
-                    break
+            if faixas[0][0] <= x <= faixas[-1][1]:
+                val = [nome for lo, hi, nome in faixas if lo <= x][-1]
             if val is None:
-                raise KBError(f"{it[cfg_items['chave']]}: {d['de']}={x} fora das faixas")
+                raise KBError(f"{chave}: {d['de']}={raw} fora das faixas")
             it[d["coluna"]] = val
     return items
 
@@ -297,6 +294,14 @@ class Builder:
     def _map(self, col, val):
         return self.cfg["itens"].get("mapas", {}).get(col, {}).get(val, val)
 
+    def _valor_unico(self, it, col) -> str:
+        """Valor de {coluna} em condições fixas; colunas de lista não são aceitas."""
+        v = it[col]
+        if isinstance(v, list):
+            raise KBError(f"{it[self.cfg['itens']['chave']]}: {{{col}}} é uma coluna de lista "
+                          f"e não pode ser usada como valor único")
+        return str(v)
+
     def _clauses(self, it, conds) -> Optional[List[List]]:
         """Converte condições de modelo em cláusulas (listas de premissas ligadas
         por OU). Retorna None se a regra deve ser descartada para este item."""
@@ -306,7 +311,7 @@ class Builder:
                 continue
             if "se" in c:                                   # condição fixa (DSL)
                 # {coluna} é substituído pelo valor do item (ex.: "tempo >= {duracao}")
-                txt = re.sub(r"\{(\w+)\}", lambda m: str(it[m.group(1)]), c["se"])
+                txt = re.sub(r"\{(\w+)\}", lambda m: self._valor_unico(it, m.group(1)), c["se"])
                 clauses.append(parse_cond(txt))
                 continue
             vals = [self._map(c["coluna"], v) for v in as_list(it[c["coluna"]])]
@@ -316,7 +321,10 @@ class Builder:
                 continue                                    # pular_condicao
             op = c.get("op", "=")
             if op != "=":                                   # numérica: var op valor_do_item
-                clauses.append([(c["var"], op, _num_or_str(vals[0]))])
+                if len(vals) > 1:
+                    raise KBError(f"{it[self.cfg['itens']['chave']]}: condição {c['var']} {op} "
+                                  f"exige um único valor na coluna {c['coluna']}, recebeu {vals}")
+                clauses.append([(c["var"], op, vals[0])])
                 continue
             alts = list(dict.fromkeys(vals))
             for extra in as_list(c.get("alternativa")):

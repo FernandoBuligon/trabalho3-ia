@@ -53,13 +53,13 @@ def main():
             consultar(f"{titulo}: diretor {diretor}", respostas, esperado=titulo,
                       regra_esperada=f"{titulo} - diretor: {diretor}")
 
-    caso = json.loads((RAIZ / "testes/gui/filmes_2/simulador.json").read_text())
+    caso = json.loads((RAIZ / "testes/gui/filmes_2/simulador.json").read_text(encoding="utf-8"))
     consultar("regressão filmes_2: criança, 100 minutos", caso["respostas"],
               esperado="Procurando Nemo", ausente="A Viagem de Chihiro")
     result = {"base_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
               "consultas": len(testes), "falhas": 0, "casos": testes}
     (RAIZ / "testes/regressao_recomendacoes.json").write_text(
-        json.dumps(result, ensure_ascii=False, indent=2) + "\n")
+        json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"OK: {len(testes)} consultas; limites exatos, fallbacks e diretores individuais.")
 
 
