@@ -12,7 +12,9 @@ Cada diretório contém:
 | `simulador.json` | perguntas e resultados previstos pelo simulador Python |
 
 O driver confere, pergunta a pergunta, se a ordem das perguntas e as opções
-exibidas são exatamente as previstas pelo simulador. Os valores das janelas de
+exibidas são exatamente as previstas pelo simulador, e termina com erro se
+surgir uma pergunta não prevista, uma opção diferente, um diálogo de erro do
+SINTA ou se faltar alguma janela de resultados. Os valores das janelas de
 resultados (`TValuesGrid`, componente desenhado pelo próprio Delphi) não podem
 ser lidos por mensagens, então a comparação com `simulador.json` é **visual**,
 pelas capturas `resultado_N.png` que o driver grava em cada diretório. As
@@ -26,12 +28,11 @@ locale en_US do Wine.
 ExSINTA real: *A Viagem de Chihiro* (125 minutos) e os demais filmes acima do
 limite não aparecem.
 
-
 ## Repetir
 
 ```bash
 cd gerador
-python casos_gui.py            # os oito casos (substitui estes diretórios)
+python casos_gui.py            # os oito casos (substitui estes diretórios; falha se algum divergir)
 python casos_gui.py filmes_2   # um caso
 python regravar_gui.py         # prova de regravação (testes/sinta_regravado/)
 python figuras_gui.py          # recaptura as figuras do relatório

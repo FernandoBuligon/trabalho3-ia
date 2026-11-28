@@ -4,7 +4,7 @@
 **Docente:** Thiago Naves
 **Entregáveis principais:** `saida/Famosos.bcm` e `saida/Filmes.bcm` (formato do Expert SINTA 1.1b)
 
-**Revisão:** 28/11/2026. Estatísticas, testes e figuras referem-se às bases finais, executadas no **ExSINTA real**. Pesquisa e critérios: [FONTES.md](../dados/FONTES.md), com referências por item em [fontes.csv](../dados/fontes.csv).
+**Revisão:** 28/11/2026. Estatísticas e testes referem-se às bases finais, executadas no **ExSINTA real**. Este arquivo é a documentação técnica do repositório; o relatório entregue, com as capturas de tela, segue o modelo da UTFPR. Pesquisa e critérios: [FONTES.md](../dados/FONTES.md), com referências por item em [fontes.csv](../dados/fontes.csv).
 
 ---
 
